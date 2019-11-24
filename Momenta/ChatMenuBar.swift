@@ -36,7 +36,7 @@ class ChatMenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate,
         collectionView.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
         collectionView.heightAnchor.constraint(equalToConstant: 70).isActive = true
         let selectedIndexPath = IndexPath(item: 0, section: 0)
-        collectionView.selectItem(at: selectedIndexPath, animated: false, scrollPosition: UICollectionViewScrollPosition())
+        collectionView.selectItem(at: selectedIndexPath, animated: false, scrollPosition: UICollectionView.ScrollPosition())
         setupHorizontalBar()
     }
     

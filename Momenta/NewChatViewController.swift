@@ -29,7 +29,7 @@ class NewChatViewController: UIViewController {
         collectionView?.alwaysBounceVertical = true
         collectionView?.backgroundColor = UIColor.white
         collectionView?.register(PrivateChatCollectionViewCell.self, forCellWithReuseIdentifier: cellId)
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.darkGray]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.darkGray]
         navigationItem.title = "My Supporters"
         navigationController?.navigationBar.tintColor = .darkGray
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancel))

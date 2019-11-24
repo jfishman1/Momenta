@@ -80,7 +80,7 @@ extension UIView {
             viewsDictionary[key] = view
         }
         
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: format, options: NSLayoutFormatOptions(), metrics: nil, views: viewsDictionary))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: format, options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: viewsDictionary))
     }
 }
 
@@ -167,11 +167,11 @@ extension UIButton {
     func estimateFrameForText(text: String) -> CGRect {
         let size = CGSize(width: 900, height: 1000)
         let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
-        return NSString(string: text).boundingRect(with: size, options: options, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 22)], context: nil)
+        return NSString(string: text).boundingRect(with: size, options: options, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 22)], context: nil)
     }
     
     func setLeftAlignPadding(_ amount: CGFloat){
-        contentHorizontalAlignment = UIControlContentHorizontalAlignment.left
+        contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.left
         imageEdgeInsets = UIEdgeInsets(top: 0, left: amount, bottom: 0, right: 0)
         titleEdgeInsets = UIEdgeInsets(top: 0, left: amount + 5, bottom: 0, right: 0)
     }

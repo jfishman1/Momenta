@@ -32,7 +32,7 @@ class FirstViewController: UIViewController, UIScrollViewDelegate {
         for i in 0...2 {
             let imageToDisplay = UIImage(named: imageArray[i])
             let imageView = UIImageView(image: imageToDisplay)
-            imageView.contentMode = UIViewContentMode.scaleAspectFill
+            imageView.contentMode = UIView.ContentMode.scaleAspectFill
             //imageView.backgroundColor = .red
             
             let xCoordinate = view.frame.midX + view.frame.width * CGFloat(i)

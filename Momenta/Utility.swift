@@ -185,7 +185,7 @@ class Utility {
         activityViewBackground.layer.cornerRadius = 5.0
         
         activityIndicator.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
-        activityIndicator.activityIndicatorViewStyle = .whiteLarge
+        activityIndicator.style = UIActivityIndicatorView.Style.large
         activityIndicator.center = CGPoint(x: activityViewBackground.frame.size.width / 2, y: activityViewBackground.frame.size.width / 2)
         
         activityViewBackground.addSubview(activityIndicator)

@@ -62,7 +62,7 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.barStyle = .blackOpaque
+        navigationController?.navigationBar.barStyle = UIBarStyle.black
         viewModel?.delegate = self
         dataModel.delegate = self
         setupNavigationItems()

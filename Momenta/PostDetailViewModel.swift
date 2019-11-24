@@ -222,7 +222,7 @@ extension PostDetailViewModel: UITableViewDelegate {
         let width = UIScreen.main.bounds.width - 30
         let size = CGSize(width: width, height: 1000)
         let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
-        return NSString(string: text).boundingRect(with: size, options: options, attributes: [NSAttributedStringKey.font: UIFont(name: "HelveticaNeue", size: 16.0)!], context: nil)
+        return NSString(string: text).boundingRect(with: size, options: options, attributes: [NSAttributedString.Key.font: UIFont(name: "HelveticaNeue", size: 16.0)!], context: nil)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

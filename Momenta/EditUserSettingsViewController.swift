@@ -46,9 +46,9 @@ class EditUserSettingsViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        firstNameTextField.addTarget(self, action: #selector(textFieldChanged(textField:)), for: UIControlEvents.editingChanged)
-        lastNameTextField.addTarget(self, action: #selector(textFieldChanged(textField:)), for: UIControlEvents.editingChanged)
-        emailTextField.addTarget(self, action: #selector(textFieldChanged(textField:)), for: UIControlEvents.editingChanged)
+        firstNameTextField.addTarget(self, action: #selector(textFieldChanged(textField:)), for: UIControl.Event.editingChanged)
+        lastNameTextField.addTarget(self, action: #selector(textFieldChanged(textField:)), for: UIControl.Event.editingChanged)
+        emailTextField.addTarget(self, action: #selector(textFieldChanged(textField:)), for: UIControl.Event.editingChanged)
     }
     @objc func textFieldChanged(textField: UITextField) {
         

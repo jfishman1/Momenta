@@ -85,7 +85,7 @@ class EditProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.barStyle = .blackOpaque
+        navigationController?.navigationBar.barStyle = UIBarStyle.black
         nameButton.semanticContentAttribute = .forceRightToLeft
         saveButton.isEnabled = false
         saveButton.setTitleColor(.lightGray, for: .normal)
@@ -245,10 +245,13 @@ extension EditProfileViewController: UIImagePickerControllerDelegate, UINavigati
         dismiss(animated: true, completion: nil)
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+// Local variable inserted by Swift 4.2 migrator.
+let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
+
         
         //let selectedPhoto = info[UIImagePickerControllerOriginalImage] as! UIImage
-        let editedPhoto = info[UIImagePickerControllerEditedImage] as! UIImage
+        let editedPhoto = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.editedImage)] as! UIImage
         profileImageView.image = editedPhoto
 
         let imageUUIDString = UUID().uuidString
@@ -256,9 +259,9 @@ extension EditProfileViewController: UIImagePickerControllerDelegate, UINavigati
         smallImageName = "\(name)_SMALL_\(imageUUIDString)"
         if let profileImage = self.profileImageView.image {
             let largeProfileImage = profileImage.resizeImage(image: profileImage, targetSize: CGSize(width: 200.0, height: 200.0))//profileImage.resizeWithWidth(width: 200)
-            bigUploadData = UIImageJPEGRepresentation(largeProfileImage, 0.5)
+            bigUploadData = largeProfileImage.jpegData(compressionQuality: 0.5)
             let smallProfileImage = profileImage.resizeImage(image: profileImage, targetSize: CGSize(width: 60.0, height: 60.0))//profileImage.resizeWithWidth(width: 42)
-            smallUploadData = UIImageJPEGRepresentation(smallProfileImage, 0.5)
+            smallUploadData = smallProfileImage.jpegData(compressionQuality: 0.5)
         }
         didSelectNewImage = true
         dismiss(animated: true, completion: nil)
@@ -283,4 +286,14 @@ class EditProfileButton: UIButton {
         showsTouchWhenHighlighted = true
     }
     
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKeyDictionary(_ input: [UIImagePickerController.InfoKey: Any]) -> [String: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map {key, value in (key.rawValue, value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKey(_ input: UIImagePickerController.InfoKey) -> String {
+	return input.rawValue
 }

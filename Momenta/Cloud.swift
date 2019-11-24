@@ -439,7 +439,7 @@ class Cloud {
         let imageGenerator = AVAssetImageGenerator(asset: asset)
         
         do {
-            let thumbnailCGImage = try imageGenerator.copyCGImage(at: CMTimeMake(1, 60), actualTime: nil)
+            let thumbnailCGImage = try imageGenerator.copyCGImage(at: CMTimeMake(value: 1, timescale: 60), actualTime: nil)
             return UIImage(cgImage: thumbnailCGImage)
             
         } catch let err {
@@ -453,7 +453,7 @@ class Cloud {
         let imageName = UUID().uuidString
         let ref = Storage.storage().reference().child(filePath.rawValue).child("\(imageName).jpg")
         
-        if let uploadData = UIImageJPEGRepresentation(image, 0.8) {
+        if let uploadData = image.jpegData(compressionQuality: 0.8) {
             ref.putData(uploadData, metadata: nil, completion: { (metadata, error) in
                 if error != nil {
                     err(error!)
@@ -471,7 +471,7 @@ class Cloud {
         //let imageName = UUID().uuidString
         let ref = Storage.storage().reference().child("post_images").child("\(imageName).jpg")
         
-        if let uploadData = UIImageJPEGRepresentation(image, 0.2) {
+        if let uploadData = image.jpegData(compressionQuality: 0.2) {
             ref.putData(uploadData, metadata: nil, completion: { (metadata, error) in
                 if error != nil {
                     return
@@ -493,7 +493,7 @@ class Cloud {
         //let imageName = UUID().uuidString
         let ref = Storage.storage().reference().child(filePath.rawValue).child("\(imageName)")
         
-        if let uploadData = UIImageJPEGRepresentation(image, 0.2) {
+        if let uploadData = image.jpegData(compressionQuality: 0.2) {
             ref.putData(uploadData, metadata: nil, completion: { (metadata, error) in
                 if error != nil {
                     return

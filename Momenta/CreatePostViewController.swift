@@ -65,12 +65,12 @@ class CreatePostViewController: UIViewController {
         doneEditPostTextButton.layer.cornerRadius = 15.0
         doneEditPostTextButton.clipsToBounds = true
     
-        NotificationCenter.default.addObserver(self, selector: #selector(CreatePostViewController.keyboardDidShow(_:)), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(CreatePostViewController.keyboardDidShow(_:)), name: UIResponder.keyboardDidShowNotification, object: nil)
         //NotificationCenter.default.addObserver(self, selector: #selector(CreatePostViewController.keyboardWillBeHidden(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
     deinit {
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         //NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
@@ -215,7 +215,7 @@ class CreatePostViewController: UIViewController {
             //performSegue(withIdentifier: "goToCamera", sender: self)
             let imagePicker = UIImagePickerController()
             imagePicker.delegate = self
-            imagePicker.sourceType = UIImagePickerControllerSourceType.camera
+            imagePicker.sourceType = UIImagePickerController.SourceType.camera
             imagePicker.mediaTypes = [kUTTypeImage as String]
             //imagePicker.mediaTypes = [kUTTypeMovie as String, kUTTypeImage as String]
             imagePicker.allowsEditing = true
@@ -227,7 +227,7 @@ class CreatePostViewController: UIViewController {
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
             let imagePicker = UIImagePickerController()
             imagePicker.delegate = self
-            imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
+            imagePicker.sourceType = UIImagePickerController.SourceType.photoLibrary
             //imagePicker.mediaTypes = [kUTTypeMovie as String, kUTTypeImage as String]
             imagePicker.mediaTypes = [kUTTypeImage as String]
             imagePicker.navigationBar.tintColor = .darkGray
@@ -283,13 +283,16 @@ class CreatePostViewController: UIViewController {
 }
 
 extension CreatePostViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        let mediaType = info[UIImagePickerControllerMediaType] as! String
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+// Local variable inserted by Swift 4.2 migrator.
+let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
+
+        let mediaType = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.mediaType)] as! String
         if mediaType == kUTTypeImage as String {
             //let image = info[UIImagePickerControllerOriginalImage] as! UIImage
             handleImageSelectedForInfo(info: info as [String : AnyObject])
         } else if mediaType == kUTTypeMovie as String {
-            if let videoUrl = info[UIImagePickerControllerMediaURL] as? URL {
+            if let videoUrl = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.mediaURL)] as? URL {
                 handleVideoSelectedForUrl(url: videoUrl)
             }
         }
@@ -392,7 +395,7 @@ extension CreatePostViewController: UITextViewDelegate {
         }
     }
     @objc func keyboardDidShow(_ notification: Notification) {
-        if let activeView = self.activeView, let keyboardSize = ((notification as NSNotification).userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+        if let activeView = self.activeView, let keyboardSize = ((notification as NSNotification).userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             
             let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardSize.height, right: 0.0)
             self.scrollView.contentInset = contentInsets
@@ -406,4 +409,14 @@ extension CreatePostViewController: UITextViewDelegate {
             }
         }
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKeyDictionary(_ input: [UIImagePickerController.InfoKey: Any]) -> [String: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map {key, value in (key.rawValue, value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKey(_ input: UIImagePickerController.InfoKey) -> String {
+	return input.rawValue
 }

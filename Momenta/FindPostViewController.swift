@@ -19,7 +19,7 @@ class FindPostViewController: UIViewController {
     
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(handleRefresh), for: UIControlEvents.valueChanged)
+        refreshControl.addTarget(self, action: #selector(handleRefresh), for: UIControl.Event.valueChanged)
         refreshControl.tintColor = UIColor.orange
         return refreshControl
     }()
@@ -63,8 +63,8 @@ class FindPostViewController: UIViewController {
         checkIfUserIsLoggedIn()
         // setup tabbar delegate for create tab
         self.tabBarController?.delegate = UIApplication.shared.delegate as? UITabBarControllerDelegate
-        navigationController?.navigationBar.barStyle = .blackOpaque
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        navigationController?.navigationBar.barStyle = UIBarStyle.black
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         self.posts.removeAll()
         fetchPosts()
     }
@@ -102,7 +102,7 @@ class FindPostViewController: UIViewController {
     }
     func setupNavigationItems(userData: User) {
         let button = UIButton(type: .custom) as UIButton
-        button.addTarget(self, action: #selector(goToProfile), for: UIControlEvents.touchUpInside)
+        button.addTarget(self, action: #selector(goToProfile), for: UIControl.Event.touchUpInside)
         navigationItem.leftBarButtonItem = navigationItem.setupLeftBarProfileButton(button: button, user: userData)
     }
     @objc func goToProfile() {

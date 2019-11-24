@@ -52,7 +52,7 @@ class ChatCollectionViewController: UICollectionViewController, UICollectionView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.barStyle = .blackOpaque
+        navigationController?.navigationBar.barStyle = .black
         setupCollectionView()
         setupChatMenuBar()
     }
@@ -68,15 +68,15 @@ class ChatCollectionViewController: UICollectionViewController, UICollectionView
         collectionView?.register(GCCVCController.self, forCellWithReuseIdentifier: groupCellId)
         collectionView?.register(PCCVCController.self, forCellWithReuseIdentifier: privateCellId)
         
-        collectionView?.contentInset = UIEdgeInsetsMake(70, 0, 0, 0)
-        collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(70, 0, 0, 0)
+        collectionView?.contentInset = UIEdgeInsets.init(top: 70, left: 0, bottom: 0, right: 0)
+        collectionView?.scrollIndicatorInsets = UIEdgeInsets.init(top: 70, left: 0, bottom: 0, right: 0)
         
         collectionView?.isPagingEnabled = true
     }
     
     func setupNavigationItems(userData: User) {
         let button = UIButton(type: .custom)
-        button.addTarget(self, action: #selector(goToProfile), for: UIControlEvents.touchUpInside)
+        button.addTarget(self, action: #selector(goToProfile), for: UIControl.Event.touchUpInside)
         navigationItem.leftBarButtonItem = navigationItem.setupLeftBarProfileButton(button: button, user: userData)
         
         let newChatImage = UIImage(named: "Write")?.withRenderingMode(.alwaysOriginal)
@@ -120,14 +120,15 @@ class ChatCollectionViewController: UICollectionViewController, UICollectionView
     
     func scrollToMenuIndex(_ menuIndex: Int) {
         let indexPath = IndexPath(item: menuIndex, section: 0)
-        collectionView?.scrollToItem(at: indexPath, at: UICollectionViewScrollPosition(), animated: true)
+        collectionView?.scrollToItem(at: indexPath, at: UICollectionView.ScrollPosition(), animated: true)
     }
 
     private func setupChatMenuBar() {
         view.addSubview(chatMenuBar)
         view.addConstraintsWithFormat(format: "H:|[v0]|", views: chatMenuBar)
         view.addConstraintsWithFormat(format: "V:[v0(70)]", views: chatMenuBar)
-        chatMenuBar.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor).isActive = true
+        //chatMenuBar.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor).isActive = true
+        chatMenuBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
     }
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -137,7 +138,7 @@ class ChatCollectionViewController: UICollectionViewController, UICollectionView
     override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         let index = targetContentOffset.pointee.x / view.frame.width
         let indexPath = IndexPath(item: Int(index), section: 0)
-        chatMenuBar.collectionView.selectItem(at: indexPath, animated: true, scrollPosition: UICollectionViewScrollPosition())
+        chatMenuBar.collectionView.selectItem(at: indexPath, animated: true, scrollPosition: UICollectionView.ScrollPosition())
     }
     
     // MARK: UICollectionViewController methods
