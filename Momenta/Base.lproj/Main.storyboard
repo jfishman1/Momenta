@@ -1,19 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="sI3-Th-tmH">
-    <device id="retina4_0" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="sI3-Th-tmH">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--First View Controller-->
         <scene sceneID="aEe-lb-L8j">
             <objects>
-                <viewController storyboardIdentifier="firstViewController" id="FjQ-vC-MlV" customClass="FirstViewController" customModule="humble" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="firstViewController" modalPresentationStyle="fullScreen" id="FjQ-vC-MlV" customClass="FirstViewController" customModule="Momenta" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zDP-S9-9Jl"/>
                         <viewControllerLayoutGuide type="bottom" id="nfu-rg-Irp"/>
@@ -23,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="momenta" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Na7-PS-6C6">
-                                <rect key="frame" x="10" y="24" width="300" height="45"/>
+                                <rect key="frame" x="10" y="4" width="300" height="42"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="hb3-D3-fks"/>
                                 </constraints>
@@ -31,68 +27,41 @@
                                 <color key="textColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cwU-d7-0Qu">
-                                <rect key="frame" x="0.0" y="89" width="320" height="390"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="390" id="h2I-kV-Kom"/>
-                                </constraints>
-                            </scrollView>
-                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="nl5-ir-RdG">
-                                <rect key="frame" x="135" y="487" width="50" height="27"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="5rZ-VR-dYA"/>
-                                    <constraint firstAttribute="height" constant="27" id="e7p-WH-ueH"/>
-                                </constraints>
-                                <connections>
-                                    <action selector="pageDidChange:" destination="FjQ-vC-MlV" eventType="valueChanged" id="xSe-uk-BCM"/>
-                                </connections>
-                            </pageControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TwG-oi-0fV">
-                                <rect key="frame" x="15" y="523" width="290" height="35"/>
+                                <rect key="frame" x="117.5" y="347" width="85" height="35"/>
                                 <color key="backgroundColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="1bA-hE-TA4"/>
+                                    <constraint firstAttribute="height" constant="35" id="Ih8-3q-kZb"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Get Started">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="2zc-1A-4Oo" kind="show" id="pCR-nj-590"/>
+                                    <segue destination="2zc-1A-4Oo" kind="popoverPresentation" popoverAnchorView="TwG-oi-0fV" id="pCR-nj-590">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="TwG-oi-0fV" secondAttribute="trailing" id="4eM-Tz-WCl"/>
-                            <constraint firstAttribute="trailing" secondItem="cwU-d7-0Qu" secondAttribute="trailing" id="7ac-NX-041"/>
-                            <constraint firstItem="TwG-oi-0fV" firstAttribute="leading" secondItem="fKU-qI-Lnc" secondAttribute="leading" constant="15" id="9QT-we-mea"/>
-                            <constraint firstItem="nl5-ir-RdG" firstAttribute="centerX" secondItem="cwU-d7-0Qu" secondAttribute="centerX" id="EI4-1f-dwC"/>
-                            <constraint firstItem="cwU-d7-0Qu" firstAttribute="leading" secondItem="fKU-qI-Lnc" secondAttribute="leading" id="KBf-Uj-qQi"/>
-                            <constraint firstItem="cwU-d7-0Qu" firstAttribute="centerX" secondItem="fKU-qI-Lnc" secondAttribute="centerX" id="TBO-Lt-9E6"/>
-                            <constraint firstItem="cwU-d7-0Qu" firstAttribute="top" secondItem="Na7-PS-6C6" secondAttribute="bottom" constant="20" id="ZuW-ba-FYK"/>
-                            <constraint firstItem="TwG-oi-0fV" firstAttribute="centerX" secondItem="nl5-ir-RdG" secondAttribute="centerX" id="a4y-T8-3me"/>
+                            <constraint firstItem="TwG-oi-0fV" firstAttribute="centerX" secondItem="Na7-PS-6C6" secondAttribute="centerX" id="YOO-t8-yrU"/>
                             <constraint firstItem="Na7-PS-6C6" firstAttribute="centerX" secondItem="fKU-qI-Lnc" secondAttribute="centerX" id="dBK-D6-lLg"/>
-                            <constraint firstItem="nl5-ir-RdG" firstAttribute="top" secondItem="cwU-d7-0Qu" secondAttribute="bottom" constant="8" id="eTI-AV-MvN"/>
-                            <constraint firstItem="cwU-d7-0Qu" firstAttribute="centerY" secondItem="fKU-qI-Lnc" secondAttribute="centerY" id="jsw-pS-XQz"/>
-                            <constraint firstItem="nfu-rg-Irp" firstAttribute="top" secondItem="TwG-oi-0fV" secondAttribute="bottom" constant="10" id="nw5-O5-0vw"/>
                             <constraint firstItem="Na7-PS-6C6" firstAttribute="top" secondItem="zDP-S9-9Jl" secondAttribute="bottom" constant="4" id="plc-bT-eFz"/>
+                            <constraint firstItem="nfu-rg-Irp" firstAttribute="top" secondItem="TwG-oi-0fV" secondAttribute="bottom" constant="186" id="tTo-aL-Bae"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <outlet property="pageControl" destination="nl5-ir-RdG" id="eUr-sR-fZV"/>
-                        <outlet property="scrollView" destination="cwU-d7-0Qu" id="Mwh-C9-SfU"/>
-                    </connections>
+                    <navigationItem key="navigationItem" id="aHQ-kV-1aM"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9MK-gy-aFb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3351" y="110"/>
+            <point key="canvasLocation" x="-3486" y="104"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="jeZ-MQ-D95">
             <objects>
-                <viewController id="2zc-1A-4Oo" customClass="LoginViewController" customModule="humble" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="2zc-1A-4Oo" customClass="LoginViewController" customModule="Momenta" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="u22-cV-Ohn"/>
                         <viewControllerLayoutGuide type="bottom" id="06S-00-7FA"/>
@@ -102,7 +71,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dlZ-m7-jBn">
-                                <rect key="frame" x="260" y="40" width="30" height="30"/>
+                                <rect key="frame" x="260" y="20" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="a0h-9j-MJ8"/>
                                     <constraint firstAttribute="height" constant="30" id="dTE-aK-wjE"/>
@@ -114,12 +83,12 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8zK-Jq-mbL">
-                                <rect key="frame" x="16" y="105" width="288" height="230"/>
+                                <rect key="frame" x="16" y="85" width="288" height="230"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="lll-FH-WJY">
                                         <rect key="frame" x="0.0" y="0.0" width="288" height="230"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5R0-Ge-gO1">
+                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5R0-Ge-gO1">
                                                 <rect key="frame" x="0.0" y="0.0" width="288" height="57"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
@@ -130,7 +99,7 @@
                                                     <action selector="onFacebookButton:" destination="2zc-1A-4Oo" eventType="touchUpInside" id="JHa-fd-2rt"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lxG-Ik-Ecy">
+                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lxG-Ik-Ecy">
                                                 <rect key="frame" x="0.0" y="58" width="288" height="56.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
@@ -141,7 +110,7 @@
                                                     <action selector="onGoogleButton:" destination="2zc-1A-4Oo" eventType="touchUpInside" id="XaS-D5-QIq"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ObD-BM-lJK">
+                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ObD-BM-lJK">
                                                 <rect key="frame" x="0.0" y="115.5" width="288" height="57"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
@@ -176,7 +145,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By continuing, I agree to Momenta's Terms of Use and Privacy Policy" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uSy-eS-NaK">
-                                <rect key="frame" x="16" y="351" width="288" height="38"/>
+                                <rect key="frame" x="16" y="331" width="288" height="38"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="uGr-yJ-6iw"/>
                                 </constraints>
@@ -213,17 +182,17 @@
         <!--Email Login View Controller-->
         <scene sceneID="4g9-mk-ZFB">
             <objects>
-                <viewController id="1dB-of-zAA" customClass="EmailLoginViewController" customModule="humble" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="1dB-of-zAA" customClass="EmailLoginViewController" customModule="Momenta" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="IyI-7g-KIs"/>
                         <viewControllerLayoutGuide type="bottom" id="Oq6-JO-cVm"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ntH-13-0iI">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nV1-ij-OOv">
-                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Ws-h0-OsY" userLabel="Content View">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="571"/>
@@ -260,9 +229,13 @@
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lDS-JL-UwP">
                                                                 <rect key="frame" x="0.0" y="0.0" width="280" height="57"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" textContentType="given-name"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
+                                                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
                                                                 <connections>
                                                                     <outlet property="delegate" destination="1dB-of-zAA" id="sTo-zq-yn8"/>
                                                                 </connections>
@@ -270,9 +243,13 @@
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hme-ey-eME">
                                                                 <rect key="frame" x="0.0" y="58" width="280" height="56.5"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" textContentType="family-name"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
+                                                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
                                                                 <connections>
                                                                     <outlet property="delegate" destination="1dB-of-zAA" id="5gB-pH-sQe"/>
                                                                 </connections>
@@ -280,9 +257,13 @@
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qtu-hi-cnu">
                                                                 <rect key="frame" x="0.0" y="115.5" width="280" height="57"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" textContentType="email"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
+                                                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
                                                                 <connections>
                                                                     <outlet property="delegate" destination="1dB-of-zAA" id="Hd3-eP-SpJ"/>
                                                                 </connections>
@@ -290,9 +271,13 @@
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iVG-Be-zxL">
                                                                 <rect key="frame" x="0.0" y="173.5" width="280" height="56.5"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
+                                                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
                                                                 <connections>
                                                                     <outlet property="delegate" destination="1dB-of-zAA" id="ZrY-sQ-V87"/>
                                                                 </connections>
@@ -369,6 +354,7 @@
                             <constraint firstItem="Oq6-JO-cVm" firstAttribute="top" secondItem="nV1-ij-OOv" secondAttribute="bottom" id="jcC-D2-Eyv"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="gfP-gz-HvT"/>
                     <connections>
                         <outlet property="contentView" destination="4Ws-h0-OsY" id="yGs-fI-nXJ"/>
                         <outlet property="emailTextField" destination="Qtu-hi-cnu" id="KHH-zG-idw"/>
@@ -394,6 +380,7 @@
             <objects>
                 <tabBarController storyboardIdentifier="masterTabBar" automaticallyAdjustsScrollViewInsets="NO" id="sI3-Th-tmH" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="Ihe-5j-Bti"/>
                     <tabBar key="tabBar" contentMode="scaleAspectFill" translucent="NO" id="KBZ-xG-A2o">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -415,17 +402,17 @@
         <!--Create Post View Controller-->
         <scene sceneID="QQB-eK-FsT">
             <objects>
-                <viewController storyboardIdentifier="CreatePostViewController" id="PmS-KM-1Ee" customClass="CreatePostViewController" customModule="humble" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CreatePostViewController" id="PmS-KM-1Ee" customClass="CreatePostViewController" customModule="Momenta" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="T4G-9q-ryJ"/>
                         <viewControllerLayoutGuide type="bottom" id="2e9-Qc-MTG"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="DJU-gm-mh5">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v5a-O7-D8i">
-                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
                                 <items>
                                     <navigationItem title="Create Action" id="XNU-Ye-eJf">
                                         <barButtonItem key="leftBarButtonItem" image="CancelButtonGray" id="gow-MV-smw">
@@ -444,14 +431,14 @@
                                 </items>
                             </navigationBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hfV-4V-wKU" userLabel="SeparatorView">
-                                <rect key="frame" x="0.0" y="124" width="320" height="1"/>
+                                <rect key="frame" x="0.0" y="116" width="320" height="1"/>
                                 <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="TXt-8J-eVR"/>
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vP5-S4-azD">
-                                <rect key="frame" x="0.0" y="126" width="320" height="442"/>
+                                <rect key="frame" x="0.0" y="118" width="320" height="430"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bdo-ed-9Z7" userLabel="Content View">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="352"/>
@@ -594,7 +581,7 @@
                                 </constraints>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pin-Xk-OhG">
-                                <rect key="frame" x="17" y="78" width="115" height="30"/>
+                                <rect key="frame" x="17" y="70" width="115" height="30"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                 <state key="normal" title="Select Category">
                                     <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -649,9 +636,9 @@
         <!--Settings-->
         <scene sceneID="erX-ZW-OF9">
             <objects>
-                <tableViewController id="k8s-Cc-8gt" customClass="SettingsTableViewController" customModule="humble" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="k8s-Cc-8gt" customClass="SettingsTableViewController" customModule="Momenta" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="MrN-YL-8dJ">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
@@ -661,7 +648,7 @@
                                         <rect key="frame" x="0.0" y="55.5" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gDa-XI-7vJ" id="Yjl-5o-KdA">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" text="Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VRe-zg-lJE">
@@ -671,7 +658,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oAX-By-hRl">
-                                                    <rect key="frame" x="73" y="12" width="238" height="21"/>
+                                                    <rect key="frame" x="73" y="11.5" width="238" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -690,17 +677,17 @@
                                         <rect key="frame" x="0.0" y="99.5" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="11P-tv-As1" id="5Mb-4K-W72">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" text="Email:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NGP-UP-cdI">
-                                                    <rect key="frame" x="15" y="12" width="46" height="21"/>
+                                                    <rect key="frame" x="15" y="11.5" width="46" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MqI-6I-eW6">
-                                                    <rect key="frame" x="71" y="12" width="241" height="21"/>
+                                                    <rect key="frame" x="71" y="11.5" width="241" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -723,11 +710,11 @@
                                         <rect key="frame" x="0.0" y="199.5" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MOz-Q0-chH" id="Ck1-gp-p1u">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7va-a0-30d">
-                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                                     <state key="normal" title="Logout"/>
                                                     <connections>
                                                         <action selector="onLogoutButton:" destination="k8s-Cc-8gt" eventType="touchUpInside" id="jdy-N1-h9K"/>
@@ -764,35 +751,32 @@
         <!--My Info-->
         <scene sceneID="e4v-K5-S1M">
             <objects>
-                <viewController id="ZbQ-2G-2cl" customClass="EditUserSettingsViewController" customModule="humble" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ZbQ-2G-2cl" customClass="EditUserSettingsViewController" customModule="Momenta" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bPQ-JJ-RET"/>
                         <viewControllerLayoutGuide type="bottom" id="doL-2F-1Ju"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="zB5-GX-tUx">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="26X-b4-6sO">
-                                <rect key="frame" x="15" y="79" width="290" height="30"/>
-                                <nil key="textColor"/>
+                                <rect key="frame" x="15" y="71" width="290" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3uz-ka-1cA">
-                                <rect key="frame" x="15" y="119" width="290" height="30"/>
-                                <nil key="textColor"/>
+                                <rect key="frame" x="15" y="115" width="290" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ijG-bO-28Y">
-                                <rect key="frame" x="15" y="159" width="290" height="30"/>
-                                <nil key="textColor"/>
+                                <rect key="frame" x="15" y="159" width="290" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vxc-7y-rmi">
-                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
                                 <items>
                                     <navigationItem title="My Info" id="Khk-PF-WwN">
                                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="if5-xI-XZf">
@@ -849,24 +833,24 @@
         <!--Edit Profile View Controller-->
         <scene sceneID="Rjm-ft-faC">
             <objects>
-                <viewController storyboardIdentifier="editProfileVC" id="7ti-db-Yxr" customClass="EditProfileViewController" customModule="humble" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="editProfileVC" id="7ti-db-Yxr" customClass="EditProfileViewController" customModule="Momenta" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="EGX-uz-xPO"/>
                         <viewControllerLayoutGuide type="bottom" id="5rt-xG-j29"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="iG9-7N-vkD">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Ql-YJ-QNJ">
-                                <rect key="frame" x="0.0" y="255" width="320" height="313"/>
+                                <rect key="frame" x="0.0" y="235" width="320" height="313"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="313" id="LHb-sF-aKq"/>
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kv9-y4-371">
-                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <rect key="frame" x="0.0" y="56" width="320" height="492"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EdT-UA-nzd" userLabel="Content View">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="627.5"/>
@@ -924,7 +908,7 @@
                                                     <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5nZ-h0-egf" customClass="EditProfileButton" customModule="humble" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5nZ-h0-egf" customClass="EditProfileButton" customModule="Momenta" customModuleProvider="target">
                                                 <rect key="frame" x="20" y="277.5" width="79" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="csp-RI-nK8"/>
@@ -938,7 +922,7 @@
                                                     <action selector="onButtonTap:" destination="7ti-db-Yxr" eventType="touchUpInside" id="gjh-by-Yi7"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n7H-Ot-iMQ" customClass="EditProfileButton" customModule="humble" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n7H-Ot-iMQ" customClass="EditProfileButton" customModule="Momenta" customModuleProvider="target">
                                                 <rect key="frame" x="109" y="277.5" width="79" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="79" id="DP7-75-DYd"/>
@@ -952,7 +936,7 @@
                                                     <action selector="onButtonTap:" destination="7ti-db-Yxr" eventType="touchUpInside" id="lVL-LZ-EHa"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q9f-FI-0an" customClass="EditProfileButton" customModule="humble" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q9f-FI-0an" customClass="EditProfileButton" customModule="Momenta" customModuleProvider="target">
                                                 <rect key="frame" x="198" y="277.5" width="99" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="99" id="NAs-UI-xoW"/>
@@ -966,7 +950,7 @@
                                                     <action selector="onButtonTap:" destination="7ti-db-Yxr" eventType="touchUpInside" id="Qur-GE-oGk"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EMa-X9-QoU" customClass="EditProfileButton" customModule="humble" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EMa-X9-QoU" customClass="EditProfileButton" customModule="Momenta" customModuleProvider="target">
                                                 <rect key="frame" x="20" y="317.5" width="109" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="Cvr-AK-mce"/>
@@ -980,7 +964,7 @@
                                                     <action selector="onButtonTap:" destination="7ti-db-Yxr" eventType="touchUpInside" id="J4x-IS-8kK"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wdi-RY-M61" customClass="EditProfileButton" customModule="humble" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wdi-RY-M61" customClass="EditProfileButton" customModule="Momenta" customModuleProvider="target">
                                                 <rect key="frame" x="139" y="317.5" width="82" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="82" id="KYM-YX-yQf"/>
@@ -994,7 +978,7 @@
                                                     <action selector="onButtonTap:" destination="7ti-db-Yxr" eventType="touchUpInside" id="ouV-TO-AUD"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8PI-hG-6rw" customClass="EditProfileButton" customModule="humble" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8PI-hG-6rw" customClass="EditProfileButton" customModule="Momenta" customModuleProvider="target">
                                                 <rect key="frame" x="231" y="317.5" width="59" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="2bV-WW-wh5"/>
@@ -1008,7 +992,7 @@
                                                     <action selector="onButtonTap:" destination="7ti-db-Yxr" eventType="touchUpInside" id="eTN-nx-F1O"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MFT-pG-sPZ" customClass="EditProfileButton" customModule="humble" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MFT-pG-sPZ" customClass="EditProfileButton" customModule="Momenta" customModuleProvider="target">
                                                 <rect key="frame" x="20" y="357.5" width="59" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="Hbg-hM-IeR"/>
@@ -1022,7 +1006,7 @@
                                                     <action selector="onButtonTap:" destination="7ti-db-Yxr" eventType="touchUpInside" id="zWY-Mx-DGG"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="teq-AC-UwK" customClass="EditProfileButton" customModule="humble" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="teq-AC-UwK" customClass="EditProfileButton" customModule="Momenta" customModuleProvider="target">
                                                 <rect key="frame" x="89" y="357.5" width="79" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="79" id="3qB-Kb-t81"/>
@@ -1036,7 +1020,7 @@
                                                     <action selector="onButtonTap:" destination="7ti-db-Yxr" eventType="touchUpInside" id="xcx-wz-4jl"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="faM-xJ-u27" customClass="EditProfileButton" customModule="humble" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="faM-xJ-u27" customClass="EditProfileButton" customModule="Momenta" customModuleProvider="target">
                                                 <rect key="frame" x="178" y="357.5" width="89" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="89" id="Hpl-rd-E6j"/>
@@ -1050,7 +1034,7 @@
                                                     <action selector="onButtonTap:" destination="7ti-db-Yxr" eventType="touchUpInside" id="f65-2h-0zW"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m0r-A5-Uxt" customClass="EditProfileButton" customModule="humble" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m0r-A5-Uxt" customClass="EditProfileButton" customModule="Momenta" customModuleProvider="target">
                                                 <rect key="frame" x="20" y="397.5" width="69" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="69" id="TZW-jo-Ghk"/>
@@ -1064,7 +1048,7 @@
                                                     <action selector="onButtonTap:" destination="7ti-db-Yxr" eventType="touchUpInside" id="jKO-Pv-qrJ"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Par-Dx-c5j" customClass="EditProfileButton" customModule="humble" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Par-Dx-c5j" customClass="EditProfileButton" customModule="Momenta" customModuleProvider="target">
                                                 <rect key="frame" x="99" y="397.5" width="99" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="99" id="4Og-gB-jMv"/>
@@ -1078,7 +1062,7 @@
                                                     <action selector="onButtonTap:" destination="7ti-db-Yxr" eventType="touchUpInside" id="Qzw-7Y-Hpo"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lat-1j-q77" customClass="EditProfileButton" customModule="humble" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lat-1j-q77" customClass="EditProfileButton" customModule="Momenta" customModuleProvider="target">
                                                 <rect key="frame" x="208" y="397.5" width="79" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="79" id="6Vz-T1-e0v"/>
@@ -1092,7 +1076,7 @@
                                                     <action selector="onButtonTap:" destination="7ti-db-Yxr" eventType="touchUpInside" id="EJi-Vx-kry"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="48a-zx-BKl" customClass="EditProfileButton" customModule="humble" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="48a-zx-BKl" customClass="EditProfileButton" customModule="Momenta" customModuleProvider="target">
                                                 <rect key="frame" x="20" y="437.5" width="69" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="69" id="BMx-gP-spJ"/>
@@ -1106,7 +1090,7 @@
                                                     <action selector="onButtonTap:" destination="7ti-db-Yxr" eventType="touchUpInside" id="Y0N-KQ-Bog"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gew-Hy-eNI" customClass="EditProfileButton" customModule="humble" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gew-Hy-eNI" customClass="EditProfileButton" customModule="Momenta" customModuleProvider="target">
                                                 <rect key="frame" x="99" y="437.5" width="79" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="6n7-HI-37r"/>
@@ -1120,7 +1104,7 @@
                                                     <action selector="onButtonTap:" destination="7ti-db-Yxr" eventType="touchUpInside" id="uNH-5S-yqc"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VJd-hj-Vjs" customClass="EditProfileButton" customModule="humble" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VJd-hj-Vjs" customClass="EditProfileButton" customModule="Momenta" customModuleProvider="target">
                                                 <rect key="frame" x="188" y="437.5" width="109" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="109" id="HpX-GO-ipz"/>
@@ -1134,7 +1118,7 @@
                                                     <action selector="onButtonTap:" destination="7ti-db-Yxr" eventType="touchUpInside" id="lWQ-6h-ZOl"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UH9-yb-iiB" customClass="EditProfileButton" customModule="humble" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UH9-yb-iiB" customClass="EditProfileButton" customModule="Momenta" customModuleProvider="target">
                                                 <rect key="frame" x="20" y="477.5" width="99" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="99" id="70T-x9-0Lv"/>
@@ -1148,7 +1132,7 @@
                                                     <action selector="onButtonTap:" destination="7ti-db-Yxr" eventType="touchUpInside" id="n8k-vK-7bb"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nf9-Ec-qGA" customClass="EditProfileButton" customModule="humble" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nf9-Ec-qGA" customClass="EditProfileButton" customModule="Momenta" customModuleProvider="target">
                                                 <rect key="frame" x="129" y="477.5" width="69" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="2Bp-x8-54U"/>
@@ -1162,7 +1146,7 @@
                                                     <action selector="onButtonTap:" destination="7ti-db-Yxr" eventType="touchUpInside" id="ein-dM-Tnz"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sbh-CI-0Uw" customClass="EditProfileButton" customModule="humble" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sbh-CI-0Uw" customClass="EditProfileButton" customModule="Momenta" customModuleProvider="target">
                                                 <rect key="frame" x="208" y="477.5" width="72" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="AU9-WD-0U5"/>
@@ -1176,7 +1160,7 @@
                                                     <action selector="onButtonTap:" destination="7ti-db-Yxr" eventType="touchUpInside" id="GQh-Gh-Yh5"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0RX-x6-tpX" customClass="EditProfileButton" customModule="humble" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0RX-x6-tpX" customClass="EditProfileButton" customModule="Momenta" customModuleProvider="target">
                                                 <rect key="frame" x="79" y="517.5" width="79" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="79" id="Qke-SA-lHH"/>
@@ -1190,7 +1174,7 @@
                                                     <action selector="onButtonTap:" destination="7ti-db-Yxr" eventType="touchUpInside" id="6sD-go-krq"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NS6-ke-kVa" customClass="EditProfileButton" customModule="humble" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NS6-ke-kVa" customClass="EditProfileButton" customModule="Momenta" customModuleProvider="target">
                                                 <rect key="frame" x="168" y="517.5" width="69" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="gon-CK-Xfn"/>
@@ -1204,7 +1188,7 @@
                                                     <action selector="onButtonTap:" destination="7ti-db-Yxr" eventType="touchUpInside" id="B4m-Yb-gOO"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QP2-Hp-T5O" customClass="EditProfileButton" customModule="humble" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QP2-Hp-T5O" customClass="EditProfileButton" customModule="Momenta" customModuleProvider="target">
                                                 <rect key="frame" x="20" y="557.5" width="59" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="59" id="n2U-nk-eJW"/>
@@ -1218,7 +1202,7 @@
                                                     <action selector="onButtonTap:" destination="7ti-db-Yxr" eventType="touchUpInside" id="cLC-2C-Bfn"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vut-Ou-1iz" customClass="EditProfileButton" customModule="humble" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vut-Ou-1iz" customClass="EditProfileButton" customModule="Momenta" customModuleProvider="target">
                                                 <rect key="frame" x="89" y="557.5" width="69" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="Pe5-pp-tPo"/>
@@ -1232,7 +1216,7 @@
                                                     <action selector="onButtonTap:" destination="7ti-db-Yxr" eventType="touchUpInside" id="bwH-Fw-zTC"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8uf-io-urv" customClass="EditProfileButton" customModule="humble" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8uf-io-urv" customClass="EditProfileButton" customModule="Momenta" customModuleProvider="target">
                                                 <rect key="frame" x="168" y="557.5" width="89" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="Ubc-js-ePs"/>
@@ -1246,7 +1230,7 @@
                                                     <action selector="onButtonTap:" destination="7ti-db-Yxr" eventType="touchUpInside" id="Ppa-Es-gVE"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lJ3-Oc-Idz" customClass="EditProfileButton" customModule="humble" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lJ3-Oc-Idz" customClass="EditProfileButton" customModule="Momenta" customModuleProvider="target">
                                                 <rect key="frame" x="20" y="517.5" width="49" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="49" id="QP1-Da-jJT"/>
@@ -1340,13 +1324,13 @@
                                 </constraints>
                             </scrollView>
                             <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TSr-u7-Ok8">
-                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
                                 <color key="barTintColor" red="0.35686274509999999" green="0.90196078430000004" blue="0.80392156859999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <items>
                                     <navigationItem id="1eg-AZ-Wc6">
                                         <barButtonItem key="leftBarButtonItem" id="6OB-VL-yU3">
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="IKk-S5-ZFd">
-                                                <rect key="frame" x="16" y="7" width="30" height="30"/>
+                                                <rect key="frame" x="16" y="13" width="30" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="30" id="DDN-x0-Mc2"/>
@@ -1360,7 +1344,7 @@
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" image="checkmark icon" id="PAV-Ho-X20">
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="pak-Tl-1If">
-                                                <rect key="frame" x="242" y="11" width="62" height="22"/>
+                                                <rect key="frame" x="242" y="17" width="62" height="22"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="34" id="77q-zZ-1UJ"/>
@@ -1417,21 +1401,21 @@
         <!--Profile View Controller-->
         <scene sceneID="TAu-wT-h60">
             <objects>
-                <viewController storyboardIdentifier="ProfileViewController" id="0NF-Ex-ekH" customClass="ProfileViewController" customModule="humble" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileViewController" id="0NF-Ex-ekH" customClass="ProfileViewController" customModule="Momenta" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Fg5-h4-2AV"/>
                         <viewControllerLayoutGuide type="bottom" id="bFE-NV-yGv"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="P7p-yv-HUy">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="492"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lur-8e-lUQ">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="492"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" red="0.35686274509999999" green="0.90196078430000004" blue="0.80392156859999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="nameAndPictureCell" rowHeight="200" id="3rV-8T-UAt" customClass="NameAndPictureCell" customModule="humble" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="nameAndPictureCell" rowHeight="200" id="3rV-8T-UAt" customClass="NameAndPictureCell" customModule="Momenta" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3rV-8T-UAt" id="3hE-UB-69q">
@@ -1473,7 +1457,7 @@
                                             <outlet property="userNameLabel" destination="Vnt-r8-pOP" id="tgY-yG-Z1a"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="statsCell" rowHeight="100" id="MR6-le-LJ3" customClass="StatsCell" customModule="humble" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="statsCell" rowHeight="100" id="MR6-le-LJ3" customClass="StatsCell" customModule="Momenta" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="228" width="320" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MR6-le-LJ3" id="7Sb-l9-t4w">
@@ -1481,19 +1465,19 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Actions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eku-PJ-0eO">
-                                                    <rect key="frame" x="32" y="57.5" width="49" height="17"/>
+                                                    <rect key="frame" x="32" y="58" width="49" height="17"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
                                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Momenta" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jF6-Wq-O44">
-                                                    <rect key="frame" x="129.5" y="57.5" width="61.5" height="17"/>
+                                                    <rect key="frame" x="129.5" y="58" width="61.5" height="17"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
                                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Supporters" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xk8-f8-cra">
-                                                    <rect key="frame" x="224.5" y="57.5" width="72.5" height="17"/>
+                                                    <rect key="frame" x="224.5" y="58" width="72.5" height="17"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
                                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -1505,7 +1489,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9,999,999" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dXh-iZ-FBa">
-                                                    <rect key="frame" x="107" y="15" width="107" height="29"/>
+                                                    <rect key="frame" x="106.5" y="15" width="107" height="29"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="24"/>
                                                     <color key="textColor" red="0.35686274509999999" green="0.90196078430000004" blue="0.80392156859999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -1548,7 +1532,7 @@
                                             <outlet property="supportersCountLabel" destination="Xrn-1x-RoB" id="2Pk-yx-8nD"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="attributesCell" rowHeight="170" id="cfH-9w-jWk" customClass="AttributesCell" customModule="humble" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="attributesCell" rowHeight="170" id="cfH-9w-jWk" customClass="AttributesCell" customModule="Momenta" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="328" width="320" height="170"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cfH-9w-jWk" id="NTR-cc-XAQ">
@@ -1558,7 +1542,7 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="jEC-e4-yyU">
                                                     <rect key="frame" x="65" y="15" width="190" height="26"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" text="1 1234567890" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dYb-H6-9D9" customClass="AttributesLabel" customModule="humble" customModuleProvider="target">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" text="1 1234567890" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dYb-H6-9D9" customClass="AttributesLabel" customModule="Momenta" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="90" height="26"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="26" id="sdw-Wd-TTi"/>
@@ -1567,7 +1551,7 @@
                                                             <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" text="2 1234567890" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HNb-oT-FSL" customClass="AttributesLabel" customModule="humble" customModuleProvider="target">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" text="2 1234567890" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HNb-oT-FSL" customClass="AttributesLabel" customModule="Momenta" customModuleProvider="target">
                                                             <rect key="frame" x="100" y="0.0" width="90" height="26"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="26" id="Uw1-1c-RiX"/>
@@ -1581,7 +1565,7 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Oq5-lV-Yji">
                                                     <rect key="frame" x="65" y="87" width="190" height="26"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" text="5 1234567890" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AUe-OP-mT2" customClass="AttributesLabel" customModule="humble" customModuleProvider="target">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" text="5 1234567890" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AUe-OP-mT2" customClass="AttributesLabel" customModule="Momenta" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="90" height="26"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="26" id="aVg-C1-nLq"/>
@@ -1590,7 +1574,7 @@
                                                             <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" text="6 1234567890" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3rE-Ee-TeY" customClass="AttributesLabel" customModule="humble" customModuleProvider="target">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" text="6 1234567890" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3rE-Ee-TeY" customClass="AttributesLabel" customModule="Momenta" customModuleProvider="target">
                                                             <rect key="frame" x="100" y="0.0" width="90" height="26"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="26" id="aVW-4Z-elo"/>
@@ -1604,7 +1588,7 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="UyG-nV-ubQ">
                                                     <rect key="frame" x="65" y="123" width="190" height="26"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="750" horizontalCompressionResistancePriority="249" text="7 1234567890" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ecp-4n-bkp" customClass="AttributesLabel" customModule="humble" customModuleProvider="target">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="750" horizontalCompressionResistancePriority="249" text="7 1234567890" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ecp-4n-bkp" customClass="AttributesLabel" customModule="Momenta" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="90" height="26"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="26" id="hmH-bp-EbB"/>
@@ -1613,7 +1597,7 @@
                                                             <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" text="8 1234567890" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oIz-Bl-8q6" customClass="AttributesLabel" customModule="humble" customModuleProvider="target">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" text="8 1234567890" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oIz-Bl-8q6" customClass="AttributesLabel" customModule="Momenta" customModuleProvider="target">
                                                             <rect key="frame" x="100" y="0.0" width="90" height="26"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="26" id="O0p-Ug-3xp"/>
@@ -1627,7 +1611,7 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Snm-gc-lRV">
                                                     <rect key="frame" x="65" y="51" width="190" height="26"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="750" horizontalCompressionResistancePriority="251" text="3 1234567890" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yal-UJ-BHQ" customClass="AttributesLabel" customModule="humble" customModuleProvider="target">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="750" horizontalCompressionResistancePriority="251" text="3 1234567890" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yal-UJ-BHQ" customClass="AttributesLabel" customModule="Momenta" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="90" height="26"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="26" id="MMQ-vr-JB9"/>
@@ -1636,7 +1620,7 @@
                                                             <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" text="4 1234567890" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f4S-Em-9qY" customClass="AttributesLabel" customModule="humble" customModuleProvider="target">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" text="4 1234567890" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f4S-Em-9qY" customClass="AttributesLabel" customModule="Momenta" customModuleProvider="target">
                                                             <rect key="frame" x="100" y="0.0" width="90" height="26"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="26" id="3MT-ij-47x"/>
@@ -1678,7 +1662,7 @@
                                             <outlet property="attributeLabel8" destination="oIz-Bl-8q6" id="Qjk-be-gZq"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="myActionsCell" rowHeight="72" id="D60-yZ-gTq" customClass="MyActionsCell" customModule="humble" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="myActionsCell" rowHeight="72" id="D60-yZ-gTq" customClass="MyActionsCell" customModule="Momenta" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="498" width="320" height="72"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="D60-yZ-gTq" id="MNZ-W8-LmY">
@@ -1712,11 +1696,11 @@
                                             <outlet property="actionNameLabel" destination="tdo-im-QaS" id="3FV-4l-163"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="myMomentaCell" rowHeight="72" id="A93-LL-bXZ" customClass="MyMomentaCell" customModule="humble" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="myMomentaCell" rowHeight="72" id="A93-LL-bXZ" customClass="MyMomentaCell" customModule="Momenta" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="570" width="320" height="72"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="A93-LL-bXZ" id="OZE-V0-CxJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="71.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="72"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Humbleness" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nAc-kN-vh0">
@@ -1771,26 +1755,26 @@
         <!--Post Detail View Controller-->
         <scene sceneID="A7n-sR-EHO">
             <objects>
-                <viewController storyboardIdentifier="GroupDetailViewController" automaticallyAdjustsScrollViewInsets="NO" id="LkM-Mu-hme" customClass="PostDetailViewController" customModule="humble" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GroupDetailViewController" automaticallyAdjustsScrollViewInsets="NO" id="LkM-Mu-hme" customClass="PostDetailViewController" customModule="Momenta" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="U22-e0-nPi"/>
                         <viewControllerLayoutGuide type="bottom" id="dRE-3a-7eI"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="mmo-ep-ff1">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="443"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="b8p-ei-D19">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="443"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="postDescriptionCell" rowHeight="148" id="CsT-sS-8sj" customClass="PostDescriptionCell" customModule="humble" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="postDescriptionCell" rowHeight="148" id="CsT-sS-8sj" customClass="PostDescriptionCell" customModule="Momenta" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="148"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CsT-sS-8sj" id="Ivg-Cw-T6x">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="147.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="148"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5D1-1G-dDB">
@@ -1842,11 +1826,11 @@
                                             <outlet property="postDescriptionTextView" destination="b1O-Od-7q6" id="aK1-kO-6Fx"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="postTextCell" rowHeight="100" id="KA9-LA-rcr" customClass="PostTextCell" customModule="humble" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="postTextCell" rowHeight="100" id="KA9-LA-rcr" customClass="PostTextCell" customModule="Momenta" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="176" width="320" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KA9-LA-rcr" id="Xbh-eK-txx">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="99.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Post Text" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7T7-uQ-KX5">
@@ -1868,11 +1852,11 @@
                                             <outlet property="postTextView" destination="7T7-uQ-KX5" id="aZg-xN-73H"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="postImageCell" rowHeight="290" id="R0y-5b-7N5" customClass="PostImageCell" customModule="humble" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="postImageCell" rowHeight="290" id="R0y-5b-7N5" customClass="PostImageCell" customModule="Momenta" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="276" width="320" height="290"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="R0y-5b-7N5" id="ZSd-g3-Vct">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="289.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="290"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dNK-vX-9LE">
@@ -1890,15 +1874,15 @@
                                             <outlet property="postImageView" destination="dNK-vX-9LE" id="nnr-bn-Lik"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="postActionsCell" rowHeight="72" id="6NT-oS-9en" customClass="PostActionsCell" customModule="humble" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="postActionsCell" rowHeight="72" id="6NT-oS-9en" customClass="PostActionsCell" customModule="Momenta" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="566" width="320" height="72"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6NT-oS-9en" id="X3C-Dx-DnW">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="71.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="72"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Qd-25-CJb">
-                                                    <rect key="frame" x="62" y="18.5" width="71" height="34"/>
+                                                    <rect key="frame" x="62" y="19" width="71" height="34"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                     <state key="normal" title="Support">
                                                         <color key="titleColor" red="0.57414853570000002" green="0.57416242360000003" blue="0.57415497299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1918,13 +1902,13 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kyY-le-7za">
-                                                    <rect key="frame" x="15" y="24" width="43" height="23"/>
+                                                    <rect key="frame" x="15" y="24.5" width="43" height="23"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="19"/>
                                                     <color key="textColor" red="0.57414853570000002" green="0.57416242360000003" blue="0.57415497299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pxG-Ai-pla">
-                                                    <rect key="frame" x="158" y="25" width="43" height="23"/>
+                                                    <rect key="frame" x="158" y="24.5" width="43" height="23"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="19"/>
                                                     <color key="textColor" red="0.57414853570000002" green="0.57416242360000003" blue="0.57415497299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -1951,11 +1935,11 @@
                                             <outlet property="supportersLabel" destination="kyY-le-7za" id="PmB-LQ-zaN"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="postTextCommentCell" rowHeight="203" id="sDq-bC-YBO" customClass="PostTextCommentCell" customModule="humble" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="postTextCommentCell" rowHeight="203" id="sDq-bC-YBO" customClass="PostTextCommentCell" customModule="Momenta" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="638" width="320" height="203"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sDq-bC-YBO" id="nJl-R4-7Dd">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="202.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="203"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1uO-xE-WW0">
@@ -2012,11 +1996,11 @@
                                             <outlet property="commentorNameLabel" destination="cMC-70-WQN" id="2Wn-9L-0om"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="postImageCommentCell" rowHeight="572" id="ykd-Xy-GJP" customClass="PostImageCommentCell" customModule="humble" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="postImageCommentCell" rowHeight="572" id="ykd-Xy-GJP" customClass="PostImageCommentCell" customModule="Momenta" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="841" width="320" height="572"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ykd-Xy-GJP" id="DXZ-HU-xQM">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="571.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="572"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uSr-UU-u8E">
@@ -2085,11 +2069,11 @@
                                             <outlet property="commentorNameLabel" destination="d64-q1-Ymu" id="0fm-KE-Uam"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="postNoCommentsCell" rowHeight="572" id="wiY-3j-BUC" customClass="PostNoCommentsCell" customModule="humble" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="postNoCommentsCell" rowHeight="572" id="wiY-3j-BUC" customClass="PostNoCommentsCell" customModule="Momenta" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="1413" width="320" height="572"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wiY-3j-BUC" id="crI-is-dd2">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="571.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="572"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Momentum!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FAN-ch-2ho">
@@ -2117,6 +2101,7 @@
                             <constraint firstAttribute="trailing" secondItem="b8p-ei-D19" secondAttribute="trailing" id="RN5-qj-3IV"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="XjE-aY-AGa"/>
                     <connections>
                         <outlet property="tableView" destination="b8p-ei-D19" id="sMw-TD-5mi"/>
                         <segue destination="nZc-Bq-pUw" kind="presentation" identifier="toAddComment" id="HCd-aY-ojr"/>
@@ -2129,17 +2114,17 @@
         <!--Add Comment View Controller-->
         <scene sceneID="pEF-Tk-65Y">
             <objects>
-                <viewController id="nZc-Bq-pUw" customClass="AddCommentViewController" customModule="humble" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="nZc-Bq-pUw" customClass="AddCommentViewController" customModule="Momenta" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gx2-hg-iSM"/>
                         <viewControllerLayoutGuide type="bottom" id="9qP-lo-BL3"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="g6Z-8F-qf4">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S5q-j1-RLF">
-                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
                                 <items>
                                     <navigationItem title="Add Momentum" id="Av9-Q5-XDX">
                                         <barButtonItem key="leftBarButtonItem" image="CancelButtonGray" id="3D9-bM-xSQ">
@@ -2158,7 +2143,7 @@
                                 </items>
                             </navigationBar>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XEw-iZ-2LK">
-                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <rect key="frame" x="0.0" y="56" width="320" height="492"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jbT-eG-dMH" userLabel="Content View">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="569"/>
@@ -2307,7 +2292,7 @@
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="D96-h5-SM1">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" red="0.31372549019607843" green="0.8901960784313725" blue="0.76078431372549016" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2327,25 +2312,25 @@
         <!--Find Post View Controller-->
         <scene sceneID="0k5-Dd-c41">
             <objects>
-                <viewController id="vzU-Yr-jYx" customClass="FindPostViewController" customModule="humble" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vzU-Yr-jYx" customClass="FindPostViewController" customModule="Momenta" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="CQe-Re-Ftn"/>
                         <viewControllerLayoutGuide type="bottom" id="iYj-a1-wkg"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="2uv-Dv-CuY">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="443"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FgE-H8-M8d">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="443"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ImagePostCell" rowHeight="420" id="Qu4-0e-vAf" customClass="ImagePostTableViewCell" customModule="humble" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ImagePostCell" rowHeight="420" id="Qu4-0e-vAf" customClass="ImagePostTableViewCell" customModule="Momenta" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="420"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Qu4-0e-vAf" id="0yP-cS-9UN">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="419.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="420"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="78g-E3-oFY">
@@ -2356,20 +2341,20 @@
                                                     </constraints>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="a9E-f4-uqD">
-                                                    <rect key="frame" x="15" y="94.5" width="290" height="270"/>
+                                                    <rect key="frame" x="15" y="95" width="290" height="270"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="270" id="yd9-aX-Zf6"/>
                                                     </constraints>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="momentum icon" translatesAutoresizingMaskIntoConstraints="NO" id="jqh-WY-OFH">
-                                                    <rect key="frame" x="165" y="384" width="20" height="20"/>
+                                                    <rect key="frame" x="165" y="385" width="20" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="1Ex-j1-xRi"/>
                                                         <constraint firstAttribute="width" constant="20" id="6Ma-DY-CUv"/>
                                                     </constraints>
                                                 </imageView>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Image Post Description" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HMW-1I-u1N">
-                                                    <rect key="frame" x="15" y="58" width="290" height="24.5"/>
+                                                    <rect key="frame" x="15" y="58" width="290" height="25"/>
                                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -2387,31 +2372,31 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9999999" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="frh-RU-3DF">
-                                                    <rect key="frame" x="49" y="387.5" width="47" height="14.5"/>
+                                                    <rect key="frame" x="49" y="388" width="47" height="14.5"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="12"/>
                                                     <color key="textColor" red="0.57414853570000002" green="0.57416242360000003" blue="0.57415497299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Supporters" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wCc-kq-lEL">
-                                                    <rect key="frame" x="99" y="387.5" width="62" height="14.5"/>
+                                                    <rect key="frame" x="99" y="388" width="62" height="14.5"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="12"/>
                                                     <color key="textColor" red="0.57414853570000002" green="0.57416242360000003" blue="0.57415497299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9999999" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="65h-hN-Gow">
-                                                    <rect key="frame" x="188" y="386" width="47" height="15"/>
+                                                    <rect key="frame" x="188" y="387.5" width="47" height="15"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="12"/>
                                                     <color key="textColor" red="0.57414853570000002" green="0.57416242360000003" blue="0.57415497299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Momentum" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ftL-aL-Pok">
-                                                    <rect key="frame" x="238" y="386" width="64" height="15"/>
+                                                    <rect key="frame" x="238" y="387.5" width="64" height="15"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="12"/>
                                                     <color key="textColor" red="0.57414853570000002" green="0.57416242360000003" blue="0.57415497299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MyGroup" translatesAutoresizingMaskIntoConstraints="NO" id="EaL-3W-TVw">
-                                                    <rect key="frame" x="15" y="379.5" width="30" height="30"/>
+                                                    <rect key="frame" x="15" y="380" width="30" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="3zl-sR-tZq"/>
                                                         <constraint firstAttribute="width" constant="30" id="WEV-EE-xXz"/>
@@ -2472,11 +2457,11 @@
                                             <outlet property="supportersCountLabel" destination="frh-RU-3DF" id="4Di-A3-tx8"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TextPostCell" rowHeight="416" id="hHZ-iT-KG1" customClass="TextPostTableViewCell" customModule="humble" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TextPostCell" rowHeight="416" id="hHZ-iT-KG1" customClass="TextPostTableViewCell" customModule="Momenta" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="448" width="320" height="416"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hHZ-iT-KG1" id="MTS-L8-ss8">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="415.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NQY-xK-uj3">
@@ -2487,21 +2472,21 @@
                                                     </constraints>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MyGroup" translatesAutoresizingMaskIntoConstraints="NO" id="a6T-dH-ueH">
-                                                    <rect key="frame" x="15" y="375.5" width="30" height="30"/>
+                                                    <rect key="frame" x="15" y="376" width="30" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="30" id="IrF-7w-1fe"/>
                                                         <constraint firstAttribute="height" constant="30" id="frb-aT-SA9"/>
                                                     </constraints>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="momentum icon" translatesAutoresizingMaskIntoConstraints="NO" id="NN7-vd-DC7">
-                                                    <rect key="frame" x="165" y="380.5" width="20" height="20"/>
+                                                    <rect key="frame" x="165" y="381" width="20" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="UeB-Ev-79S" userLabel="height = 20"/>
                                                         <constraint firstAttribute="width" constant="20" id="WVD-8e-hgc" userLabel="width = 20"/>
                                                     </constraints>
                                                 </imageView>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6mb-Lh-i3K">
-                                                    <rect key="frame" x="15" y="58" width="290" height="143"/>
+                                                    <rect key="frame" x="15" y="58" width="290" height="143.5"/>
                                                     <string key="text">123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890</string>
                                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
@@ -2544,7 +2529,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9sq-fp-gz7">
-                                                    <rect key="frame" x="15" y="218.5" width="290" height="142"/>
+                                                    <rect key="frame" x="15" y="219" width="290" height="142"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="142" id="Sf8-1e-NA0"/>
@@ -2609,11 +2594,11 @@
                                             <outlet property="supportersCountLabel" destination="AIE-Ci-cdX" id="JsA-ul-UZ5"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PostCell" rowHeight="250" id="L2G-Fx-hVe" customClass="PostTableViewCell" customModule="humble" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PostCell" rowHeight="250" id="L2G-Fx-hVe" customClass="PostTableViewCell" customModule="Momenta" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="864" width="320" height="250"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="L2G-Fx-hVe" id="cxa-Ue-cbY">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="249.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="250"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vUe-jZ-y9N">
@@ -2624,21 +2609,21 @@
                                                     </constraints>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MyGroup" translatesAutoresizingMaskIntoConstraints="NO" id="l3J-aq-4JG">
-                                                    <rect key="frame" x="15" y="209.5" width="30" height="30"/>
+                                                    <rect key="frame" x="15" y="210" width="30" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="30" id="LzF-4v-toG"/>
                                                         <constraint firstAttribute="height" constant="30" id="soF-vH-lDC"/>
                                                     </constraints>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="momentum icon" translatesAutoresizingMaskIntoConstraints="NO" id="ODc-cT-3Hn">
-                                                    <rect key="frame" x="163" y="214" width="20" height="20"/>
+                                                    <rect key="frame" x="163" y="215" width="20" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="20" id="KxY-ay-XIX"/>
                                                         <constraint firstAttribute="height" constant="20" id="NHf-4C-mAG"/>
                                                     </constraints>
                                                 </imageView>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k2P-VR-B9n">
-                                                    <rect key="frame" x="15" y="58" width="290" height="136.5"/>
+                                                    <rect key="frame" x="15" y="58" width="290" height="137"/>
                                                     <string key="text">123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890</string>
                                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
@@ -2657,25 +2642,25 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9999999" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TnU-1k-g31">
-                                                    <rect key="frame" x="49" y="217.5" width="47" height="14.5"/>
+                                                    <rect key="frame" x="49" y="218" width="47" height="14.5"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="12"/>
                                                     <color key="textColor" red="0.57414853570000002" green="0.57416242360000003" blue="0.57415497299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Supporters" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="stE-EN-OTd">
-                                                    <rect key="frame" x="99" y="217.5" width="62" height="14.5"/>
+                                                    <rect key="frame" x="99" y="218" width="62" height="14.5"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="12"/>
                                                     <color key="textColor" red="0.57414853570000002" green="0.57416242360000003" blue="0.57415497299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9999999" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="76m-lX-pAP">
-                                                    <rect key="frame" x="188" y="216" width="47" height="15"/>
+                                                    <rect key="frame" x="188" y="217.5" width="47" height="15"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="12"/>
                                                     <color key="textColor" red="0.57414853570000002" green="0.57416242360000003" blue="0.57415497299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Momentum" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kTG-oV-OwX">
-                                                    <rect key="frame" x="238" y="216" width="64" height="15"/>
+                                                    <rect key="frame" x="238" y="217.5" width="64" height="15"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="12"/>
                                                     <color key="textColor" red="0.57414853570000002" green="0.57416242360000003" blue="0.57415497299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -2761,7 +2746,7 @@
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="qZQ-N4-k5F">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" red="0.31372549019607843" green="0.8901960784313725" blue="0.76078431372549016" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2781,9 +2766,9 @@
         <!--Chat Collection View Controller-->
         <scene sceneID="AYh-i1-dOQ">
             <objects>
-                <collectionViewController id="qlt-UY-qUW" customClass="ChatCollectionViewController" customModule="humble" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController id="qlt-UY-qUW" customClass="ChatCollectionViewController" customModule="Momenta" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="8vv-al-XyC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="443"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="r3a-RY-z89">
@@ -2819,17 +2804,17 @@
         <!--Select Category View Controller-->
         <scene sceneID="CDH-bv-BhO">
             <objects>
-                <viewController id="Enx-1v-44m" customClass="SelectCategoryViewController" customModule="humble" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Enx-1v-44m" customClass="SelectCategoryViewController" customModule="Momenta" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ppr-lC-trb"/>
                         <viewControllerLayoutGuide type="bottom" id="SBN-ro-5BO"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="XVI-Wb-OqB">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Flu-A3-5Bv">
-                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
                                 <items>
                                     <navigationItem title="Select Category" id="Cct-ic-I05">
                                         <barButtonItem key="leftBarButtonItem" image="CancelButtonGray" id="SMD-xw-6IF">
@@ -2842,12 +2827,12 @@
                                 </items>
                             </navigationBar>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MEL-Vh-CGA">
-                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <rect key="frame" x="0.0" y="56" width="320" height="492"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gc9-vG-At5">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kAG-xO-VoG" customClass="SCButton" customModule="humble" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kAG-xO-VoG" customClass="SCButton" customModule="Momenta" customModuleProvider="target">
                                                 <rect key="frame" x="15" y="72" width="142" height="26"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="142" id="M1I-uc-L6U"/>
@@ -2860,7 +2845,7 @@
                                                     <action selector="onSCButtonTap:" destination="Enx-1v-44m" eventType="touchUpInside" id="2r9-0j-oZr"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="72a-lS-Yvr" customClass="SCButton" customModule="humble" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="72a-lS-Yvr" customClass="SCButton" customModule="Momenta" customModuleProvider="target">
                                                 <rect key="frame" x="172" y="72" width="133" height="26"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="250" constant="142" id="ny3-Hi-9ua"/>
@@ -2873,7 +2858,7 @@
                                                     <action selector="onSCButtonTap:" destination="Enx-1v-44m" eventType="touchUpInside" id="w94-w0-oGX"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5gl-V0-1kZ" customClass="SCButton" customModule="humble" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5gl-V0-1kZ" customClass="SCButton" customModule="Momenta" customModuleProvider="target">
                                                 <rect key="frame" x="15" y="113" width="70" height="26"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="250" constant="72" id="SlV-rr-8mu"/>
@@ -2886,7 +2871,7 @@
                                                     <action selector="onSCButtonTap:" destination="Enx-1v-44m" eventType="touchUpInside" id="Z0m-6l-Zwk"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q1s-6F-6dK" customClass="SCButton" customModule="humble" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q1s-6F-6dK" customClass="SCButton" customModule="Momenta" customModuleProvider="target">
                                                 <rect key="frame" x="100" y="113" width="100" height="26"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="L6V-BI-oEc"/>
@@ -2899,7 +2884,7 @@
                                                     <action selector="onSCButtonTap:" destination="Enx-1v-44m" eventType="touchUpInside" id="yBx-fd-rI0"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zZt-lW-Unj" customClass="SCButton" customModule="humble" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zZt-lW-Unj" customClass="SCButton" customModule="Momenta" customModuleProvider="target">
                                                 <rect key="frame" x="215" y="113" width="90" height="26"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="2FQ-ZD-bzi"/>
@@ -2912,7 +2897,7 @@
                                                     <action selector="onSCButtonTap:" destination="Enx-1v-44m" eventType="touchUpInside" id="toH-DW-6tK"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cpI-ir-eTT" customClass="SCButton" customModule="humble" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cpI-ir-eTT" customClass="SCButton" customModule="Momenta" customModuleProvider="target">
                                                 <rect key="frame" x="15" y="154" width="165" height="26"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="250" constant="172" id="a3j-fS-zDg"/>
@@ -2925,7 +2910,7 @@
                                                     <action selector="onSCButtonTap:" destination="Enx-1v-44m" eventType="touchUpInside" id="UlL-n1-2gO"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sj9-8O-DlK" customClass="SCButton" customModule="humble" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sj9-8O-DlK" customClass="SCButton" customModule="Momenta" customModuleProvider="target">
                                                 <rect key="frame" x="195" y="154" width="110" height="26"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="110" id="tYU-sb-o1V"/>
@@ -2938,7 +2923,7 @@
                                                     <action selector="onSCButtonTap:" destination="Enx-1v-44m" eventType="touchUpInside" id="eis-bf-O2z"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P32-wN-red" customClass="SCButton" customModule="humble" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P32-wN-red" customClass="SCButton" customModule="Momenta" customModuleProvider="target">
                                                 <rect key="frame" x="15" y="195" width="116" height="26"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="250" constant="120" id="x5l-w6-FFF"/>
@@ -2951,7 +2936,7 @@
                                                     <action selector="onSCButtonTap:" destination="Enx-1v-44m" eventType="touchUpInside" id="B8f-bd-wLJ"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="91e-G4-dcW" customClass="SCButton" customModule="humble" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="91e-G4-dcW" customClass="SCButton" customModule="Momenta" customModuleProvider="target">
                                                 <rect key="frame" x="146" y="195" width="72" height="26"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="72" id="m8i-fJ-lAs"/>
@@ -2964,7 +2949,7 @@
                                                     <action selector="onSCButtonTap:" destination="Enx-1v-44m" eventType="touchUpInside" id="hlU-5g-dJO"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oGB-e4-pjM" customClass="SCButton" customModule="humble" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oGB-e4-pjM" customClass="SCButton" customModule="Momenta" customModuleProvider="target">
                                                 <rect key="frame" x="233" y="195" width="72" height="26"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="72" id="kkX-bM-e48"/>
@@ -2977,7 +2962,7 @@
                                                     <action selector="onSCButtonTap:" destination="Enx-1v-44m" eventType="touchUpInside" id="Csm-Jk-nAb"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Si0-vd-e2b" customClass="SCButton" customModule="humble" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Si0-vd-e2b" customClass="SCButton" customModule="Momenta" customModuleProvider="target">
                                                 <rect key="frame" x="15" y="236" width="103" height="26"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="250" constant="90" id="toI-rX-ND6"/>
@@ -2990,7 +2975,7 @@
                                                     <action selector="onSCButtonTap:" destination="Enx-1v-44m" eventType="touchUpInside" id="Uaw-fz-33C"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ut6-Ww-qsA" customClass="SCButton" customModule="humble" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ut6-Ww-qsA" customClass="SCButton" customModule="Momenta" customModuleProvider="target">
                                                 <rect key="frame" x="133" y="236" width="172" height="26"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="250" constant="172" id="FpG-TH-s9y"/>
@@ -3003,7 +2988,7 @@
                                                     <action selector="onSCButtonTap:" destination="Enx-1v-44m" eventType="touchUpInside" id="lNj-fW-Vlv"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fKC-X5-vLv" customClass="SCButton" customModule="humble" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fKC-X5-vLv" customClass="SCButton" customModule="Momenta" customModuleProvider="target">
                                                 <rect key="frame" x="15" y="277" width="197" height="26"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="128" id="ODh-M0-Jyu"/>
@@ -3016,7 +3001,7 @@
                                                     <action selector="onSCButtonTap:" destination="Enx-1v-44m" eventType="touchUpInside" id="wKf-dj-hy6"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="smL-ve-FTd" customClass="SCButton" customModule="humble" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="smL-ve-FTd" customClass="SCButton" customModule="Momenta" customModuleProvider="target">
                                                 <rect key="frame" x="227" y="277" width="78" height="26"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="78" id="04H-QW-Heo"/>
@@ -3107,7 +3092,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sAq-QG-IH4" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="Wsu-B3-cC8">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" red="0.31372549019607843" green="0.8901960784313725" blue="0.76078431372549016" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -3127,7 +3112,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qK7-X1-7gh" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="pSD-pI-iKZ">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -3140,6 +3125,12 @@
             <point key="canvasLocation" x="2066" y="-1054"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="0JL-Ks-ekd"/>
+        <segue reference="gye-4b-Onj"/>
+        <segue reference="1ND-aQ-wMX"/>
+        <segue reference="dcg-L9-Z9T"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="Add_Button" width="22" height="22"/>
         <image name="BigProfileDefault" width="120" height="120"/>
@@ -3161,10 +3152,4 @@
         <image name="options_button" width="12" height="12"/>
         <image name="text icon" width="38" height="38"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="pCR-nj-590"/>
-        <segue reference="gye-4b-Onj"/>
-        <segue reference="1ND-aQ-wMX"/>
-        <segue reference="dcg-L9-Z9T"/>
-    </inferredMetricsTieBreakers>
 </document>

@@ -20,23 +20,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        //START OneSignal initialization code
-        let onesignalInitSettings = [kOSSettingsKeyAutoPrompt: false]
+        //Remove this method to stop OneSignal Debugging
+        OneSignal.setLogLevel(.LL_VERBOSE, visualLevel: .LL_NONE)
 
-        // Replace 'YOUR_APP_ID' with your OneSignal App ID.
+        //START OneSignal initialization code
+        let onesignalInitSettings = [kOSSettingsKeyAutoPrompt: false, kOSSettingsKeyInAppLaunchURL: false]
+        
+        // Replace 'YOUR_ONESIGNAL_APP_ID' with your OneSignal App ID.
         OneSignal.initWithLaunchOptions(launchOptions,
-        appId: "ec5ad513-5918-4f80-bc88-1314ccb2a981",
-        handleNotificationAction: nil,
-        settings: onesignalInitSettings)
+          appId: "5e605fcd-de88-4b0a-a5eb-5c18b84d52f3",
+          handleNotificationAction: nil,
+          settings: onesignalInitSettings)
 
         OneSignal.inFocusDisplayType = OSNotificationDisplayType.notification;
 
-        // Recommend moving the below line to prompt for push after informing the user about
-        //   how your app will use them.
+        // The promptForPushNotifications function code will show the iOS push notification prompt. We recommend removing the following code and instead using an In-App Message to prompt for notification permission (See step 6)
         OneSignal.promptForPushNotifications(userResponse: { accepted in
-        print("User accepted notifications: \(accepted)")
+          print("User accepted notifications: \(accepted)")
         })
         //END OneSignal initializataion code
+
         // Override point for customization after application launch.
         UINavigationBar.appearance().tintColor = UIColor.white
         //UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.darkGray]

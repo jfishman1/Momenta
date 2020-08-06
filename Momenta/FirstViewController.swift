@@ -19,8 +19,8 @@ class FirstViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        scrollView.delegate = self
-        loadScrollViewImages()
+       // scrollView.delegate = self
+       // loadScrollViewImages()
     }
 
     func loadScrollViewImages() {
