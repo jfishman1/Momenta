@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import OneSignal
 
 class SettingsTableViewController: UITableViewController {
 
@@ -70,6 +71,7 @@ class SettingsTableViewController: UITableViewController {
         Utility.sharedInstance.logoutAndRemoveUserDefaults()
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "firstViewController") as UIViewController
+        OneSignal.logoutEmail()
         self.present(controller, animated: true, completion: nil)
     }
 

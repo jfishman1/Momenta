@@ -17,7 +17,6 @@ class LoginViewController: UIViewController, GIDSignInDelegate {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var facebookButton: UIButton!
     @IBOutlet weak var googleButton: UIButton!
-    @IBOutlet weak var twitterButton: UIButton!
     @IBOutlet weak var emailButton: UIButton!
     
     //var user: User?
@@ -36,7 +35,6 @@ class LoginViewController: UIViewController, GIDSignInDelegate {
     func setupButtonAlignment() {
         facebookButton.setLeftAlignPadding(20)
         googleButton.setLeftAlignPadding(20)
-        twitterButton.setLeftAlignPadding(20)
         emailButton.setLeftAlignPadding(20)
     }
     
@@ -59,16 +57,6 @@ class LoginViewController: UIViewController, GIDSignInDelegate {
         guard let thisUser = user else { return }
         guard let authentication = thisUser.authentication else { return }
         Cloud.sharedInstance.loginWithGoogle(authentication: authentication, completion: {(uid, values) in
-            self.fetchOrUpdateUser(uid: uid, values: values)
-        }, err: { (error) in
-            self.handleError(error: error)
-            Utility.sharedInstance.hideActivityIndicator(view: self.view)
-        })
-    }
-    
-    @IBAction func onTwitterButton(_ sender: UIButton) {
-        Utility.sharedInstance.showActivityIndicator(view: self.view)
-        Cloud.sharedInstance.loginWithTwitter(viewController: self, completion: { (uid, values) in
             self.fetchOrUpdateUser(uid: uid, values: values)
         }, err: { (error) in
             self.handleError(error: error)

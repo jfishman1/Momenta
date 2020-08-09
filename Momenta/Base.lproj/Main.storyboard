@@ -56,7 +56,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9MK-gy-aFb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3486" y="104"/>
+            <point key="canvasLocation" x="-2670" y="-241"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="jeZ-MQ-D95">
@@ -67,7 +67,7 @@
                         <viewControllerLayoutGuide type="bottom" id="06S-00-7FA"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="bP9-PG-aDm">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dlZ-m7-jBn">
@@ -79,7 +79,6 @@
                                 <state key="normal" image="CancelButtonWhite"/>
                                 <connections>
                                     <action selector="onCancelButton:" destination="2zc-1A-4Oo" eventType="touchUpInside" id="SWy-Tx-SuZ"/>
-                                    <segue destination="FjQ-vC-MlV" kind="show" id="0JL-Ks-ekd"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8zK-Jq-mbL">
@@ -89,7 +88,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="288" height="230"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5R0-Ge-gO1">
-                                                <rect key="frame" x="0.0" y="0.0" width="288" height="57"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="288" height="76"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                                 <state key="normal" title="    Continue with Facebook" image="Facebook_Icon">
@@ -100,7 +99,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lxG-Ik-Ecy">
-                                                <rect key="frame" x="0.0" y="58" width="288" height="56.5"/>
+                                                <rect key="frame" x="0.0" y="77" width="288" height="76"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                                 <state key="normal" title="     Continue with Google" image="Google_Icon">
@@ -110,19 +109,8 @@
                                                     <action selector="onGoogleButton:" destination="2zc-1A-4Oo" eventType="touchUpInside" id="XaS-D5-QIq"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ObD-BM-lJK">
-                                                <rect key="frame" x="0.0" y="115.5" width="288" height="57"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
-                                                <state key="normal" title="    Continue with Twitter" image="Twitter_Icon">
-                                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="onTwitterButton:" destination="2zc-1A-4Oo" eventType="touchUpInside" id="fkF-wJ-Hlr"/>
-                                                </connections>
-                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CsL-C2-x0A">
-                                                <rect key="frame" x="0.0" y="173.5" width="288" height="56.5"/>
+                                                <rect key="frame" x="0.0" y="154" width="288" height="76"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                                 <state key="normal" title="    Continue with Email" image="Email_Icon">
@@ -171,7 +159,6 @@
                         <outlet property="emailButton" destination="CsL-C2-x0A" id="ObH-QL-cAC"/>
                         <outlet property="facebookButton" destination="5R0-Ge-gO1" id="Ndd-JU-bhy"/>
                         <outlet property="googleButton" destination="lxG-Ik-Ecy" id="ffS-Pc-cSf"/>
-                        <outlet property="twitterButton" destination="ObD-BM-lJK" id="ht5-ji-ogx"/>
                         <segue destination="sAq-QG-IH4" kind="presentation" identifier="toProfile" id="hT8-u4-1cZ"/>
                     </connections>
                 </viewController>
@@ -229,6 +216,7 @@
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lDS-JL-UwP">
                                                                 <rect key="frame" x="0.0" y="0.0" width="280" height="57"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" textContentType="given-name"/>
                                                                 <userDefinedRuntimeAttributes>
@@ -243,6 +231,7 @@
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hme-ey-eME">
                                                                 <rect key="frame" x="0.0" y="58" width="280" height="56.5"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" textContentType="family-name"/>
                                                                 <userDefinedRuntimeAttributes>
@@ -257,6 +246,7 @@
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qtu-hi-cnu">
                                                                 <rect key="frame" x="0.0" y="115.5" width="280" height="57"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" textContentType="email"/>
                                                                 <userDefinedRuntimeAttributes>
@@ -271,6 +261,7 @@
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iVG-Be-zxL">
                                                                 <rect key="frame" x="0.0" y="173.5" width="280" height="56.5"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                                 <userDefinedRuntimeAttributes>
@@ -368,7 +359,7 @@
                         <outlet property="passwordTextField" destination="iVG-Be-zxL" id="SDT-QN-YQY"/>
                         <outlet property="scrollView" destination="nV1-ij-OOv" id="4VJ-Tb-mhF"/>
                         <segue destination="sI3-Th-tmH" kind="show" identifier="toMain" id="dcg-L9-Z9T"/>
-                        <segue destination="sAq-QG-IH4" kind="presentation" identifier="toProfile" id="gye-4b-Onj"/>
+                        <segue destination="sAq-QG-IH4" kind="showDetail" identifier="toProfile" id="gye-4b-Onj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oq8-zl-q6z" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -378,10 +369,10 @@
         <!--Tab Bar Controller-->
         <scene sceneID="2x0-7L-1o1">
             <objects>
-                <tabBarController storyboardIdentifier="masterTabBar" automaticallyAdjustsScrollViewInsets="NO" id="sI3-Th-tmH" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="masterTabBar" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="sI3-Th-tmH" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Ihe-5j-Bti"/>
-                    <tabBar key="tabBar" contentMode="scaleAspectFill" translucent="NO" id="KBZ-xG-A2o">
+                    <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" id="KBZ-xG-A2o">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -408,11 +399,11 @@
                         <viewControllerLayoutGuide type="bottom" id="2e9-Qc-MTG"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="DJU-gm-mh5">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v5a-O7-D8i">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <items>
                                     <navigationItem title="Create Action" id="XNU-Ye-eJf">
                                         <barButtonItem key="leftBarButtonItem" image="CancelButtonGray" id="gow-MV-smw">
@@ -431,14 +422,14 @@
                                 </items>
                             </navigationBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hfV-4V-wKU" userLabel="SeparatorView">
-                                <rect key="frame" x="0.0" y="116" width="320" height="1"/>
+                                <rect key="frame" x="0.0" y="104" width="320" height="1"/>
                                 <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="TXt-8J-eVR"/>
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vP5-S4-azD">
-                                <rect key="frame" x="0.0" y="118" width="320" height="430"/>
+                                <rect key="frame" x="0.0" y="106" width="320" height="462"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bdo-ed-9Z7" userLabel="Content View">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="352"/>
@@ -581,7 +572,7 @@
                                 </constraints>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pin-Xk-OhG">
-                                <rect key="frame" x="17" y="70" width="115" height="30"/>
+                                <rect key="frame" x="17" y="58" width="115" height="30"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                 <state key="normal" title="Select Category">
                                     <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1761,11 +1752,11 @@
                         <viewControllerLayoutGuide type="bottom" id="dRE-3a-7eI"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="mmo-ep-ff1">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="443"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="475"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="b8p-ei-D19">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="443"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="475"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
@@ -2292,7 +2283,7 @@
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="D96-h5-SM1">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" red="0.31372549019607843" green="0.8901960784313725" blue="0.76078431372549016" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2318,11 +2309,11 @@
                         <viewControllerLayoutGuide type="bottom" id="iYj-a1-wkg"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="2uv-Dv-CuY">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="443"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="475"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FgE-H8-M8d">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="443"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="475"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
@@ -2746,7 +2737,7 @@
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="qZQ-N4-k5F">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" red="0.31372549019607843" green="0.8901960784313725" blue="0.76078431372549016" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2768,7 +2759,7 @@
             <objects>
                 <collectionViewController id="qlt-UY-qUW" customClass="ChatCollectionViewController" customModule="Momenta" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="8vv-al-XyC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="443"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="475"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="r3a-RY-z89">
@@ -3089,10 +3080,10 @@
         <!--Navigation Controller-->
         <scene sceneID="7KM-sL-pWP">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sAq-QG-IH4" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="sAq-QG-IH4" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="Wsu-B3-cC8">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" red="0.31372549019607843" green="0.8901960784313725" blue="0.76078431372549016" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -3126,10 +3117,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="0JL-Ks-ekd"/>
         <segue reference="gye-4b-Onj"/>
         <segue reference="1ND-aQ-wMX"/>
-        <segue reference="dcg-L9-Z9T"/>
+        <segue reference="hZy-2o-ca2"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Add_Button" width="22" height="22"/>
@@ -3141,7 +3131,6 @@
         <image name="Google_Icon" width="25" height="25"/>
         <image name="MyGroup" width="48" height="35"/>
         <image name="Pencil" width="18" height="15"/>
-        <image name="Twitter_Icon" width="25" height="20"/>
         <image name="camera icon" width="40" height="37"/>
         <image name="checkmark icon" width="22" height="18"/>
         <image name="connect icon" width="40" height="32"/>

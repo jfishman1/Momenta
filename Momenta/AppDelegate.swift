@@ -7,11 +7,10 @@
 //
 
 import UIKit
-import GoogleSignIn
+//import GoogleSignIn
 import Firebase
-import FBSDKCoreKit
-import TwitterKit
-import OneSignal 
+//import FBSDKCoreKit
+import OneSignal
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegate {
@@ -44,20 +43,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
         UINavigationBar.appearance().tintColor = UIColor.white
         //UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.darkGray]
         
+        /*
         // Facebook init
         ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
-        // Twitter init
-        TWTRTwitter.sharedInstance().start(withConsumerKey:"33JVom0gWa1M67rpacHoygwIy", consumerSecret:"3BVjEkgI6JJY63dkj9R8zOTLVuoNTxJ1Z4wnBLRVlMFHrUs5kZ")
-
+        */
 
         Cloud.sharedInstance.initApp()
         
         Cloud.sharedInstance.getUserIDToken(completion: {auth in
             if auth != nil {
                 //Utility.sharedInstance.logoutAndRemoveUserDefaults()
+                
+                print("-----------------------------------------")
                 Cloud.sharedInstance.getCurrentUserId(completion: { userId in
+                    OneSignal.setExternalUserId(userId!, withCompletion: { results in
+                      // The results will contain push and email success statuses
+                      print("External user id update complete with results: ", results!.description)
+                      // Push can be expected in almost every situation with a success status, but
+                      // as a pre-caution its good to verify it exists
+                      if let pushResults = results!["push"] {
+                        print("Set external user id push status: ", pushResults)
+                      }
+                      if let emailResults = results!["email"] {
+                          print("Set external user id email status: ", emailResults)
+                      }
+                    })
                     Cloud.sharedInstance.fetchUserData(userId: userId!, completion: { (user) in
-                        Utility.sharedInstance.writeUserDataToArchiver(user: user, completion: { 
+                        Utility.sharedInstance.writeUserDataToArchiver(user: user, completion: {
+                            let status: OSPermissionSubscriptionState = OneSignal.getPermissionSubscriptionState()
+                            if let osPlayerId = status.subscriptionStatus.userId {
+                                let values: [String: AnyObject] = ["osPlayerId": osPlayerId as AnyObject]
+                                Cloud.sharedInstance.updateUserInDatabaseWithUID(uid: user.userId!, values: values, completion: {
+                                    print("osPlayerId \(osPlayerId) added to Firebase User Id \(user.userId!)")
+                                })
+                            }
                             let storyboard = UIStoryboard(name: "Main", bundle: nil)
                             self.window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "masterTabBar")
                         })
@@ -69,8 +88,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
         })
         return true
     }
-    
-    // For Google, Facebook, Twitter Sign In
+    /*
+    // For Google, Facebook Sign In
     func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any])
         -> Bool {
             
@@ -78,11 +97,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
             
             let googleDidhandle = GIDSignIn.sharedInstance().handle(url)
             //let googleDidhandle = GIDSignIn.sharedInstance().handle(url, sourceApplication:options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String, annotation: [:])
-            
-            let twitterDidHandle = TWTRTwitter.sharedInstance().application(application, open: url, options: options)
-            
-            return googleDidhandle || facebookDidHandle || twitterDidHandle
-    }
+                        
+            return googleDidhandle || facebookDidHandle
+    }*/
     
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         if viewController is CreatePostViewController {

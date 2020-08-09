@@ -12,7 +12,11 @@ import Firebase
 import GoogleSignIn
 import FacebookLogin
 import FBSDKLoginKit
-import TwitterKit
+import AVFoundation
+import FirebaseCore
+import FirebaseAuth
+import FirebaseDatabase
+import FirebaseStorage
 
 class Cloud {
     
@@ -88,38 +92,6 @@ class Cloud {
                         //print("profileImageUrl: ", profileImageUrl)
                         let values: [String: AnyObject] = ["firstName": firstName as AnyObject, "lastName": lastName as AnyObject, "email": email as AnyObject, "userId": uid as AnyObject, "bigProfileImageUrl": profileImageUrl as AnyObject, "smallProfileImageUrl": profileImageUrl as AnyObject]
                         completion(uid, values)
-                    } else {
-                        err(error!)
-                    }
-                }
-            }
-        })
-    }
-    
-    func loginWithTwitter(viewController: UIViewController, completion: @escaping (String, [String: AnyObject]) -> (), err: @escaping (Error) -> ()) {
-        TWTRTwitter.sharedInstance().logIn(with: viewController, completion: { (session, error) in
-            if error != nil {
-                err(error!)
-            } else {
-                guard let token = session?.authToken else { return }
-                guard let secret = session?.authTokenSecret else { return }
-                let credential = TwitterAuthProvider.credential(withToken: token, secret: secret)
-                let client = TWTRAPIClient.withCurrentUser()
-                client.requestEmail { email, error in
-                    if (email != nil) {
-                        Auth.auth().signInAndRetrieveData(with: credential, completion: { (authResult, error) in
-                            if error != nil {
-                                err(error!)
-                            } else {
-                                let uid = authResult!.user.uid
-                                let firstName = authResult!.user.displayName ?? ""
-                                let lastName = ""
-                                let email = email
-                                let profileImageUrl = authResult!.user.photoURL!.absoluteString
-                                let values: [String: AnyObject] = ["firstName": firstName as AnyObject, "lastName": lastName as AnyObject, "email": email as AnyObject, "userId": uid as AnyObject, "bigProfileImageUrl": profileImageUrl as AnyObject, "smallProfileImageUrl": profileImageUrl as AnyObject]
-                                completion(uid, values)
-                            }
-                        })
                     } else {
                         err(error!)
                     }
@@ -433,7 +405,7 @@ class Cloud {
 //            uploadTask.removeAllObservers()
 //        }
     }
-    
+   
     fileprivate func thumbnailImageForFileUrl(_ fileUrl: URL) -> UIImage? {
         let asset = AVAsset(url: fileUrl)
         let imageGenerator = AVAssetImageGenerator(asset: asset)

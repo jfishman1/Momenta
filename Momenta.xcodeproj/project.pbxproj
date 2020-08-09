@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		44CDCCB3E8E441558E68E552 /* Pods_OneSignalNotificationServiceExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DA18C3B3980B49E21E71093 /* Pods_OneSignalNotificationServiceExtension.framework */; };
+		2E1CA73BDE2AEADFF89927A1 /* Pods_OneSignalNotificationServiceExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B36F23B618F4864AE1CB25E5 /* Pods_OneSignalNotificationServiceExtension.framework */; };
+		4DE366D8B7F159F6A9EE6383 /* Pods_Momenta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16B6DA7F62769FC0A79B28D1 /* Pods_Momenta.framework */; };
 		7E02B0AF207F29C900CC64C2 /* AddCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E02B0AE207F29C900CC64C2 /* AddCommentViewController.swift */; };
 		7E1434531F88A86000607033 /* PCCVCController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1434521F88A86000607033 /* PCCVCController.swift */; };
 		7E1C5CCC1F7CBEDC008BFD95 /* PostDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1C5CCB1F7CBEDC008BFD95 /* PostDescriptionCell.swift */; };
@@ -69,7 +70,6 @@
 		7ED60E691F77221E00447B06 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED60E681F77221E00447B06 /* Message.swift */; };
 		C5D7EC29238A2ABD00526C78 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D7EC28238A2ABD00526C78 /* NotificationService.swift */; };
 		C5D7EC2D238A2ABD00526C78 /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C5D7EC26238A2ABD00526C78 /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		CDB5FF7D67D68CB4EA306FCF /* Pods_Momenta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFFDC78FDD6E2F2820944146 /* Pods_Momenta.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,9 +97,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		2963AB1AE4CA7BDE97747DEB /* Pods-Momenta.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Momenta.release.xcconfig"; path = "Target Support Files/Pods-Momenta/Pods-Momenta.release.xcconfig"; sourceTree = "<group>"; };
-		2DA18C3B3980B49E21E71093 /* Pods_OneSignalNotificationServiceExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneSignalNotificationServiceExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		624FFAF98CB7A2FD0331FD64 /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.release.xcconfig"; path = "Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.release.xcconfig"; sourceTree = "<group>"; };
+		16B6DA7F62769FC0A79B28D1 /* Pods_Momenta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Momenta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		398D2133C23E1B38B7220D44 /* Pods-Momenta.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Momenta.release.xcconfig"; path = "Target Support Files/Pods-Momenta/Pods-Momenta.release.xcconfig"; sourceTree = "<group>"; };
+		79ADB33224D3F99DD21BBAF1 /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; path = "Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		7E02B0AE207F29C900CC64C2 /* AddCommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCommentViewController.swift; sourceTree = "<group>"; };
 		7E1434521F88A86000607033 /* PCCVCController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PCCVCController.swift; sourceTree = "<group>"; };
 		7E1C5CCB1F7CBEDC008BFD95 /* PostDescriptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostDescriptionCell.swift; sourceTree = "<group>"; };
@@ -162,13 +162,13 @@
 		7EC92EE02042531400644807 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		7ED60E641F77210300447B06 /* EmailLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailLoginViewController.swift; sourceTree = "<group>"; };
 		7ED60E681F77221E00447B06 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
-		854D522B19650B7C2F73436E /* Pods-Momenta.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Momenta.debug.xcconfig"; path = "Target Support Files/Pods-Momenta/Pods-Momenta.debug.xcconfig"; sourceTree = "<group>"; };
-		9B7072C844F37B6E6E7352AF /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; path = "Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; sourceTree = "<group>"; };
+		B36F23B618F4864AE1CB25E5 /* Pods_OneSignalNotificationServiceExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneSignalNotificationServiceExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C56456E124DC69F300F4B523 /* OneSignalNotificationServiceExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OneSignalNotificationServiceExtension.entitlements; sourceTree = "<group>"; };
 		C5D7EC26238A2ABD00526C78 /* OneSignalNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5D7EC28238A2ABD00526C78 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		C5D7EC2A238A2ABD00526C78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FFFDC78FDD6E2F2820944146 /* Pods_Momenta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Momenta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E5B87130AD805F800BFB7886 /* Pods-Momenta.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Momenta.debug.xcconfig"; path = "Target Support Files/Pods-Momenta/Pods-Momenta.debug.xcconfig"; sourceTree = "<group>"; };
+		FCA7F0DC958284D734A323F0 /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.release.xcconfig"; path = "Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,7 +176,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CDB5FF7D67D68CB4EA306FCF /* Pods_Momenta.framework in Frameworks */,
+				4DE366D8B7F159F6A9EE6383 /* Pods_Momenta.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,7 +184,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				44CDCCB3E8E441558E68E552 /* Pods_OneSignalNotificationServiceExtension.framework in Frameworks */,
+				2E1CA73BDE2AEADFF89927A1 /* Pods_OneSignalNotificationServiceExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,10 +194,10 @@
 		443366A80CF805F36D50F4D0 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				854D522B19650B7C2F73436E /* Pods-Momenta.debug.xcconfig */,
-				2963AB1AE4CA7BDE97747DEB /* Pods-Momenta.release.xcconfig */,
-				9B7072C844F37B6E6E7352AF /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */,
-				624FFAF98CB7A2FD0331FD64 /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */,
+				E5B87130AD805F800BFB7886 /* Pods-Momenta.debug.xcconfig */,
+				398D2133C23E1B38B7220D44 /* Pods-Momenta.release.xcconfig */,
+				79ADB33224D3F99DD21BBAF1 /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */,
+				FCA7F0DC958284D734A323F0 /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -223,7 +223,7 @@
 				C5D7EC27238A2ABD00526C78 /* OneSignalNotificationServiceExtension */,
 				7E3259D71F2D44140092E2E2 /* Products */,
 				443366A80CF805F36D50F4D0 /* Pods */,
-				C928FE67DC2B6655D801F827 /* Frameworks */,
+				C06061C42A839AA1B7326C76 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -386,6 +386,15 @@
 			name = LoginControllers;
 			sourceTree = "<group>";
 		};
+		C06061C42A839AA1B7326C76 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				16B6DA7F62769FC0A79B28D1 /* Pods_Momenta.framework */,
+				B36F23B618F4864AE1CB25E5 /* Pods_OneSignalNotificationServiceExtension.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C5D7EC27238A2ABD00526C78 /* OneSignalNotificationServiceExtension */ = {
 			isa = PBXGroup;
 			children = (
@@ -396,15 +405,6 @@
 			path = OneSignalNotificationServiceExtension;
 			sourceTree = "<group>";
 		};
-		C928FE67DC2B6655D801F827 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				FFFDC78FDD6E2F2820944146 /* Pods_Momenta.framework */,
-				2DA18C3B3980B49E21E71093 /* Pods_OneSignalNotificationServiceExtension.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -412,13 +412,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7E3259E81F2D44140092E2E2 /* Build configuration list for PBXNativeTarget "Momenta" */;
 			buildPhases = (
-				B283A0C0BA8C136C9BE86636 /* [CP] Check Pods Manifest.lock */,
+				BBFD3F9266DB682345DDEB1A /* [CP] Check Pods Manifest.lock */,
 				7E3259D21F2D44140092E2E2 /* Sources */,
 				7E3259D31F2D44140092E2E2 /* Frameworks */,
 				7E3259D41F2D44140092E2E2 /* Resources */,
 				C59DA3BF238A0C7D00DEC85D /* Embed App Extensions */,
-				1B2E032161E0E3BB777C044F /* [CP] Embed Pods Frameworks */,
-				D82A319EE1047DB5E7565C70 /* [CP] Copy Pods Resources */,
+				6B1D5C18F6CA8394B47549C5 /* [CP] Embed Pods Frameworks */,
+				8AA17389BD7D7EF1700DF40F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -434,7 +434,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C5D7EC30238A2ABD00526C78 /* Build configuration list for PBXNativeTarget "OneSignalNotificationServiceExtension" */;
 			buildPhases = (
-				3934A462762AA408A4EE6E77 /* [CP] Check Pods Manifest.lock */,
+				4EA089465CFCE27FBB4A4835 /* [CP] Check Pods Manifest.lock */,
 				C5D7EC22238A2ABD00526C78 /* Sources */,
 				C5D7EC23238A2ABD00526C78 /* Frameworks */,
 				C5D7EC24238A2ABD00526C78 /* Resources */,
@@ -520,47 +520,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1B2E032161E0E3BB777C044F /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Momenta/Pods-Momenta-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/AppAuth/AppAuth.framework",
-				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
-				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
-				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
-				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
-				"${BUILT_PRODUCTS_DIR}/GTMAppAuth/GTMAppAuth.framework",
-				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${PODS_ROOT}/TwitterCore/iOS/TwitterCore.framework",
-				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework",
-				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AppAuth.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMAppAuth.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterCore.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Momenta/Pods-Momenta-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		3934A462762AA408A4EE6E77 /* [CP] Check Pods Manifest.lock */ = {
+		4EA089465CFCE27FBB4A4835 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -582,7 +542,63 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B283A0C0BA8C136C9BE86636 /* [CP] Check Pods Manifest.lock */ = {
+		6B1D5C18F6CA8394B47549C5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Momenta/Pods-Momenta-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AppAuth/AppAuth.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMAppAuth/GTMAppAuth.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AppAuth.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMAppAuth.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Momenta/Pods-Momenta-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8AA17389BD7D7EF1700DF40F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Momenta/Pods-Momenta-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Momenta/Pods-Momenta-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BBFD3F9266DB682345DDEB1A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -602,26 +618,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D82A319EE1047DB5E7565C70 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Momenta/Pods-Momenta-resources.sh",
-				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
-				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterKitResources.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TwitterKitResources.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Momenta/Pods-Momenta-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -840,7 +836,7 @@
 		};
 		7E3259E91F2D44140092E2E2 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 854D522B19650B7C2F73436E /* Pods-Momenta.debug.xcconfig */;
+			baseConfigurationReference = E5B87130AD805F800BFB7886 /* Pods-Momenta.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -861,7 +857,7 @@
 		};
 		7E3259EA1F2D44140092E2E2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2963AB1AE4CA7BDE97747DEB /* Pods-Momenta.release.xcconfig */;
+			baseConfigurationReference = 398D2133C23E1B38B7220D44 /* Pods-Momenta.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -882,7 +878,7 @@
 		};
 		C5D7EC2E238A2ABD00526C78 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9B7072C844F37B6E6E7352AF /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */;
+			baseConfigurationReference = 79ADB33224D3F99DD21BBAF1 /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -906,7 +902,7 @@
 		};
 		C5D7EC2F238A2ABD00526C78 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 624FFAF98CB7A2FD0331FD64 /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */;
+			baseConfigurationReference = FCA7F0DC958284D734A323F0 /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_OBJC_WEAK = YES;

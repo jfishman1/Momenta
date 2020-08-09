@@ -13,7 +13,6 @@ target 'Momenta' do
   pod 'Firebase/Storage'
   pod 'GoogleSignIn'
   pod 'FacebookLogin'
-  pod 'TwitterKit'
   pod 'OneSignal', '>= 2.11.2', '< 3.0'
 end
 

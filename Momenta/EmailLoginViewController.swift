@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import OneSignal
 
 class EmailLoginViewController: UIViewController {
     
@@ -114,11 +115,40 @@ class EmailLoginViewController: UIViewController {
             Utility.sharedInstance.hideActivityIndicator(view: self.view)
             Utility.showAlert(viewController: self, title: "Email Error", message: "Please enter a valid email address.", completion: {})
             return
+        } else {
+            OneSignal.setEmail(emailTextField.text!, withEmailAuthHashToken: nil, withSuccess: {
+                //The email has successfully been set.
+                print("OneSignal email set: " + self.emailTextField.text!)
+            }) { (error) in
+                //Encountered an error while setting the email.
+                print("OneSignal email error: " + error.debugDescription)
+            };
+            OneSignal.sendTag("firstName", value: firstName)
+            
         }
         Cloud.sharedInstance.createUserWithEmail(email: email, password: password, firstName: firstName, lastName: lastName, completion: {(uid, values) in
             let user = User(userDictionary: values as [String: AnyObject])
             self.user = user
             Cloud.sharedInstance.fetchUserData(userId: uid, completion: { (user) in
+                OneSignal.setExternalUserId(uid, withCompletion: { results in
+                  // The results will contain push and email success statuses
+                  print("External user id update complete with results: ", results!.description)
+                  // Push can be expected in almost every situation with a success status, but
+                  // as a pre-caution its good to verify it exists
+                  if let pushResults = results!["push"] {
+                    print("Set external user id push status: ", pushResults)
+                  }
+                  if let emailResults = results!["email"] {
+                      print("Set external user id email status: ", emailResults)
+                  }
+                })
+                let status: OSPermissionSubscriptionState = OneSignal.getPermissionSubscriptionState()
+                if let osPlayerId = status.subscriptionStatus.userId {
+                    let values: [String: AnyObject] = ["osPlayerId": osPlayerId as AnyObject]
+                    Cloud.sharedInstance.updateUserInDatabaseWithUID(uid: user.userId!, values: values, completion: {
+                        print("osPlayerId \(osPlayerId) added to Firebase User Id \(user.userId!)")
+                    })
+                }
                 Utility.sharedInstance.writeUserDataToArchiver(user: user, completion: {
                     Utility.sharedInstance.hideActivityIndicator(view: self.view)
                     self.performSegue(withIdentifier: "toProfile", sender: self)
