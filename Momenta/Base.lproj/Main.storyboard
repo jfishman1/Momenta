@@ -407,13 +407,13 @@
                                 <items>
                                     <navigationItem title="Create Action" id="XNU-Ye-eJf">
                                         <barButtonItem key="leftBarButtonItem" image="CancelButtonGray" id="gow-MV-smw">
-                                            <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="tintColor" red="0.3872092962" green="0.90785163639999999" blue="0.7913475633" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <connections>
                                                 <action selector="onDismissBarButton:" destination="PmS-KM-1Ee" id="ygf-pW-GDK"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="POST" style="done" id="dkB-mo-evc">
-                                            <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="tintColor" red="0.3872092962" green="0.90785163639999999" blue="0.7913475633" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <connections>
                                                 <action selector="onPostBarButton:" destination="PmS-KM-1Ee" id="IDr-vf-mkY"/>
                                             </connections>
@@ -434,14 +434,15 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bdo-ed-9Z7" userLabel="Content View">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="352"/>
                                         <subviews>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="BuZ-G4-q9b">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" indicatorStyle="white" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="BuZ-G4-q9b">
                                                 <rect key="frame" x="15" y="0.0" width="290" height="195"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="195" id="z6B-Hr-FgF"/>
                                                 </constraints>
                                                 <string key="text">123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890</string>
-                                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="textColor" red="0.3872092962" green="0.90785163639999999" blue="0.7913475633" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                                             </textView>
@@ -476,7 +477,9 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="72" id="z40-Yf-vqu"/>
                                                         </constraints>
-                                                        <state key="normal" image="library icon"/>
+                                                        <state key="normal" image="library icon">
+                                                            <color key="titleShadowColor" red="0.3872092962" green="0.90785163639999999" blue="0.7913475633" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        </state>
                                                         <connections>
                                                             <action selector="onLibraryButton:" destination="PmS-KM-1Ee" eventType="touchUpInside" id="mkd-vT-kTZ"/>
                                                         </connections>
@@ -486,7 +489,9 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="72" id="BRn-rt-bYE"/>
                                                         </constraints>
-                                                        <state key="normal" image="text icon"/>
+                                                        <state key="normal" image="text icon">
+                                                            <color key="titleColor" red="0.3872092962" green="0.90785163639999999" blue="0.7913475633" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        </state>
                                                         <connections>
                                                             <action selector="onTextButton:" destination="PmS-KM-1Ee" eventType="touchUpInside" id="kSE-1c-fJL"/>
                                                         </connections>
@@ -575,7 +580,7 @@
                                 <rect key="frame" x="17" y="58" width="115" height="30"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                 <state key="normal" title="Select Category">
-                                    <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" red="0.3872092962" green="0.90785163639999999" blue="0.7913475633" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
                                 <connections>
                                     <action selector="onSelectCategoryButton:" destination="PmS-KM-1Ee" eventType="touchUpInside" id="OYk-D8-4Tf"/>
@@ -2809,7 +2814,7 @@
                                 <items>
                                     <navigationItem title="Select Category" id="Cct-ic-I05">
                                         <barButtonItem key="leftBarButtonItem" image="CancelButtonGray" id="SMD-xw-6IF">
-                                            <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="tintColor" red="0.3872092962" green="0.90785163639999999" blue="0.7913475633" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <connections>
                                                 <action selector="onDismissBarButton:" destination="Enx-1v-44m" id="0ae-fJ-35v"/>
                                             </connections>

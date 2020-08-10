@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import MobileCoreServices
+import FirebaseDatabase
 
 class CreatePostViewController: UIViewController {
     
@@ -230,7 +231,7 @@ class CreatePostViewController: UIViewController {
             imagePicker.sourceType = UIImagePickerController.SourceType.photoLibrary
             //imagePicker.mediaTypes = [kUTTypeMovie as String, kUTTypeImage as String]
             imagePicker.mediaTypes = [kUTTypeImage as String]
-            imagePicker.navigationBar.tintColor = .darkGray
+            //imagePicker.navigationBar.tintColor = .darkGray
             imagePicker.allowsEditing = true
             
             self.present(imagePicker, animated: true, completion: nil)
@@ -360,7 +361,7 @@ extension CreatePostViewController: UITextViewDelegate {
         if textView == postDescriptionTextView {
             if textView.text == defaultPostDescription {
                 textView.text = nil
-                textView.textColor = UIColor.darkGray
+                textView.textColor = UIColor.white
                 characterCountLabel.isHidden = false
             }
         } else {

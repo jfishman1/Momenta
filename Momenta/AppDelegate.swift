@@ -53,8 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
         Cloud.sharedInstance.getUserIDToken(completion: {auth in
             if auth != nil {
                 //Utility.sharedInstance.logoutAndRemoveUserDefaults()
-                
-                print("-----------------------------------------")
+                print("USER ID AUTHENTICATED")
                 Cloud.sharedInstance.getCurrentUserId(completion: { userId in
                     OneSignal.setExternalUserId(userId!, withCompletion: { results in
                       // The results will contain push and email success statuses
@@ -77,6 +76,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
                                     print("osPlayerId \(osPlayerId) added to Firebase User Id \(user.userId!)")
                                 })
                             }
+                            OneSignal.setEmail(user.email ?? "no email set")
                             let storyboard = UIStoryboard(name: "Main", bundle: nil)
                             self.window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "masterTabBar")
                         })

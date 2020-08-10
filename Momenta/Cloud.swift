@@ -46,7 +46,7 @@ class Cloud {
     
     func loginWithGoogle(authentication: GIDAuthentication, completion: @escaping (String, [String: AnyObject]) -> (), err: @escaping (Error)->()) {
         let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
-        Auth.auth().signInAndRetrieveData(with: credential, completion: {(authResult, error) in
+        Auth.auth().signIn(with: credential, completion: {(authResult, error) in
             if error != nil {
                 //print("Google Sign In error: ", error!.localizedDescription)
                 err(error!)
@@ -77,7 +77,7 @@ class Cloud {
                 //print("declinedPermissions: ", declinedPermissions)
                 //print("accessToken: ", accessToken)
                 let credential = FacebookAuthProvider.credential(withAccessToken: AccessToken.current!.tokenString)// current().tokenString)
-                Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
+                Auth.auth().signIn(with: credential, completion: { (authResult, error) in
                     if let error = error {
                         err(error)
                     } else if authResult != nil {
@@ -95,7 +95,7 @@ class Cloud {
                     } else {
                         err(error!)
                     }
-                }
+                })
             }
         })
     }

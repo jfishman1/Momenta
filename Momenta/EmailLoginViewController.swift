@@ -24,6 +24,7 @@ class EmailLoginViewController: UIViewController {
     
     weak var activeField: UITextField?
     var user: User?
+    var values: [String: AnyObject]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -123,41 +124,28 @@ class EmailLoginViewController: UIViewController {
                 //Encountered an error while setting the email.
                 print("OneSignal email error: " + error.debugDescription)
             };
-            OneSignal.sendTag("firstName", value: firstName)
+            let firstNameEmailTags = ["firstName": firstName, "email": email] as [AnyHashable : Any]
+            OneSignal.sendTags(firstNameEmailTags, onSuccess: { tagsSent in
+                print("OneSignal tags success: " + tagsSent.debugDescription)
+                
+            }) { (error) in
+                print("OneSignal tags error: " + error.debugDescription)
+            }
             
         }
         Cloud.sharedInstance.createUserWithEmail(email: email, password: password, firstName: firstName, lastName: lastName, completion: {(uid, values) in
             let user = User(userDictionary: values as [String: AnyObject])
             self.user = user
+            print("uid: " + uid)
+            print("values: " + values.debugDescription)
             Cloud.sharedInstance.fetchUserData(userId: uid, completion: { (user) in
-                OneSignal.setExternalUserId(uid, withCompletion: { results in
-                  // The results will contain push and email success statuses
-                  print("External user id update complete with results: ", results!.description)
-                  // Push can be expected in almost every situation with a success status, but
-                  // as a pre-caution its good to verify it exists
-                  if let pushResults = results!["push"] {
-                    print("Set external user id push status: ", pushResults)
-                  }
-                  if let emailResults = results!["email"] {
-                      print("Set external user id email status: ", emailResults)
-                  }
-                })
-                let status: OSPermissionSubscriptionState = OneSignal.getPermissionSubscriptionState()
-                if let osPlayerId = status.subscriptionStatus.userId {
-                    let values: [String: AnyObject] = ["osPlayerId": osPlayerId as AnyObject]
-                    Cloud.sharedInstance.updateUserInDatabaseWithUID(uid: user.userId!, values: values, completion: {
-                        print("osPlayerId \(osPlayerId) added to Firebase User Id \(user.userId!)")
-                    })
-                }
                 Utility.sharedInstance.writeUserDataToArchiver(user: user, completion: {
-                    Utility.sharedInstance.hideActivityIndicator(view: self.view)
-                    self.performSegue(withIdentifier: "toProfile", sender: self)
+                    self.updateOneSignalData(user: user)
                 })
             }, err: {
-                Cloud.sharedInstance.updateUserInDatabaseWithUID(uid: uid, values: values, completion: { 
+                Cloud.sharedInstance.updateUserInDatabaseWithUID(uid: uid, values: values, completion: {
                     Utility.sharedInstance.writeUserDataToArchiver(user: user, completion: {
-                        Utility.sharedInstance.hideActivityIndicator(view: self.view)
-                        self.performSegue(withIdentifier: "toProfile", sender: self)
+                        self.updateOneSignalData(user: user)
                     })
                 })
             })
@@ -167,6 +155,30 @@ class EmailLoginViewController: UIViewController {
             self.passwordTextField.text = ""
             Utility.showAlert(viewController: self, title: "Registration Error", message: "\(error.localizedDescription)", completion: {})
         })
+    }
+    
+    func updateOneSignalData(user: User) {
+        OneSignal.setExternalUserId(user.userId!, withCompletion: { results in
+          // The results will contain push and email success statuses
+          print("External user id update complete with results: ", results!.description)
+          // Push can be expected in almost every situation with a success status, but
+          // as a pre-caution its good to verify it exists
+          if let pushResults = results!["push"] {
+            print("Set external user id push status: ", pushResults)
+          }
+          if let emailResults = results!["email"] {
+              print("Set external user id email status: ", emailResults)
+          }
+        })
+        let status: OSPermissionSubscriptionState = OneSignal.getPermissionSubscriptionState()
+        if let osPlayerId = status.subscriptionStatus.userId {
+            let values: [String: AnyObject] = ["osPlayerId": osPlayerId as AnyObject]
+            Cloud.sharedInstance.updateUserInDatabaseWithUID(uid: user.userId!, values: values, completion: {
+                print("osPlayerId \(osPlayerId) added to Firebase User Id \(user.userId!)")
+                Utility.sharedInstance.hideActivityIndicator(view: self.view)
+                self.performSegue(withIdentifier: "toProfile", sender: self)
+            })
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

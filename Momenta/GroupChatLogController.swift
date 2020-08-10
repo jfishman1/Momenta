@@ -10,6 +10,9 @@ import UIKit
 import Firebase
 import MobileCoreServices
 import AVFoundation
+import FirebaseDatabase
+import FirebaseStorage
+import FirebaseAuth
 
 class GroupChatLogController: UICollectionViewController, UITextFieldDelegate, UICollectionViewDelegateFlowLayout, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIGestureRecognizerDelegate {
     
