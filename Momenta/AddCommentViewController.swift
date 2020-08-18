@@ -9,6 +9,7 @@
 import UIKit
 import MobileCoreServices
 import Firebase
+import FirebaseDatabase
 
 class AddCommentViewController: UIViewController  {
 

@@ -18,6 +18,8 @@ class AttributesCell: UITableViewCell {
     @IBOutlet weak var attributeLabel6: AttributesLabel!
     @IBOutlet weak var attributeLabel7: AttributesLabel!
     @IBOutlet weak var attributeLabel8: AttributesLabel!
+   // @IBOutlet weak var attributeLabel9: AttributesLabel!
+   // @IBOutlet weak var attributeLabel10: AttributesLabel!
     
     var labels = [AttributesLabel]()
     var attributeName = [String]()
@@ -43,7 +45,7 @@ class AttributesCell: UITableViewCell {
     
     func setupLabels() {
         for i in 0..<attributesCount {
-            let attributeLabel = labels[i] as AttributesLabel?
+            let attributeLabel = labels[i] as AttributesLabel? 
             attributeLabel?.text = attributeName[i]
             attributeLabel?.isHidden = false
         }

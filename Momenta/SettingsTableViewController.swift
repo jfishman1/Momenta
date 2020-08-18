@@ -72,6 +72,9 @@ class SettingsTableViewController: UITableViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "firstViewController") as UIViewController
         OneSignal.logoutEmail()
+        OneSignal.removeExternalUserId({externalUserIdRemoved in
+            print("external User ID Disassociated: ", externalUserIdRemoved.debugDescription)
+        })
         self.present(controller, animated: true, completion: nil)
     }
 

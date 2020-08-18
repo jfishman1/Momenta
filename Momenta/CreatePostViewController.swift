@@ -10,6 +10,8 @@ import UIKit
 import Firebase
 import MobileCoreServices
 import FirebaseDatabase
+import FirebaseFunctions
+
 
 class CreatePostViewController: UIViewController {
     
@@ -41,6 +43,9 @@ class CreatePostViewController: UIViewController {
     var postText: String?
     var imageUrl: String?
     //let videoUrl: String?
+    
+    // Firebase Functions
+    lazy var functions = Functions.functions()
     
     override func viewWillAppear(_ animated: Bool) {
         NotificationCenter.default.addObserver(self, selector: #selector(getDataUpdate), name: NSNotification.Name(rawValue: userDataManagerDidUpdateCurrentUserNotification), object: nil)
@@ -194,21 +199,55 @@ class CreatePostViewController: UIViewController {
             let userGroupRef = Database.database().reference().child("users").child(creatorId).child("groups")
             userGroupRef.updateChildValues([postId:1])
             
+            print("properties: " + properties.debugDescription)
+            
             Utility.sharedInstance.writeUpdatedUserPostDataToArchiver(user: self.user!, post: [postId!:1], completion: {
                 let postImageUrl = properties["postImageUrl"] as! String
                 if postImageUrl != "" {
                     Cloud.sharedInstance.uploadPostImageWithNameToFirebaseStorage(self.postImageView.image!, imageName: postImageUrl, postId: postId!, completion: {
                         self.dismiss(animated: true, completion: {
                             Utility.sharedInstance.hideActivityIndicator(view: self.view)
+                            // osDemo get firebase function reference
+                            self.sendOneSignalNotificationThroughFirebaseFunctions(properties: properties)
                         })
                     })
                 } else {
                     self.dismiss(animated: true, completion: {
                         Utility.sharedInstance.hideActivityIndicator(view: self.view)
+                        // osDemo get firebase function reference
+                        self.sendOneSignalNotificationThroughFirebaseFunctions(properties: properties)
                     })
                 }
             })
         }
+    }
+    // osDemo get firebase function reference
+    func sendOneSignalNotificationThroughFirebaseFunctions(properties: [String: AnyObject]) {
+        print("properties 2: " + properties.debugDescription)
+        // [START function_add_numbers]
+        let data = ["contents": properties["postDescription"],
+                    "category": properties["category"]]
+        print("data.contents: ", data["contents"] as! String)
+        print("data.category: ", data["category"] as! String)
+        self.functions.httpsCallable("sendNotificationFromOS").call(data) { (result, error) in
+          // [START function_error]
+          if let error = error as NSError? {
+            if error.domain == FunctionsErrorDomain {
+//              let code = FunctionsErrorCode(rawValue: error.code)
+//              let message = error.localizedDescription
+//              let details = error.userInfo[FunctionsErrorDetailsKey]
+            }
+            // [START_EXCLUDE]
+            print(error.localizedDescription)
+            return
+            // [END_EXCLUDE]
+          }
+          // [END function_error]
+          if let operationResult = (result?.data as? [String: Any])?["operationResult"] as? Int {
+            print("operationResult: \(operationResult)")
+          }
+        }
+        // [END function_add_numbers]
     }
     
     @IBAction func onCameraButton(_ sender: UIButton) {

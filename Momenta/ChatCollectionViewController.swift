@@ -31,6 +31,8 @@ class ChatCollectionViewController: UICollectionViewController, UICollectionView
     lazy var chatMenuBar: ChatMenuBar = {
         let cMB = ChatMenuBar()
         cMB.chatCollectionViewController = self
+        cMB.tintColor = Utility.sharedInstance.mainGreen
+        cMB.backgroundColor = UIColor.red
         return cMB
     }()
     
@@ -63,7 +65,7 @@ class ChatCollectionViewController: UICollectionViewController, UICollectionView
             flowLayout.minimumLineSpacing = 0
         }
         
-        collectionView?.backgroundColor = UIColor.lightGray
+        //collectionView?.backgroundColor = UIColor.white
         
         collectionView?.register(GCCVCController.self, forCellWithReuseIdentifier: groupCellId)
         collectionView?.register(PCCVCController.self, forCellWithReuseIdentifier: privateCellId)
@@ -76,6 +78,7 @@ class ChatCollectionViewController: UICollectionViewController, UICollectionView
     
     func setupNavigationItems(userData: User) {
         let button = UIButton(type: .custom)
+        button.tintColor = UIColor.red
         button.addTarget(self, action: #selector(goToProfile), for: UIControl.Event.touchUpInside)
         navigationItem.leftBarButtonItem = navigationItem.setupLeftBarProfileButton(button: button, user: userData)
         
@@ -128,7 +131,9 @@ class ChatCollectionViewController: UICollectionViewController, UICollectionView
         view.addConstraintsWithFormat(format: "H:|[v0]|", views: chatMenuBar)
         view.addConstraintsWithFormat(format: "V:[v0(70)]", views: chatMenuBar)
         //chatMenuBar.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor).isActive = true
+        chatMenuBar.backgroundColor = UIColor.blue
         chatMenuBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        
     }
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {

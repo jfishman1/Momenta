@@ -21,6 +21,44 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
         
         //Remove this method to stop OneSignal Debugging
         OneSignal.setLogLevel(.LL_VERBOSE, visualLevel: .LL_NONE)
+        
+        let notificationReceivedBlock: OSHandleNotificationReceivedBlock = { notification in
+            print("Received Notification: ", notification!.payload.notificationID!)
+            print("launchURL: ", notification?.payload.launchURL ?? "No Launch Url")
+            print("content_available = \(notification?.payload.contentAvailable ?? false)")
+        }
+        
+        let notificationOpenedBlock: OSHandleNotificationActionBlock = { result in
+            // This block gets called when the user reacts to a notification received
+            let payload: OSNotificationPayload? = result?.notification.payload
+            
+            print("Message: ", payload!.body!)
+            print("badge number: ", payload?.badge ?? 0)
+            print("notification sound: ", payload?.sound ?? "No sound")
+            
+            if let additionalData = result!.notification.payload!.additionalData {
+                print("additionalData: ", additionalData)
+                
+                if let actionSelected = payload?.actionButtons {
+                    print("actionSelected: ", actionSelected)
+                }
+                
+                // DEEP LINK from action buttons
+                if let actionID = result?.action.actionID {
+                
+                    print("actionID = \(actionID)")
+                    
+                    if actionID == "id2" {
+                        print("do something when button 2 is pressed")
+                        
+                    } else if actionID == "id1" {
+                        print("do something when button 1 is pressed")
+                        //self.window?.rootViewController = instantiatedGreenViewController
+                        //self.window?.makeKeyAndVisible()
+                    }
+                }
+            }
+        }
 
         //START OneSignal initialization code
         let onesignalInitSettings = [kOSSettingsKeyAutoPrompt: false, kOSSettingsKeyInAppLaunchURL: false]
@@ -28,16 +66,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
         // Replace 'YOUR_ONESIGNAL_APP_ID' with your OneSignal App ID.
         OneSignal.initWithLaunchOptions(launchOptions,
           appId: "5e605fcd-de88-4b0a-a5eb-5c18b84d52f3",
-          handleNotificationAction: nil,
+          handleNotificationReceived: notificationReceivedBlock, handleNotificationAction: notificationOpenedBlock,
           settings: onesignalInitSettings)
 
         OneSignal.inFocusDisplayType = OSNotificationDisplayType.notification;
 
-        // The promptForPushNotifications function code will show the iOS push notification prompt. We recommend removing the following code and instead using an In-App Message to prompt for notification permission (See step 6)
+        /*// The promptForPushNotifications function code will show the iOS push notification prompt. We recommend removing the following code and instead using an In-App Message to prompt for notification permission (See step 6)
         OneSignal.promptForPushNotifications(userResponse: { accepted in
           print("User accepted notifications: \(accepted)")
-        })
+        })*/
         //END OneSignal initializataion code
+        
+        let OneSignalInAppMessageClickHandler: OSHandleInAppMessageActionClickBlock = { action in
+            if let clickName = action?.clickName {
+                print("clickName string: ", clickName)
+                if clickName == "getStarted" {
+                    // For presenting a ViewController from push notification action button
+                    let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                    let instantiateLoginViewController : UIViewController = mainStoryboard.instantiateViewController(withIdentifier: "LoginViewController") as UIViewController
+                    //let instantiatedGreenViewController: UIViewController = mainStoryboard.instantiateViewController(withIdentifier: "GreenViewControllerID") as UIViewController
+                    self.window = UIWindow(frame: UIScreen.main.bounds)
+                    self.window?.rootViewController = instantiateLoginViewController
+                    self.window?.makeKeyAndVisible()
+                }
+            }
+            if let clickUrl = action?.clickUrl {
+                print ("clickUrl string: ", clickUrl)
+            }
+            if let firstClick = action?.firstClick {
+                print("firstClick bool: ", firstClick)
+            }
+            if let closesMessage = action?.closesMessage {
+                print("closesMessage bool: ", closesMessage)
+            }
+        }
+
+        OneSignal.setInAppMessageClickHandler(OneSignalInAppMessageClickHandler)
 
         // Override point for customization after application launch.
         UINavigationBar.appearance().tintColor = UIColor.white
@@ -47,13 +111,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
         // Facebook init
         ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         */
-
-        Cloud.sharedInstance.initApp()
         
+        //Firebase init code set in Cloud Singleton Class
+        Cloud.sharedInstance.initApp()
+        //Check if user has a Firebase record
         Cloud.sharedInstance.getUserIDToken(completion: {auth in
             if auth != nil {
                 //Utility.sharedInstance.logoutAndRemoveUserDefaults()
                 print("USER ID AUTHENTICATED")
+                //osDemo1 get the Firebase User ID and set to OS External User ID
                 Cloud.sharedInstance.getCurrentUserId(completion: { userId in
                     OneSignal.setExternalUserId(userId!, withCompletion: { results in
                       // The results will contain push and email success statuses
@@ -67,8 +133,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
                           print("Set external user id email status: ", emailResults)
                       }
                     })
+                    // Use Firebase User ID to get User data
                     Cloud.sharedInstance.fetchUserData(userId: userId!, completion: { (user) in
                         Utility.sharedInstance.writeUserDataToArchiver(user: user, completion: {
+                            //osDemo2 example of creating OneSignal email record for user upon fetching user email from Firebase
+//                            if let email = user.email {
+//                                OneSignal.setEmail(email, withEmailAuthHashToken: nil, withSuccess: {
+//                                    //The email has successfully been set.
+//                                    print("OneSignal email set: " + email)
+//                                }) { (error) in
+//                                    //Encountered an error while setting the email.
+//                                    print("OneSignal email error: " + error.debugDescription)
+//                                }
+//                            }
+                            //osDemo3 get the OneSignal player id and set as attribute to user record in Firebase
                             let status: OSPermissionSubscriptionState = OneSignal.getPermissionSubscriptionState()
                             if let osPlayerId = status.subscriptionStatus.userId {
                                 let values: [String: AnyObject] = ["osPlayerId": osPlayerId as AnyObject]
@@ -76,7 +154,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
                                     print("osPlayerId \(osPlayerId) added to Firebase User Id \(user.userId!)")
                                 })
                             }
-                            OneSignal.setEmail(user.email ?? "no email set")
                             let storyboard = UIStoryboard(name: "Main", bundle: nil)
                             self.window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "masterTabBar")
                         })
@@ -86,6 +163,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
                 })
             }
         })
+        
         return true
     }
     /*

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import OneSignal
 
 class ProfileViewController: UIViewController {
     
@@ -66,6 +67,15 @@ class ProfileViewController: UIViewController {
         viewModel?.delegate = self
         dataModel.delegate = self
         setupNavigationItems()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        let status: OSPermissionSubscriptionState = OneSignal.getPermissionSubscriptionState()
+        let isSubscribed = status.subscriptionStatus.subscribed
+        print("isSubscribed = \(isSubscribed)")
+        if isSubscribed == false {
+            OneSignal.addTrigger("unsubscribed", withValue: "true")
+        }
     }
     
     func setupNavigationItems() {

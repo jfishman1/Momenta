@@ -14,7 +14,7 @@ class ChatMenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate,
         let layout = UICollectionViewFlowLayout()
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.translatesAutoresizingMaskIntoConstraints = false
-        cv.backgroundColor = .white
+        cv.backgroundColor = .red
         cv.dataSource = self
         cv.delegate = self
         cv.isScrollEnabled = false
@@ -29,8 +29,8 @@ class ChatMenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate,
         super.init(frame: frame)
         collectionView.register(ChatMenuBarCell.self, forCellWithReuseIdentifier: menuBarCellId)
         addSubview(collectionView)
-//        addConstraintsWithFormat(format: "H:|[v0]|", views: collectionView)
-//        addConstraintsWithFormat(format: "V:|[v0]|", views: collectionView)
+        addConstraintsWithFormat(format: "H:|[v0]|", views: collectionView)
+        addConstraintsWithFormat(format: "V:|[v0]|", views: collectionView) 
         collectionView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         collectionView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
         collectionView.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
@@ -44,7 +44,7 @@ class ChatMenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate,
     
     func setupHorizontalBar() {
         let horizontalBarView = UIView()
-        horizontalBarView.backgroundColor = UIColor.darkGray
+        horizontalBarView.tintColor = UIColor.orange
         horizontalBarView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(horizontalBarView)
         horizontalBarLeftAnchorConstraint = horizontalBarView.leftAnchor.constraint(equalTo: self.leftAnchor)
@@ -87,7 +87,9 @@ class ChatMenuBarCell: UICollectionViewCell {
     let textLabel: UILabel = {
         let tL = UILabel()
         tL.translatesAutoresizingMaskIntoConstraints = false
-        tL.textColor = UIColor.lightGray
+        tL.textColor = UIColor.black
+        tL.tintColor = .red
+        tL.backgroundColor = .orange
         tL.font = UIFont.boldSystemFont(ofSize: 20.0)
         return tL
     }()
@@ -103,13 +105,13 @@ class ChatMenuBarCell: UICollectionViewCell {
     
     override var isHighlighted: Bool {
         didSet{
-            textLabel.highlightedTextColor = isHighlighted ? UIColor.darkGray : UIColor.lightGray
+            textLabel.highlightedTextColor = isHighlighted ? .red  : .brown
         }
     }
     
     override var isSelected: Bool {
         didSet {
-            textLabel.highlightedTextColor = isSelected ? UIColor.darkGray : UIColor.lightGray
+            textLabel.highlightedTextColor = isSelected ? .cyan : .purple
             //print("isSelected = \(isSelected)")
         }
     }

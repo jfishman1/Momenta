@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import OneSignal
 
 class EditProfileViewController: UIViewController {
 
@@ -36,7 +37,7 @@ class EditProfileViewController: UIViewController {
     }
     var didChangeAttributes = false {
         didSet {
-            print("didChangeAttributes: ", didChangeAttributes)
+            print("didChangeAttributes, attributes array count: ", attributesArray.count)
             if didChangeAttributes == false && didSelectNewImage == false {
                 saveButton.isEnabled = false
             } else {
@@ -67,8 +68,12 @@ class EditProfileViewController: UIViewController {
             let lastName = user?.lastName ?? ""
             name = "\(firstName) \(lastName) "
             nameButton.setTitle(name, for: .normal)
-            let attributes = user?.attributes ?? ["Acceptance"]
+            let attributes = user?.attributes ?? ["People"]
             attributesArray = attributes
+            prevAttributesArray = attributesArray
+            print("attributesArray upon user set: ", attributesArray.debugDescription)
+            print("prevAttributesArray upon user set: ", prevAttributesArray.debugDescription)
+            print("selectedButtonsArray upon user set: ", selectedButtonsArray.debugDescription)
         }
     }
     var setFirstTime = true
@@ -82,6 +87,7 @@ class EditProfileViewController: UIViewController {
     }
     var selectedButtonsArray = [EditProfileButton]()
     var allButtonsArray = [EditProfileButton]()
+    var prevAttributesArray = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,6 +98,8 @@ class EditProfileViewController: UIViewController {
         profileImageView.layer.cornerRadius = 60
         profileImageView.clipsToBounds = true
         profileImageView.contentMode = .scaleAspectFill
+        print("attributesArray upon viewDidLoad: ", attributesArray.debugDescription)
+        print("selectedButtonsArray upon viewDidLoad: ", selectedButtonsArray.debugDescription)
     }
     override func viewWillAppear(_ animated: Bool) {
         addButtonsToAllButtonsArray()
@@ -135,6 +143,7 @@ class EditProfileViewController: UIViewController {
             Cloud.sharedInstance.updateUserInDatabaseWithUID(uid: user!.userId!, values: values as [String: AnyObject], completion: {
                 Cloud.sharedInstance.fetchUserData(userId: self.user!.userId!, completion: { userData in
                     Utility.sharedInstance.writeUserDataToArchiver(user: userData, completion: {
+                        self.updateOneSignalTags(attributes: self.attributesArray)
                         self.waitToDismiss()
                     })
                 }, err: {
@@ -143,6 +152,23 @@ class EditProfileViewController: UIViewController {
                 })
             })
         }
+    }
+    func updateOneSignalTags(attributes: [String]) {
+        OneSignal.deleteTags(prevAttributesArray, onSuccess: {tagsDeleted in
+            print("tags deleted success: ", tagsDeleted.debugDescription)
+            var dict = [String: Int]()
+            for attribute in attributes {
+                dict[attribute] = 1
+            }
+            OneSignal.sendTags(dict, onSuccess: { tagsSent in
+                print("OneSignal tags success: " + tagsSent.debugDescription)
+                
+            }) { (error) in
+                print("OneSignal tags error: " + error.debugDescription)
+            }
+        }, onFailure: { error in
+            print("deleting tags error: ", error.debugDescription)
+        })
     }
     func saveUserProfileImages(values: [String: AnyObject]) {
         Cloud.sharedInstance.saveUserProfileImages(uid: user!.userId!, bigImageName: bigImageName!, smallImageName: smallImageName!, bigUploadData: bigUploadData!, smallUploadData: smallUploadData!, completion: {

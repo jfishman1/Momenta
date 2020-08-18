@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import OneSignal
 
 class FindPostViewController: UIViewController {
 
@@ -67,6 +68,7 @@ class FindPostViewController: UIViewController {
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         self.posts.removeAll()
         fetchPosts()
+        //handleLogout()
     }
     
     func fetchPosts() {
@@ -133,8 +135,7 @@ class FindPostViewController: UIViewController {
         Utility.sharedInstance.logoutAndRemoveUserDefaults()
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "firstViewController") as UIViewController
+        OneSignal.logoutEmail()
         self.present(controller, animated: true, completion: nil)
     }
 }
-
-

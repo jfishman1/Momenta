@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import OneSignal
 
 class FirstViewController: UIViewController, UIScrollViewDelegate {
 
@@ -21,6 +22,18 @@ class FirstViewController: UIViewController, UIScrollViewDelegate {
         super.viewDidLoad()
        // scrollView.delegate = self
        // loadScrollViewImages()
+        print("FirstVCviewDidLoad")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print("viewWillAppear")
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        print("viewDidAppear")
+//        OneSignal.addTrigger("viewDidAppear", withValue: "true")
+        OneSignal.addTrigger("firstVC", withValue: "true")
+        
     }
 
     func loadScrollViewImages() {
@@ -71,6 +84,4 @@ class FirstViewController: UIViewController, UIScrollViewDelegate {
     
     @IBAction func pageDidChange(_ sender: UIPageControl) {
     }
-    
-
 }

@@ -126,6 +126,8 @@ extension ProfileViewModel: UITableViewDataSource {
                 cell.attributeLabel6.isHidden = true
                 cell.attributeLabel7.isHidden = true
                 cell.attributeLabel8.isHidden = true
+              //  cell.attributeLabel9.isHidden = true
+              //  cell.attributeLabel10.isHidden = true
                 cell.item = item
                 cell.setupLabels()
                 cell.selectionStyle = .none

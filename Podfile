@@ -8,6 +8,7 @@ target 'Momenta' do
 
   # Pods for Momenta
   pod 'Firebase/Database'
+  pod 'Firebase/Functions'
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
   pod 'Firebase/Storage'
