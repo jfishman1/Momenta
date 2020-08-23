@@ -40,6 +40,7 @@ class ImagePostTableViewCell: UITableViewCell {
                 profileImageView.image = UIImage(named: "BigProfileDefault")
             } else {
                 profileImageView.loadImageUsingCacheWithUrlString(urlString: imageUrl)
+                
             }
             name = data.creatorName
             if name == "" {
@@ -66,6 +67,7 @@ class ImagePostTableViewCell: UITableViewCell {
             
             let postImageUrl = item.postImageUrl
             postImageView.loadImageUsingCacheWithUrlString(urlString: postImageUrl)
+            //print("postImageUrl: ", postImageUrl)
         }
     }
     

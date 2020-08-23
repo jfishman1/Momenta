@@ -82,6 +82,13 @@ class EmailLoginViewController: UIViewController {
                 print("Form is not valid")
                 return
         }
+        OneSignal.setEmail(emailTextField.text!, withEmailAuthHashToken: nil, withSuccess: {
+            //The email has successfully been set.
+            print("OneSignal email set: " + self.emailTextField.text!)
+        }) { (error) in
+            //Encountered an error while setting the email.
+            print("OneSignal email error: " + error.debugDescription)
+        };
         if !Utility.isValidEmail(emailAddress: emailTextField.text!) {
             Utility.sharedInstance.hideActivityIndicator(view: self.view)
             Utility.showAlert(viewController: self, title: "Login Error", message: "Please enter a valid email address.", completion: {})

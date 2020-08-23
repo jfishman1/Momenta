@@ -68,7 +68,6 @@ class FindPostViewController: UIViewController {
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         self.posts.removeAll()
         fetchPosts()
-        //handleLogout()
     }
     
     func fetchPosts() {
@@ -89,19 +88,27 @@ class FindPostViewController: UIViewController {
         })
         self.tableView?.reloadData()
     }
+    
     @objc func handleRefresh() {
         fetchPosts()
         self.refreshControl.endRefreshing()
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toPostDetail" {
             let dataModel = PostDataModel()
+//            if let postId = viewModel?.selectedPostId {
+//                dataModel.postId = postId
+//            } else {
+//                dataModel.postId = pushNotificationPostId
+//            }
             dataModel.postId = viewModel?.selectedPostId!
             let nextVC = segue.destination as! PostDetailViewController
             nextVC.dataModel = dataModel
         }
     }
+    
     func setupNavigationItems(userData: User) {
         let button = UIButton(type: .custom) as UIButton
         button.addTarget(self, action: #selector(goToProfile), for: UIControl.Event.touchUpInside)
@@ -134,7 +141,7 @@ class FindPostViewController: UIViewController {
     @objc func handleLogout() {
         Utility.sharedInstance.logoutAndRemoveUserDefaults()
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "firstViewController") as UIViewController
+        let controller = storyboard.instantiateViewController(withIdentifier: "FirstViewController") as UIViewController
         OneSignal.logoutEmail()
         self.present(controller, animated: true, completion: nil)
     }

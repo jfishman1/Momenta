@@ -11,6 +11,7 @@ import Firebase
 import MobileCoreServices
 import FirebaseDatabase
 import FirebaseFunctions
+import OneSignal
 
 
 class CreatePostViewController: UIViewController {
@@ -34,10 +35,15 @@ class CreatePostViewController: UIViewController {
     var category: String? {
         didSet {
             categoryButton.setTitle(category!, for: .normal)
+            OneSignal.addTrigger("createPost", withValue: 2);
         }
     }
     let defaultPostDescription = "Add a short description..."
-    var postDescription: String?
+    var postDescription: String? {
+        didSet {
+            OneSignal.addTrigger("createPost", withValue: 3)
+        }
+    }
     var selectedImageFromPicker: UIImage?
     var defaultPostText = "Tell your story..."
     var postText: String?
@@ -50,6 +56,10 @@ class CreatePostViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         NotificationCenter.default.addObserver(self, selector: #selector(getDataUpdate), name: NSNotification.Name(rawValue: userDataManagerDidUpdateCurrentUserNotification), object: nil)
         UserDataManager.sharedInstance.requestCurrentUserData()
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        OneSignal.addTrigger("createPost", withValue: 1);
+
     }
     @objc private func getDataUpdate() {
         if let userData = UserDataManager.sharedInstance.currentUserData {
@@ -198,44 +208,54 @@ class CreatePostViewController: UIViewController {
             
             let userGroupRef = Database.database().reference().child("users").child(creatorId).child("groups")
             userGroupRef.updateChildValues([postId:1])
-            
-            print("properties: " + properties.debugDescription)
+            print("values1: " + values.debugDescription)
+            print("properies1: " + properties.debugDescription)
             
             Utility.sharedInstance.writeUpdatedUserPostDataToArchiver(user: self.user!, post: [postId!:1], completion: {
-                let postImageUrl = properties["postImageUrl"] as! String
+                let postImageUrl = values["postImageUrl"] as! String
                 if postImageUrl != "" {
                     Cloud.sharedInstance.uploadPostImageWithNameToFirebaseStorage(self.postImageView.image!, imageName: postImageUrl, postId: postId!, completion: {
                         self.dismiss(animated: true, completion: {
                             Utility.sharedInstance.hideActivityIndicator(view: self.view)
                             // osDemo get firebase function reference
-                            self.sendOneSignalNotificationThroughFirebaseFunctions(properties: properties)
+                            self.sendOneSignalNotificationThroughFirebaseFunctions(values: values)
                         })
                     })
                 } else {
                     self.dismiss(animated: true, completion: {
                         Utility.sharedInstance.hideActivityIndicator(view: self.view)
                         // osDemo get firebase function reference
-                        self.sendOneSignalNotificationThroughFirebaseFunctions(properties: properties)
+                        self.sendOneSignalNotificationThroughFirebaseFunctions(values: values)
                     })
                 }
             })
         }
     }
     // osDemo get firebase function reference
-    func sendOneSignalNotificationThroughFirebaseFunctions(properties: [String: AnyObject]) {
-        print("properties 2: " + properties.debugDescription)
+    func sendOneSignalNotificationThroughFirebaseFunctions(values: [String: AnyObject]) {
+        print("values 2: " + values.debugDescription)
         // [START function_add_numbers]
-        let data = ["contents": properties["postDescription"],
-                    "category": properties["category"]]
+        let data = ["contents": values["postDescription"],
+                    "category": values["category"],
+                    "postId": values["postId"],
+                    "creatorId": values["creatorId"],
+                    "postImageUrl": values["postImageUrl"]
+        ]
         print("data.contents: ", data["contents"] as! String)
         print("data.category: ", data["category"] as! String)
+        print("data.postId", data["postId"] as! String)
+        print("data.creatorId", data["creatorId"] as! String)
+        print("data.postImageUrl", data["postImageUrl"] as! String)
         self.functions.httpsCallable("sendNotificationFromOS").call(data) { (result, error) in
           // [START function_error]
           if let error = error as NSError? {
             if error.domain == FunctionsErrorDomain {
-//              let code = FunctionsErrorCode(rawValue: error.code)
-//              let message = error.localizedDescription
-//              let details = error.userInfo[FunctionsErrorDetailsKey]
+              let code = FunctionsErrorCode(rawValue: error.code)
+                print("Functions error code: ", code.debugDescription)
+              let message = error.localizedDescription
+                print("Functions error message: ", message.debugDescription)
+              let details = error.userInfo[FunctionsErrorDetailsKey]
+                print("Functions error details: ", details.debugDescription)
             }
             // [START_EXCLUDE]
             print(error.localizedDescription)

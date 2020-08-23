@@ -76,6 +76,10 @@ class ProfileViewController: UIViewController {
         if isSubscribed == false {
             OneSignal.addTrigger("unsubscribed", withValue: "true")
         }
+        if let userAttributesCount = user?.attributes?.count {
+            print("userAttributesCount: ", userAttributesCount)
+            OneSignal.addTrigger("interests", withValue: userAttributesCount)
+        }
     }
     
     func setupNavigationItems() {

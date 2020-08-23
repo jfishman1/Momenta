@@ -9,7 +9,7 @@
         <!--First View Controller-->
         <scene sceneID="aEe-lb-L8j">
             <objects>
-                <viewController storyboardIdentifier="firstViewController" modalPresentationStyle="fullScreen" id="FjQ-vC-MlV" customClass="FirstViewController" customModule="Momenta" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FirstViewController" modalPresentationStyle="fullScreen" id="FjQ-vC-MlV" customClass="FirstViewController" customModule="Momenta" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zDP-S9-9Jl"/>
                         <viewControllerLayoutGuide type="bottom" id="nfu-rg-Irp"/>
@@ -128,6 +128,13 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rVU-KN-7BB">
+                                <rect key="frame" x="262" y="20" width="30" height="30"/>
+                                <state key="normal" image="CancelButtonWhite"/>
+                                <connections>
+                                    <action selector="onCancelButton:" destination="2zc-1A-4Oo" eventType="touchUpInside" id="OJA-Sa-iDJ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -135,8 +142,11 @@
                             <constraint firstItem="8zK-Jq-mbL" firstAttribute="trailing" secondItem="bP9-PG-aDm" secondAttribute="trailingMargin" id="EgY-go-kAM"/>
                             <constraint firstItem="uSy-eS-NaK" firstAttribute="top" secondItem="8zK-Jq-mbL" secondAttribute="bottom" constant="16" id="GPa-PW-xLG"/>
                             <constraint firstItem="8zK-Jq-mbL" firstAttribute="top" secondItem="u22-cV-Ohn" secondAttribute="bottom" constant="85" id="HI8-dw-aeK"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="rVU-KN-7BB" secondAttribute="trailing" constant="12" id="RyQ-M9-lAy"/>
                             <constraint firstItem="8zK-Jq-mbL" firstAttribute="leading" secondItem="bP9-PG-aDm" secondAttribute="leadingMargin" id="W2R-F2-ugO"/>
                             <constraint firstItem="uSy-eS-NaK" firstAttribute="leading" secondItem="bP9-PG-aDm" secondAttribute="leadingMargin" id="aMd-Sz-Pas"/>
+                            <constraint firstItem="rVU-KN-7BB" firstAttribute="top" secondItem="u22-cV-Ohn" secondAttribute="bottom" constant="20" id="coL-ps-SUk"/>
+                            <constraint firstItem="rVU-KN-7BB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="bP9-PG-aDm" secondAttribute="leading" constant="20" symbolic="YES" id="u5R-np-lXt"/>
                         </constraints>
                     </view>
                     <connections>
@@ -149,7 +159,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rGL-x4-54u" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3484" y="1253"/>
+            <point key="canvasLocation" x="-3485.625" y="1252.8169014084508"/>
         </scene>
         <!--Email Login View Controller-->
         <scene sceneID="4g9-mk-ZFB">
@@ -814,7 +824,7 @@
         <!--Edit Profile View Controller-->
         <scene sceneID="Rjm-ft-faC">
             <objects>
-                <viewController storyboardIdentifier="editProfileVC" id="7ti-db-Yxr" customClass="EditProfileViewController" customModule="Momenta" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EditProfileViewController" id="7ti-db-Yxr" customClass="EditProfileViewController" customModule="Momenta" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="EGX-uz-xPO"/>
                         <viewControllerLayoutGuide type="bottom" id="5rt-xG-j29"/>
@@ -966,25 +976,11 @@
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="59" id="4ZH-EY-XlC"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
-                                                <state key="normal" title="Finance">
+                                                <state key="normal" title="Other">
                                                     <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="onButtonTap:" destination="7ti-db-Yxr" eventType="touchUpInside" id="eTN-nx-F1O"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MFT-pG-sPZ" customClass="EditProfileButton" customModule="Momenta" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="357.5" width="73" height="30"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="30" id="Hbg-hM-IeR"/>
-                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="59" id="QBA-KX-wxL"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
-                                                <state key="normal" title="Relationships">
-                                                    <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="onButtonTap:" destination="7ti-db-Yxr" eventType="touchUpInside" id="zWY-Mx-DGG"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="teq-AC-UwK" customClass="EditProfileButton" customModule="Momenta" customModuleProvider="target">
@@ -1015,56 +1011,38 @@
                                                     <action selector="onButtonTap:" destination="7ti-db-Yxr" eventType="touchUpInside" id="f65-2h-0zW"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m0r-A5-Uxt" customClass="EditProfileButton" customModule="Momenta" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="397.5" width="69" height="30"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="69" id="TZW-jo-Ghk"/>
-                                                    <constraint firstAttribute="height" constant="30" id="UNd-qV-cZL"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
-                                                <state key="normal" title="Education">
-                                                    <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="onButtonTap:" destination="7ti-db-Yxr" eventType="touchUpInside" id="jKO-Pv-qrJ"/>
-                                                </connections>
-                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="Erk-Ls-VI3" firstAttribute="top" secondItem="HiO-3k-SaJ" secondAttribute="bottom" constant="8" id="1sE-sg-X0q"/>
-                                            <constraint firstItem="teq-AC-UwK" firstAttribute="centerY" secondItem="MFT-pG-sPZ" secondAttribute="centerY" id="21z-gd-ccV"/>
                                             <constraint firstItem="5nZ-h0-egf" firstAttribute="top" secondItem="Erk-Ls-VI3" secondAttribute="bottom" constant="12" id="2eX-SR-ITi"/>
+                                            <constraint firstAttribute="trailing" secondItem="faM-xJ-u27" secondAttribute="trailing" constant="39" id="4Mh-7Q-WGR"/>
                                             <constraint firstItem="Wdi-RY-M61" firstAttribute="centerY" secondItem="EMa-X9-QoU" secondAttribute="centerY" id="4TH-BO-avj"/>
+                                            <constraint firstItem="teq-AC-UwK" firstAttribute="leading" secondItem="EdT-UA-nzd" secondAttribute="leading" constant="103" id="56m-fV-f2c"/>
                                             <constraint firstAttribute="height" constant="627.5" id="5oA-ce-cmf"/>
-                                            <constraint firstItem="MFT-pG-sPZ" firstAttribute="leading" secondItem="m0r-A5-Uxt" secondAttribute="leading" id="9UJ-pF-TGp"/>
                                             <constraint firstItem="HiO-3k-SaJ" firstAttribute="leading" secondItem="EdT-UA-nzd" secondAttribute="leading" constant="15" id="A8V-kW-74d"/>
-                                            <constraint firstItem="MFT-pG-sPZ" firstAttribute="top" secondItem="EMa-X9-QoU" secondAttribute="bottom" constant="10" id="BF2-ek-Je1"/>
                                             <constraint firstItem="n7H-Ot-iMQ" firstAttribute="centerY" secondItem="5nZ-h0-egf" secondAttribute="centerY" id="BPn-AJ-2ag"/>
                                             <constraint firstItem="HiO-3k-SaJ" firstAttribute="top" secondItem="5qi-nk-ois" secondAttribute="bottom" constant="12" id="Fu6-QX-3eb"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="q9f-FI-0an" secondAttribute="trailing" constant="20" symbolic="YES" id="Izu-TR-U2y"/>
                                             <constraint firstItem="n7H-Ot-iMQ" firstAttribute="leading" secondItem="5nZ-h0-egf" secondAttribute="trailing" constant="10" id="KIc-qN-A0c"/>
-                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="m0r-A5-Uxt" secondAttribute="trailing" constant="20" symbolic="YES" id="Km5-jF-yVg"/>
                                             <constraint firstItem="8PI-hG-6rw" firstAttribute="leading" secondItem="Wdi-RY-M61" secondAttribute="trailing" constant="10" id="N1N-Vg-RoV"/>
                                             <constraint firstItem="5nZ-h0-egf" firstAttribute="leading" secondItem="EMa-X9-QoU" secondAttribute="leading" id="O8P-6q-qNa"/>
                                             <constraint firstAttribute="trailing" secondItem="Erk-Ls-VI3" secondAttribute="trailing" constant="20" id="OG5-Nd-CNG"/>
-                                            <constraint firstItem="teq-AC-UwK" firstAttribute="leading" secondItem="MFT-pG-sPZ" secondAttribute="trailing" constant="10" id="Owv-Jo-TNU"/>
                                             <constraint firstItem="5qi-nk-ois" firstAttribute="leading" secondItem="EdT-UA-nzd" secondAttribute="leading" id="Qbt-Cg-8tl"/>
+                                            <constraint firstItem="teq-AC-UwK" firstAttribute="top" secondItem="EMa-X9-QoU" secondAttribute="bottom" constant="10" id="Rho-jw-bTL"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="8PI-hG-6rw" secondAttribute="trailing" constant="20" symbolic="YES" id="Scy-RN-wuv"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="HiO-3k-SaJ" secondAttribute="trailing" constant="20" symbolic="YES" id="Vof-uU-OQL"/>
                                             <constraint firstItem="Erk-Ls-VI3" firstAttribute="leading" secondItem="EdT-UA-nzd" secondAttribute="leading" constant="20" id="Wua-Hf-539"/>
                                             <constraint firstItem="5qi-nk-ois" firstAttribute="top" secondItem="EdT-UA-nzd" secondAttribute="top" id="YDv-ng-jPZ"/>
                                             <constraint firstItem="Erk-Ls-VI3" firstAttribute="leading" secondItem="5nZ-h0-egf" secondAttribute="leading" id="bb0-e3-Pf9"/>
                                             <constraint firstItem="n7H-Ot-iMQ" firstAttribute="centerY" secondItem="q9f-FI-0an" secondAttribute="centerY" id="cEE-ns-71F"/>
-                                            <constraint firstItem="faM-xJ-u27" firstAttribute="leading" secondItem="teq-AC-UwK" secondAttribute="trailing" constant="10" id="e9p-eQ-v2Z"/>
+                                            <constraint firstItem="faM-xJ-u27" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="teq-AC-UwK" secondAttribute="trailing" constant="8" symbolic="YES" id="e9p-eQ-v2Z"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="faM-xJ-u27" secondAttribute="trailing" constant="20" symbolic="YES" id="gIG-UF-v9N"/>
                                             <constraint firstItem="Wdi-RY-M61" firstAttribute="leading" secondItem="EMa-X9-QoU" secondAttribute="trailing" constant="10" id="grc-xB-4NH"/>
                                             <constraint firstItem="q9f-FI-0an" firstAttribute="leading" secondItem="n7H-Ot-iMQ" secondAttribute="trailing" constant="10" id="iII-1D-H3s"/>
-                                            <constraint firstItem="m0r-A5-Uxt" firstAttribute="top" secondItem="MFT-pG-sPZ" secondAttribute="bottom" constant="10" id="oSl-Fw-4Ob"/>
                                             <constraint firstItem="teq-AC-UwK" firstAttribute="centerY" secondItem="faM-xJ-u27" secondAttribute="centerY" id="pqt-8L-oL4"/>
                                             <constraint firstAttribute="trailing" secondItem="5qi-nk-ois" secondAttribute="trailing" id="qX7-F1-W7k"/>
                                             <constraint firstItem="EMa-X9-QoU" firstAttribute="top" secondItem="5nZ-h0-egf" secondAttribute="bottom" constant="10" id="ubD-Sh-tu7"/>
-                                            <constraint firstItem="EMa-X9-QoU" firstAttribute="leading" secondItem="MFT-pG-sPZ" secondAttribute="leading" id="wfL-e0-vFl"/>
                                             <constraint firstItem="8PI-hG-6rw" firstAttribute="centerY" secondItem="Wdi-RY-M61" secondAttribute="centerY" id="xe9-DY-JfR"/>
                                         </constraints>
                                     </view>
@@ -1507,7 +1485,7 @@
         <!--Post Detail View Controller-->
         <scene sceneID="A7n-sR-EHO">
             <objects>
-                <viewController storyboardIdentifier="GroupDetailViewController" automaticallyAdjustsScrollViewInsets="NO" id="LkM-Mu-hme" customClass="PostDetailViewController" customModule="Momenta" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PostDetailViewController" automaticallyAdjustsScrollViewInsets="NO" id="LkM-Mu-hme" customClass="PostDetailViewController" customModule="Momenta" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="U22-e0-nPi"/>
                         <viewControllerLayoutGuide type="bottom" id="dRE-3a-7eI"/>
@@ -1516,9 +1494,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="475"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="b8p-ei-D19">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="b8p-ei-D19">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="475"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                                 <prototypes>
@@ -2064,7 +2042,7 @@
         <!--Find Post View Controller-->
         <scene sceneID="0k5-Dd-c41">
             <objects>
-                <viewController id="vzU-Yr-jYx" customClass="FindPostViewController" customModule="Momenta" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FindPostViewController" id="vzU-Yr-jYx" customClass="FindPostViewController" customModule="Momenta" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="CQe-Re-Ftn"/>
                         <viewControllerLayoutGuide type="bottom" id="iYj-a1-wkg"/>
@@ -2073,7 +2051,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="475"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FgE-H8-M8d">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FgE-H8-M8d">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="475"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -2649,13 +2627,13 @@
                                                     <action selector="onSCButtonTap:" destination="Enx-1v-44m" eventType="touchUpInside" id="toH-DW-6tK"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cpI-ir-eTT" customClass="SCButton" customModule="Momenta" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cpI-ir-eTT" userLabel="Other" customClass="SCButton" customModule="Momenta" customModuleProvider="target">
                                                 <rect key="frame" x="15" y="154" width="165" height="26"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="250" constant="172" id="a3j-fS-zDg"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
-                                                <state key="normal" title="Finance">
+                                                <state key="normal" title="Other">
                                                     <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
@@ -2668,24 +2646,11 @@
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="110" id="tYU-sb-o1V"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
-                                                <state key="normal" title="Relationships">
-                                                    <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="onSCButtonTap:" destination="Enx-1v-44m" eventType="touchUpInside" id="eis-bf-O2z"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P32-wN-red" customClass="SCButton" customModule="Momenta" customModuleProvider="target">
-                                                <rect key="frame" x="15" y="195" width="116" height="26"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="250" constant="120" id="x5l-w6-FFF"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                                 <state key="normal" title="Funny">
                                                     <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="onSCButtonTap:" destination="Enx-1v-44m" eventType="touchUpInside" id="B8f-bd-wLJ"/>
+                                                    <action selector="onSCButtonTap:" destination="Enx-1v-44m" eventType="touchUpInside" id="eis-bf-O2z"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="91e-G4-dcW" customClass="SCButton" customModule="Momenta" customModuleProvider="target">
@@ -2701,45 +2666,28 @@
                                                     <action selector="onSCButtonTap:" destination="Enx-1v-44m" eventType="touchUpInside" id="hlU-5g-dJO"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oGB-e4-pjM" customClass="SCButton" customModule="Momenta" customModuleProvider="target">
-                                                <rect key="frame" x="233" y="195" width="72" height="26"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="72" id="kkX-bM-e48"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
-                                                <state key="normal" title="Education">
-                                                    <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="onSCButtonTap:" destination="Enx-1v-44m" eventType="touchUpInside" id="Csm-Jk-nAb"/>
-                                                </connections>
-                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="504" id="7xh-VT-CEf"/>
-                                            <constraint firstItem="oGB-e4-pjM" firstAttribute="centerY" secondItem="91e-G4-dcW" secondAttribute="centerY" id="8el-EI-w8C"/>
                                             <constraint firstItem="Sj9-8O-DlK" firstAttribute="centerY" secondItem="cpI-ir-eTT" secondAttribute="centerY" id="F6s-t2-7xb"/>
-                                            <constraint firstItem="P32-wN-red" firstAttribute="leading" secondItem="Gc9-vG-At5" secondAttribute="leading" constant="15" id="FV3-w9-Gy1"/>
-                                            <constraint firstItem="P32-wN-red" firstAttribute="top" secondItem="cpI-ir-eTT" secondAttribute="bottom" constant="15" id="Jry-RR-2KZ"/>
                                             <constraint firstAttribute="trailing" secondItem="Sj9-8O-DlK" secondAttribute="trailing" constant="15" id="KsP-6u-jIi"/>
                                             <constraint firstItem="Q1s-6F-6dK" firstAttribute="leading" secondItem="5gl-V0-1kZ" secondAttribute="trailing" constant="15" id="MYw-Rx-OmU"/>
                                             <constraint firstItem="72a-lS-Yvr" firstAttribute="centerY" secondItem="kAG-xO-VoG" secondAttribute="centerY" id="Ma9-Rz-L20"/>
+                                            <constraint firstItem="91e-G4-dcW" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Gc9-vG-At5" secondAttribute="leading" symbolic="YES" id="NO3-2L-hex"/>
                                             <constraint firstItem="cpI-ir-eTT" firstAttribute="leading" secondItem="Gc9-vG-At5" secondAttribute="leading" constant="15" id="Ofq-Ij-aSA"/>
                                             <constraint firstItem="kAG-xO-VoG" firstAttribute="leading" secondItem="Gc9-vG-At5" secondAttribute="leading" constant="15" id="PPD-Bw-MRU"/>
                                             <constraint firstItem="5gl-V0-1kZ" firstAttribute="centerY" secondItem="Q1s-6F-6dK" secondAttribute="centerY" id="Q2x-SY-ysO"/>
                                             <constraint firstAttribute="trailing" secondItem="72a-lS-Yvr" secondAttribute="trailing" constant="15" id="QFb-He-sbw"/>
                                             <constraint firstItem="kAG-xO-VoG" firstAttribute="top" secondItem="Gc9-vG-At5" secondAttribute="top" constant="72" id="QFf-bE-PWj"/>
-                                            <constraint firstItem="oGB-e4-pjM" firstAttribute="leading" secondItem="91e-G4-dcW" secondAttribute="trailing" constant="15" id="QLj-km-CH1"/>
+                                            <constraint firstAttribute="trailing" secondItem="91e-G4-dcW" secondAttribute="trailing" constant="102" id="SYc-CV-ZC2"/>
                                             <constraint firstAttribute="trailing" secondItem="zZt-lW-Unj" secondAttribute="trailing" constant="15" id="avC-FD-2Qb"/>
-                                            <constraint firstItem="91e-G4-dcW" firstAttribute="centerY" secondItem="P32-wN-red" secondAttribute="centerY" id="c8R-cG-nWX"/>
                                             <constraint firstItem="Q1s-6F-6dK" firstAttribute="centerY" secondItem="zZt-lW-Unj" secondAttribute="centerY" id="dCE-k4-D9P"/>
                                             <constraint firstItem="cpI-ir-eTT" firstAttribute="top" secondItem="5gl-V0-1kZ" secondAttribute="bottom" constant="15" id="dqA-Ic-TOw"/>
                                             <constraint firstItem="Sj9-8O-DlK" firstAttribute="leading" secondItem="cpI-ir-eTT" secondAttribute="trailing" constant="15" id="gnv-Ju-g0P"/>
-                                            <constraint firstItem="91e-G4-dcW" firstAttribute="leading" secondItem="P32-wN-red" secondAttribute="trailing" constant="15" id="jnm-a5-ff2"/>
                                             <constraint firstItem="5gl-V0-1kZ" firstAttribute="leading" secondItem="Gc9-vG-At5" secondAttribute="leading" constant="15" id="pXr-iT-fia"/>
+                                            <constraint firstItem="91e-G4-dcW" firstAttribute="top" secondItem="cpI-ir-eTT" secondAttribute="bottom" constant="15" id="ql4-qp-Lgd"/>
                                             <constraint firstItem="72a-lS-Yvr" firstAttribute="leading" secondItem="kAG-xO-VoG" secondAttribute="trailing" constant="15" id="sFw-hW-GoK"/>
-                                            <constraint firstAttribute="trailing" secondItem="oGB-e4-pjM" secondAttribute="trailing" constant="15" id="v9o-dS-IwZ"/>
                                             <constraint firstItem="zZt-lW-Unj" firstAttribute="leading" secondItem="Q1s-6F-6dK" secondAttribute="trailing" constant="15" id="xK6-TS-GsB"/>
                                             <constraint firstItem="5gl-V0-1kZ" firstAttribute="top" secondItem="kAG-xO-VoG" secondAttribute="bottom" constant="15" id="y71-LZ-HqT"/>
                                         </constraints>

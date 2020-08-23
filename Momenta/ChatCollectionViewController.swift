@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import OneSignal
 
 protocol TransitioningDelegateForCVCell: class {
     func selectedGroupCell(group: Post)
@@ -57,6 +58,11 @@ class ChatCollectionViewController: UICollectionViewController, UICollectionView
         navigationController?.navigationBar.barStyle = .black
         setupCollectionView()
         setupChatMenuBar()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        print("ChatCollectionViewController Did Appear should trigger IAM with new_feature_interest is true")
+        OneSignal.addTrigger("new_feature_interest", withValue: "true")
     }
 
     func setupCollectionView() {

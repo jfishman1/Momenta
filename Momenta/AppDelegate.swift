@@ -30,31 +30,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
         
         let notificationOpenedBlock: OSHandleNotificationActionBlock = { result in
             // This block gets called when the user reacts to a notification received
-            let payload: OSNotificationPayload? = result?.notification.payload
-            
-            print("Message: ", payload!.body!)
-            print("badge number: ", payload?.badge ?? 0)
-            print("notification sound: ", payload?.sound ?? "No sound")
-            
             if let additionalData = result!.notification.payload!.additionalData {
                 print("additionalData: ", additionalData)
+                print(additionalData["postId"] as! String)
                 
-                if let actionSelected = payload?.actionButtons {
-                    print("actionSelected: ", actionSelected)
-                }
-                
-                // DEEP LINK from action buttons
-                if let actionID = result?.action.actionID {
-                
-                    print("actionID = \(actionID)")
-                    
-                    if actionID == "id2" {
-                        print("do something when button 2 is pressed")
-                        
-                    } else if actionID == "id1" {
-                        print("do something when button 1 is pressed")
-                        //self.window?.rootViewController = instantiatedGreenViewController
-                        //self.window?.makeKeyAndVisible()
+                if let postId = additionalData["postId"] as? String {
+                    //Helpful article on this: https://fluffy.es/open-specific-view-push-notification-tapped/
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    if  let postDetailVC = storyboard.instantiateViewController(withIdentifier: "PostDetailViewController") as? PostDetailViewController,
+                        let tabBarController = self.window?.rootViewController as? UITabBarController,
+                        let navController = tabBarController.selectedViewController as? UINavigationController {
+                            let dataModel = PostDataModel()
+                            dataModel.postId = postId
+                            postDetailVC.dataModel = dataModel
+                            navController.popViewController(animated: false)
+                            navController.pushViewController(postDetailVC, animated: true)
                     }
                 }
             }
@@ -80,14 +70,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
         let OneSignalInAppMessageClickHandler: OSHandleInAppMessageActionClickBlock = { action in
             if let clickName = action?.clickName {
                 print("clickName string: ", clickName)
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 if clickName == "getStarted" {
-                    // For presenting a ViewController from push notification action button
-                    let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                    let instantiateLoginViewController : UIViewController = mainStoryboard.instantiateViewController(withIdentifier: "LoginViewController") as UIViewController
-                    //let instantiatedGreenViewController: UIViewController = mainStoryboard.instantiateViewController(withIdentifier: "GreenViewControllerID") as UIViewController
-                    self.window = UIWindow(frame: UIScreen.main.bounds)
-                    self.window?.rootViewController = instantiateLoginViewController
-                    self.window?.makeKeyAndVisible()
+                    if  let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController,
+                        let firstVC = storyboard.instantiateViewController(withIdentifier: "FirstViewController") as? FirstViewController{
+                        self.window?.rootViewController = firstVC
+                        firstVC.present(loginVC, animated: true, completion: nil)
+                    }
+                }
+                if clickName == "updateInterests" {
+                    if  let editProfileVC = storyboard.instantiateViewController(withIdentifier: "EditProfileViewController") as? EditProfileViewController,
+                        let tabBarController = self.window?.rootViewController as? UITabBarController,
+                        let navController = tabBarController.selectedViewController as? UINavigationController,
+                        let profileVC = navController.visibleViewController as? ProfileViewController {
+                        print(tabBarController.selectedViewController.debugDescription)
+                        print(navController.viewControllers.description)
+                        print(navController.presentedViewController.debugDescription)
+                        print(navController.visibleViewController.debugDescription)
+                        profileVC.present(editProfileVC, animated: true, completion: nil)
+                        
+                    }
                 }
             }
             if let clickUrl = action?.clickUrl {
@@ -137,15 +139,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
                     Cloud.sharedInstance.fetchUserData(userId: userId!, completion: { (user) in
                         Utility.sharedInstance.writeUserDataToArchiver(user: user, completion: {
                             //osDemo2 example of creating OneSignal email record for user upon fetching user email from Firebase
-//                            if let email = user.email {
-//                                OneSignal.setEmail(email, withEmailAuthHashToken: nil, withSuccess: {
-//                                    //The email has successfully been set.
-//                                    print("OneSignal email set: " + email)
-//                                }) { (error) in
-//                                    //Encountered an error while setting the email.
-//                                    print("OneSignal email error: " + error.debugDescription)
-//                                }
-//                            }
+                            if let email = user.email {
+                                OneSignal.setEmail(email, withEmailAuthHashToken: nil, withSuccess: {
+                                    //The email has successfully been set.
+                                    print("OneSignal email set: " + email)
+                                }) { (error) in
+                                    //Encountered an error while setting the email.
+                                    print("OneSignal email error: " + error.debugDescription)
+                                }
+                            }
                             //osDemo3 get the OneSignal player id and set as attribute to user record in Firebase
                             let status: OSPermissionSubscriptionState = OneSignal.getPermissionSubscriptionState()
                             if let osPlayerId = status.subscriptionStatus.userId {
@@ -163,9 +165,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
                 })
             }
         })
-        
         return true
     }
+    
     /*
     // For Google, Facebook Sign In
     func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any])

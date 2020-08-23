@@ -70,7 +70,7 @@ class SettingsTableViewController: UITableViewController {
     func handleLogout() {
         Utility.sharedInstance.logoutAndRemoveUserDefaults()
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "firstViewController") as UIViewController
+        let controller = storyboard.instantiateViewController(withIdentifier: "FirstViewController") as UIViewController
         OneSignal.logoutEmail()
         OneSignal.removeExternalUserId({externalUserIdRemoved in
             print("external User ID Disassociated: ", externalUserIdRemoved.debugDescription)
