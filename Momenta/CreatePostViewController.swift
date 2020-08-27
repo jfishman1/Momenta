@@ -44,7 +44,11 @@ class CreatePostViewController: UIViewController {
             OneSignal.addTrigger("createPost", withValue: 3)
         }
     }
-    var selectedImageFromPicker: UIImage?
+    var selectedImageFromPicker: UIImage? {
+        didSet {
+            OneSignal.addTrigger("createPost", withValue: 4)
+        }
+    }
     var defaultPostText = "Tell your story..."
     var postText: String?
     var imageUrl: String?

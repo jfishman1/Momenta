@@ -70,11 +70,16 @@ class ProfileViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        triggerOsIAMForProfilePage()
+    }
+    
+    func triggerOsIAMForProfilePage(){
         let status: OSPermissionSubscriptionState = OneSignal.getPermissionSubscriptionState()
         let isSubscribed = status.subscriptionStatus.subscribed
         print("isSubscribed = \(isSubscribed)")
         if isSubscribed == false {
             OneSignal.addTrigger("unsubscribed", withValue: "true")
+            return
         }
         if let userAttributesCount = user?.attributes?.count {
             print("userAttributesCount: ", userAttributesCount)

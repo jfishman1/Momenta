@@ -35,7 +35,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
                 print(additionalData["postId"] as! String)
                 
                 if let postId = additionalData["postId"] as? String {
-                    //Helpful article on this: https://fluffy.es/open-specific-view-push-notification-tapped/
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     if  let postDetailVC = storyboard.instantiateViewController(withIdentifier: "PostDetailViewController") as? PostDetailViewController,
                         let tabBarController = self.window?.rootViewController as? UITabBarController,

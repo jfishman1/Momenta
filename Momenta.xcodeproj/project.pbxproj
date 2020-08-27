@@ -843,9 +843,11 @@
 				CODE_SIGN_ENTITLEMENTS = Momenta/humble.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3.1;
 				DEVELOPMENT_TEAM = 99SW8E36CT;
 				INFOPLIST_FILE = Momenta/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.onesignal.momenta;
 				PRODUCT_NAME = Momenta;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -864,9 +866,11 @@
 				CODE_SIGN_ENTITLEMENTS = Momenta/humble.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3.1;
 				DEVELOPMENT_TEAM = 99SW8E36CT;
 				INFOPLIST_FILE = Momenta/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.onesignal.momenta;
 				PRODUCT_NAME = Momenta;
 				PROVISIONING_PROFILE_SPECIFIER = "";
