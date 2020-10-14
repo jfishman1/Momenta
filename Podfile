@@ -7,6 +7,8 @@ target 'Momenta' do
   use_frameworks!
 
   # Pods for Momenta
+  pod 'Firebase/Analytics'
+  pod 'Firebase/Messaging'
   pod 'Firebase/Database'
   pod 'Firebase/Functions'
   pod 'Firebase/Core'

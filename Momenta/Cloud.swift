@@ -100,31 +100,31 @@ class Cloud {
         })
     }
     
-    func loginWithEmail(email: String, password: String, completion: @escaping (String) -> (), err: @escaping (Error) -> ()) {
-        Auth.auth().signIn(withEmail: email, password: password, completion: { (authResult, error) in
-            let currentUserId: String!
-            if error != nil {
-                err(error!)
-                return
-            }
-            if authResult != nil {
-                currentUserId = authResult!.user.uid
-                completion(currentUserId)
-            }
-        })
-    }
+func loginWithEmail(email: String, password: String, completion: @escaping (String) -> (), err: @escaping (Error) -> ()) {
+    Auth.auth().signIn(withEmail: email, password: password, completion: { (authResult, error) in
+        let currentUserId: String!
+        if error != nil {
+            err(error!)
+            return
+        }
+        if authResult != nil {
+            currentUserId = authResult!.user.uid
+            completion(currentUserId)
+        }
+    })
+}
     
-    func createUserWithEmail(email: String, password: String, firstName: String, lastName: String, completion: @escaping (String, [String: AnyObject]) -> (), err: @escaping (Error)->()) {
-        Auth.auth().createUser(withEmail: email, password: password, completion: { (authResult, error) in
-            if error != nil {
-                err(error!)
-                return
-            }
-            let uid = authResult!.user.uid
-            let values: [String: AnyObject] = ["firstName": firstName as AnyObject, "lastName": lastName as AnyObject, "email": email as AnyObject, "userId": uid as AnyObject, "smallProfileImageUrl": "" as AnyObject]
-            completion(uid, values)
-        })
-    }
+func createUserWithEmail(email: String, password: String, firstName: String, lastName: String, completion: @escaping (String, [String: AnyObject]) -> (), err: @escaping (Error)->()) {
+    Auth.auth().createUser(withEmail: email, password: password, completion: { (authResult, error) in
+        if error != nil {
+            err(error!)
+            return
+        }
+        let uid = authResult!.user.uid
+        let values: [String: AnyObject] = ["firstName": firstName as AnyObject, "lastName": lastName as AnyObject, "email": email as AnyObject, "userId": uid as AnyObject, "smallProfileImageUrl": "" as AnyObject]
+        completion(uid, values)
+    })
+}
     
     // userID Token different from userID
     func getUserIDToken( completion: @escaping (String?) -> ()) {
@@ -161,25 +161,25 @@ class Cloud {
         }
     }
     
-    func getCurrentUserId(completion:@escaping (String?) -> ()) {
-        if let user = Auth.auth().currentUser {
-            let userId = user.uid
-            completion(userId)
-        }
+func getCurrentUserId(completion:@escaping (String?) -> ()) {
+    if let user = Auth.auth().currentUser {
+        let userId = user.uid
+        completion(userId)
     }
+}
     
     // MARK: Users
     
-    func updateUserInDatabaseWithUID(uid: String, values: [String: AnyObject], completion: @escaping() ->()) {
-        let ref = Database.database().reference()
-        let usersReference = ref.child("users").child(uid)
-        usersReference.updateChildValues(values, withCompletionBlock: { (err, ref) in
-            if err != nil {
-                return
-            }
-            completion()
-        })
-    }
+func updateUserInDatabaseWithUID(uid: String, values: [String: AnyObject], completion: @escaping() ->()) {
+    let ref = Database.database().reference()
+    let usersReference = ref.child("users").child(uid)
+    usersReference.updateChildValues(values, withCompletionBlock: { (err, ref) in
+        if err != nil {
+            return
+        }
+        completion()
+    })
+}
     
     func setupNameAndProfileImage(message: Message, completion: @escaping (_ name: String, _ profileImageUrl: String) -> ()) {
         if let id = message.chatPartnerId() {

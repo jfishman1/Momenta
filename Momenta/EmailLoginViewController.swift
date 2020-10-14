@@ -146,13 +146,34 @@ class EmailLoginViewController: UIViewController {
             print("uid: " + uid)
             print("values: " + values.debugDescription)
             Cloud.sharedInstance.fetchUserData(userId: uid, completion: { (user) in
+                print("inside fetchUserData, ", user.debugDescription)
                 Utility.sharedInstance.writeUserDataToArchiver(user: user, completion: {
-                    self.updateOneSignalData(user: user)
+                    print("inside writeUserDataToArchiver, ", user.debugDescription)
+                    self.updateOneSignalData(user: user, completion: { osPlayerId in
+                        print("inside updateOneSignalData, ", user.debugDescription)
+                        let values: [String: AnyObject] = ["osPlayerId": osPlayerId as AnyObject]
+                        print("inside updateOneSignalData, values", values.debugDescription)
+                        Cloud.sharedInstance.updateUserInDatabaseWithUID(uid: user.userId!, values: values, completion: {
+                            print("inside updateUserInDatabaseWithUID, ", user.debugDescription)
+                            Utility.sharedInstance.hideActivityIndicator(view: self.view)
+                            self.performSegue(withIdentifier: "toProfile", sender: self)
+                        })
+                    })
                 })
             }, err: {
+                print("err fetching user id")
                 Cloud.sharedInstance.updateUserInDatabaseWithUID(uid: uid, values: values, completion: {
                     Utility.sharedInstance.writeUserDataToArchiver(user: user, completion: {
-                        self.updateOneSignalData(user: user)
+                        self.updateOneSignalData(user: user, completion: { osPlayerId in
+                            print("inside updateOneSignalData, ", user.debugDescription)
+                            let values: [String: AnyObject] = ["osPlayerId": osPlayerId as AnyObject]
+                            print("inside updateOneSignalData, values", values.debugDescription)
+                            Cloud.sharedInstance.updateUserInDatabaseWithUID(uid: user.userId!, values: values, completion: {
+                                print("inside updateUserInDatabaseWithUID, ", user.debugDescription)
+                                Utility.sharedInstance.hideActivityIndicator(view: self.view)
+                                self.performSegue(withIdentifier: "toProfile", sender: self)
+                            })
+                        })
                     })
                 })
             })
@@ -164,8 +185,21 @@ class EmailLoginViewController: UIViewController {
         })
     }
     
-    func updateOneSignalData(user: User) {
-        OneSignal.setExternalUserId(user.userId!, withCompletion: { results in
+    func updateOneSignalData(user: User, completion: @escaping(String?) ->()) {
+        setFirebaseUserIdToOneSignal(firebaseUserId: user.userId!, completion: {
+            print("setFirebaseUserIdToOneSignal")
+            self.getOneSignalPlayerId(completion: {osPlayerId in
+                if let playerID = osPlayerId {
+                    print("getOneSignalPlayerId: ", osPlayerId!)
+                    completion(playerID)
+                }
+            })
+        })
+    }
+    
+    
+    func setFirebaseUserIdToOneSignal(firebaseUserId: String, completion: @escaping() ->()) {
+        OneSignal.setExternalUserId(firebaseUserId, withCompletion: { results in
           // The results will contain push and email success statuses
           print("External user id update complete with results: ", results!.description)
           // Push can be expected in almost every situation with a success status, but
@@ -176,15 +210,14 @@ class EmailLoginViewController: UIViewController {
           if let emailResults = results!["email"] {
               print("Set external user id email status: ", emailResults)
           }
+            completion()
         })
+    }
+    
+    func getOneSignalPlayerId(completion: @escaping(String?) ->()) {
         let status: OSPermissionSubscriptionState = OneSignal.getPermissionSubscriptionState()
         if let osPlayerId = status.subscriptionStatus.userId {
-            let values: [String: AnyObject] = ["osPlayerId": osPlayerId as AnyObject]
-            Cloud.sharedInstance.updateUserInDatabaseWithUID(uid: user.userId!, values: values, completion: {
-                print("osPlayerId \(osPlayerId) added to Firebase User Id \(user.userId!)")
-                Utility.sharedInstance.hideActivityIndicator(view: self.view)
-                self.performSegue(withIdentifier: "toProfile", sender: self)
-            })
+            completion(osPlayerId)
         }
     }
     

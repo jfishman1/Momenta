@@ -13,11 +13,28 @@ import Firebase
 import OneSignal
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        //Firebase Messagaing
+        if #available(iOS 10.0, *) {
+          // For iOS 10 display notification (sent via APNS)
+          UNUserNotificationCenter.current().delegate = self
+
+          let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+          UNUserNotificationCenter.current().requestAuthorization(
+            options: authOptions,
+            completionHandler: {_, _ in })
+        } else {
+          let settings: UIUserNotificationSettings =
+          UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+          application.registerUserNotificationSettings(settings)
+        }
+
+        application.registerForRemoteNotifications()
+        //Firebase Messagaing */
         
         //Remove this method to stop OneSignal Debugging
         OneSignal.setLogLevel(.LL_VERBOSE, visualLevel: .LL_NONE)
@@ -29,6 +46,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
         }
         
         let notificationOpenedBlock: OSHandleNotificationActionBlock = { result in
+            
+            let timeInterval = Int(NSDate().timeIntervalSince1970)
+            
+            OneSignal.sendTags(["last_push_clicked": timeInterval])
             // This block gets called when the user reacts to a notification received
             if let additionalData = result!.notification.payload!.additionalData {
                 print("additionalData: ", additionalData)
@@ -189,6 +210,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
         }
         
         return true
+    }
+    
+    func application(_ application: UIApplication,
+              continue userActivity: NSUserActivity,
+              restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+        
+        print("currently inside restorationHandler")
+        return true
+        
+    }
+    
+    func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
+        
+        print("inside scene method1")
+
+        guard userActivity.activityType == NSUserActivityTypeBrowsingWeb,
+            let urlToOpen = userActivity.webpageURL else {
+                return
+        }
+        
+        print("inside scene method: ", urlToOpen)
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
