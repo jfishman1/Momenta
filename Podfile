@@ -16,10 +16,10 @@ target 'Momenta' do
   pod 'Firebase/Storage'
   pod 'GoogleSignIn'
   pod 'FacebookLogin'
-  pod 'OneSignal', '>= 2.11.2', '< 3.0'
+  pod 'OneSignal', '>= 3.0.0-beta', '< 4.0'
 end
 
 target 'OneSignalNotificationServiceExtension' do
   use_frameworks!
-  pod 'OneSignal', '>= 2.11.2', '< 3.0'
+  pod 'OneSignal', '>= 3.0.0-beta', '< 4.0'
 end

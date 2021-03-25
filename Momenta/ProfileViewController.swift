@@ -74,17 +74,21 @@ class ProfileViewController: UIViewController {
     }
     
     func triggerOsIAMForProfilePage(){
-        let status: OSPermissionSubscriptionState = OneSignal.getPermissionSubscriptionState()
-        let isSubscribed = status.subscriptionStatus.subscribed
-        print("isSubscribed = \(isSubscribed)")
-        if isSubscribed == false {
-            OneSignal.addTrigger("unsubscribed", withValue: "true")
-            return
+        if let deviceState = OneSignal.getDeviceState() {
+           let subscribed = deviceState.isSubscribed
+            print("subscribed = ", subscribed)
+            if subscribed == false {
+                OneSignal.addTrigger("unsubscribed", withValue: "true")
+                return
+            }
+            if let userAttributesCount = user?.attributes?.count {
+                print("userAttributesCount: ", userAttributesCount)
+                OneSignal.addTrigger("interests", withValue: userAttributesCount)
+            }
         }
-        if let userAttributesCount = user?.attributes?.count {
-            print("userAttributesCount: ", userAttributesCount)
-            OneSignal.addTrigger("interests", withValue: userAttributesCount)
-        }
+        //let status: OSPermissionSubscriptionState = OneSignal.getPermissionSubscriptionState()
+        //let isSubscribed = status.subscriptionStatus.subscribed
+        
     }
     
     func setupNavigationItems() {

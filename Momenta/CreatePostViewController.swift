@@ -87,6 +87,8 @@ class CreatePostViewController: UIViewController {
     
         NotificationCenter.default.addObserver(self, selector: #selector(CreatePostViewController.keyboardDidShow(_:)), name: UIResponder.keyboardDidShowNotification, object: nil)
         //NotificationCenter.default.addObserver(self, selector: #selector(CreatePostViewController.keyboardWillBeHidden(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
+        OneSignal.sendOutcome("ios_create_post")
     }
     
     deinit {

@@ -11,6 +11,7 @@ import UIKit
 import Firebase
 //import FBSDKCoreKit
 import OneSignal
+import Mixpanel
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegate, UNUserNotificationCenterDelegate {
@@ -18,44 +19,62 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        //Firebase Messagaing
-        if #available(iOS 10.0, *) {
-          // For iOS 10 display notification (sent via APNS)
-          UNUserNotificationCenter.current().delegate = self
+       // NotificatonManager.sharedInstance.setup(launchOptions: launchOptions)
+        //Mixpanel Setup
+        Mixpanel.initialize(token: "d810d40cdbc7dead2ff901838c696ccb")
 
-          let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
-          UNUserNotificationCenter.current().requestAuthorization(
-            options: authOptions,
-            completionHandler: {_, _ in })
-        } else {
-          let settings: UIUserNotificationSettings =
-          UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
-          application.registerUserNotificationSettings(settings)
-        }
-
-        application.registerForRemoteNotifications()
-        //Firebase Messagaing */
+//        //Firebase Messagaing
+//        if #available(iOS 10.0, *) {
+//          // For iOS 10 display notification (sent via APNS)
+//          UNUserNotificationCenter.current().delegate = self
+//
+//          let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+//          UNUserNotificationCenter.current().requestAuthorization(
+//            options: authOptions,
+//            completionHandler: {_, _ in })
+//        } else {
+//          let settings: UIUserNotificationSettings =
+//          UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+//          application.registerUserNotificationSettings(settings)
+//        }
+//
+//        application.registerForRemoteNotifications()
+//        //Firebase Messagaing */
         
         //Remove this method to stop OneSignal Debugging
         OneSignal.setLogLevel(.LL_VERBOSE, visualLevel: .LL_NONE)
         
-        let notificationReceivedBlock: OSHandleNotificationReceivedBlock = { notification in
-            print("Received Notification: ", notification!.payload.notificationID!)
-            print("launchURL: ", notification?.payload.launchURL ?? "No Launch Url")
-            print("content_available = \(notification?.payload.contentAvailable ?? false)")
-        }
+////        //START OneSignal initialization code
+////        let onesignalInitSettings = [kOSSettingsKeyAutoPrompt: false, kOSSettingsKeyInAppLaunchURL: false]
+
         
-        let notificationOpenedBlock: OSHandleNotificationActionBlock = { result in
+        let notifWillShowInForegroundHandler: OSNotificationWillShowInForegroundBlock = { notification, completion in
+            print("Received Notification: ", notification.notificationId ?? "no id")
+            print("launchURL: ", notification.launchURL ?? "no launch url")
+            print("content_available = \(notification.contentAvailable)")
+            if notification.notificationId == "example_silent_notif" {
+                completion(nil)
+            } else {
+                completion(notification)
+            }
+        }
+        OneSignal.setNotificationWillShowInForegroundHandler(notifWillShowInForegroundHandler)
+
+        let osNotificationOpenedBlock: OSNotificationOpenedBlock = { result in
             
-            let timeInterval = Int(NSDate().timeIntervalSince1970)
-            
-            OneSignal.sendTags(["last_push_clicked": timeInterval])
             // This block gets called when the user reacts to a notification received
-            if let additionalData = result!.notification.payload!.additionalData {
+            let timeInterval = Int(NSDate().timeIntervalSince1970)
+            OneSignal.sendTags(["last_push_clicked": timeInterval])
+            
+            let notification: OSNotification = result.notification
+            print("Message: ", notification.body ?? "empty body")
+            print("badge number: ", notification.badge)
+            print("notification sound: ", notification.sound ?? "No sound")
+                    
+            if let additionalData = notification.additionalData {
                 print("additionalData: ", additionalData)
-                print(additionalData["postId"] as! String)
-                
                 if let postId = additionalData["postId"] as? String {
+                    print(additionalData["postId"] as! String)
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     if  let postDetailVC = storyboard.instantiateViewController(withIdentifier: "PostDetailViewController") as? PostDetailViewController,
                         let tabBarController = self.window?.rootViewController as? UITabBarController,
@@ -67,63 +86,64 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
                             navController.pushViewController(postDetailVC, animated: true)
                     }
                 }
+                if let actionSelected = notification.actionButtons {
+                    print("actionSelected: ", actionSelected)
+                }
+                if let actionID = result.action.actionId {
+                    //handle the action
+                    print(actionID.description)
+                }
             }
         }
-
-        //START OneSignal initialization code
-        let onesignalInitSettings = [kOSSettingsKeyAutoPrompt: false, kOSSettingsKeyInAppLaunchURL: false]
         
         // Replace 'YOUR_ONESIGNAL_APP_ID' with your OneSignal App ID.
-        OneSignal.initWithLaunchOptions(launchOptions,
-          appId: "5e605fcd-de88-4b0a-a5eb-5c18b84d52f3",
-          handleNotificationReceived: notificationReceivedBlock, handleNotificationAction: notificationOpenedBlock,
-          settings: onesignalInitSettings)
+        OneSignal.initWithLaunchOptions(launchOptions)
+        OneSignal.setAppId("5e605fcd-de88-4b0a-a5eb-5c18b84d52f3")
+        OneSignal.setLaunchURLsInApp(true)
 
-        OneSignal.inFocusDisplayType = OSNotificationDisplayType.notification;
+        OneSignal.setNotificationOpenedHandler(osNotificationOpenedBlock)
 
-        /*// The promptForPushNotifications function code will show the iOS push notification prompt. We recommend removing the following code and instead using an In-App Message to prompt for notification permission (See step 6)
+        // The promptForPushNotifications function code will show the iOS push notification prompt. We recommend removing the following code and instead using an In-App Message to prompt for notification permission (See step 6)
         OneSignal.promptForPushNotifications(userResponse: { accepted in
           print("User accepted notifications: \(accepted)")
-        })*/
-        //END OneSignal initializataion code
-        
-        let OneSignalInAppMessageClickHandler: OSHandleInAppMessageActionClickBlock = { action in
-            if let clickName = action?.clickName {
-                print("clickName string: ", clickName)
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                if clickName == "getStarted" {
-                    if  let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController,
-                        let firstVC = storyboard.instantiateViewController(withIdentifier: "FirstViewController") as? FirstViewController{
-                        self.window?.rootViewController = firstVC
-                        firstVC.present(loginVC, animated: true, completion: nil)
-                    }
-                }
-                if clickName == "updateInterests" {
-                    if  let editProfileVC = storyboard.instantiateViewController(withIdentifier: "EditProfileViewController") as? EditProfileViewController,
-                        let tabBarController = self.window?.rootViewController as? UITabBarController,
-                        let navController = tabBarController.selectedViewController as? UINavigationController,
-                        let profileVC = navController.visibleViewController as? ProfileViewController {
-                        print(tabBarController.selectedViewController.debugDescription)
-                        print(navController.viewControllers.description)
-                        print(navController.presentedViewController.debugDescription)
-                        print(navController.visibleViewController.debugDescription)
-                        profileVC.present(editProfileVC, animated: true, completion: nil)
-                        
-                    }
-                }
-            }
-            if let clickUrl = action?.clickUrl {
-                print ("clickUrl string: ", clickUrl)
-            }
-            if let firstClick = action?.firstClick {
-                print("firstClick bool: ", firstClick)
-            }
-            if let closesMessage = action?.closesMessage {
-                print("closesMessage bool: ", closesMessage)
-            }
-        }
-
-        OneSignal.setInAppMessageClickHandler(OneSignalInAppMessageClickHandler)
+        })
+//        //END OneSignal initializataion code
+//        
+//        let OneSignalInAppMessageClickHandler: OSInAppMessageClickBlock = { action in
+//            if let clickName = action.clickName {
+//                print("clickName string: ", clickName)
+//                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//                if clickName == "getStarted" {
+//                    if  let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController,
+//                        let firstVC = storyboard.instantiateViewController(withIdentifier: "FirstViewController") as? FirstViewController{
+//                        self.window?.rootViewController = firstVC
+//                        firstVC.present(loginVC, animated: true, completion: nil)
+//                    }
+//                }
+//                if clickName == "updateInterests" {
+//                    if  let editProfileVC = storyboard.instantiateViewController(withIdentifier: "EditProfileViewController") as? EditProfileViewController,
+//                        let tabBarController = self.window?.rootViewController as? UITabBarController,
+//                        let navController = tabBarController.selectedViewController as? UINavigationController,
+//                        let profileVC = navController.visibleViewController as? ProfileViewController {
+//                        print(tabBarController.selectedViewController.debugDescription)
+//                        print(navController.viewControllers.description)
+//                        print(navController.presentedViewController.debugDescription)
+//                        print(navController.visibleViewController.debugDescription)
+//                        profileVC.present(editProfileVC, animated: true, completion: nil)
+//                        
+//                    }
+//                }
+//            }
+//            if let clickUrl = action.clickUrl {
+//                print ("clickUrl string: ", clickUrl)
+//            }
+//            let firstClick = action.firstClick
+//            print("firstClick bool: ", firstClick)
+//            let closesMessage = action.closesMessage
+//            print("closesMessage bool: ", closesMessage)
+//        }
+//
+//       OneSignal.setInAppMessageClickHandler(OneSignalInAppMessageClickHandler)
 
         // Override point for customization after application launch.
         UINavigationBar.appearance().tintColor = UIColor.white
@@ -141,9 +161,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
             if auth != nil {
                 //Utility.sharedInstance.logoutAndRemoveUserDefaults()
                 print("USER ID AUTHENTICATED")
+                
                 //osDemo1 get the Firebase User ID and set to OS External User ID
                 Cloud.sharedInstance.getCurrentUserId(completion: { userId in
-                    OneSignal.setExternalUserId(userId!, withCompletion: { results in
+                    Mixpanel.mainInstance().identify(distinctId: userId!)
+                    OneSignal.setExternalUserId(userId!, withSuccess: { results in
                       // The results will contain push and email success statuses
                       print("External user id update complete with results: ", results!.description)
                       // Push can be expected in almost every situation with a success status, but
@@ -155,6 +177,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
                           print("Set external user id email status: ", emailResults)
                       }
                     })
+                    
+                    
+                    if let deviceState = OneSignal.getDeviceState() {
+                       let subscribed = deviceState.isSubscribed
+                        print("subscribed = ", subscribed)
+                        if subscribed == false {
+                            OneSignal.addTrigger("unsubscribed", withValue: "true")
+                        } else {
+                            OneSignal.removeTrigger(forKey: "unsubscribed")
+                        }
+                        if let osPlayerId = deviceState.userId {
+                            Mixpanel.mainInstance().people.set(properties: ["$onesignal_user_id":osPlayerId])
+                        }
+                    }
+                    
+                    
+                    
+                    
+                    
                     // Use Firebase User ID to get User data
                     Cloud.sharedInstance.fetchUserData(userId: userId!, completion: { (user) in
                         Utility.sharedInstance.writeUserDataToArchiver(user: user, completion: {
@@ -163,19 +204,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
                                 OneSignal.setEmail(email, withEmailAuthHashToken: nil, withSuccess: {
                                     //The email has successfully been set.
                                     print("OneSignal email set: " + email)
+//                                    OneSignal.setExternalUserId("test", withSuccess: {result in
+//                                        print("successful set external user id: ", result?.debugDescription ?? "no result")
+//                                    }, withFailure: {error in
+//                                        print("failed set external user id: ", error.debugDescription)
+//                                    })
                                 }) { (error) in
                                     //Encountered an error while setting the email.
                                     print("OneSignal email error: " + error.debugDescription)
                                 }
                             }
                             //osDemo3 get the OneSignal player id and set as attribute to user record in Firebase
-                            let status: OSPermissionSubscriptionState = OneSignal.getPermissionSubscriptionState()
-                            if let osPlayerId = status.subscriptionStatus.userId {
-                                let values: [String: AnyObject] = ["osPlayerId": osPlayerId as AnyObject]
+                            let deviceState = OneSignal.getDeviceState()
+                            if let userId = deviceState?.userId {
+                                Mixpanel.mainInstance().people.set(properties: [ "$onesignal_user_id": userId ])
+                                let values: [String: AnyObject] = ["osPlayerId": userId as AnyObject]
                                 Cloud.sharedInstance.updateUserInDatabaseWithUID(uid: user.userId!, values: values, completion: {
-                                    print("osPlayerId \(osPlayerId) added to Firebase User Id \(user.userId!)")
+                                    print("osPlayerId \(String(describing: userId)) added to Firebase User Id \(user.userId!)")
                                 })
                             }
+                                                        
+                            if let deviceState = OneSignal.getDeviceState() {
+                                let userId = deviceState.userId
+                                let values: [String: AnyObject] = ["osPlayerId": userId as AnyObject]
+                                Cloud.sharedInstance.updateUserInDatabaseWithUID(uid: user.userId!, values: values, completion: {
+                                        print("osPlayerId added to Firebase User Id \(user.userId!)")
+                                })
+                            }
+                            
                             let storyboard = UIStoryboard(name: "Main", bundle: nil)
                             self.window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "masterTabBar")
                         })
@@ -212,49 +268,87 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
         return true
     }
     
-    func application(_ application: UIApplication,
-              continue userActivity: NSUserActivity,
-              restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
-        
-        print("currently inside restorationHandler")
-        return true
-        
+    
+private func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
+    
+    print("Continue User Activity called: ")
+    
+    if userActivity.activityType == NSUserActivityTypeBrowsingWeb {
+        let url = userActivity.webpageURL!
+        print(url.absoluteString)
+        //handle url and open whatever page you want to open.
     }
     
-    func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
+    guard let url = userActivity.webpageURL else {
+        print("url not a url")
+        return false
+    }
+    guard let viewController = getDestination(for: url) else {
         
-        print("inside scene method1")
-
-        guard userActivity.activityType == NSUserActivityTypeBrowsingWeb,
-            let urlToOpen = userActivity.webpageURL else {
-                return
-        }
+        application.open(url)
         
-        print("inside scene method: ", urlToOpen)
+        return false
     }
-
-    func applicationWillResignActive(_ application: UIApplication) {
-        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-        // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
-    }
-
-    func applicationDidEnterBackground(_ application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-    }
-
-    func applicationWillEnterForeground(_ application: UIApplication) {
-        // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
-    }
-
-    func applicationDidBecomeActive(_ application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    }
-
-    func applicationWillTerminate(_ application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    }
-
-
+    
+    window?.rootViewController = viewController
+    
+    window?.makeKeyAndVisible()
+    
+    return true
+    
 }
 
+func getDestination(for url: URL) -> UIViewController? {
+    print("2-----------------------------------------------------------------------------------")
+    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+    let tabBarController = storyboard.instantiateInitialViewController() as? UITabBarController
+    tabBarController?.selectedIndex = 1
+    
+    let destination = Destination(for: url)
+    switch destination {
+    case .posts: return tabBarController
+    case .postDetails(let postId):
+        let navController = tabBarController?.viewControllers?[1] as? UINavigationController
+        
+        guard let postDetailVC = storyboard.instantiateViewController(withIdentifier: "PostDetailViewController") as? PostDetailViewController else { return nil }
+        let dataModel = PostDataModel()
+        dataModel.postId = String(postId)
+        postDetailVC.dataModel = dataModel
+        navController?.pushViewController(postDetailVC, animated: false)
+        
+        return tabBarController
+    case .safari: return nil
+    }
+}
+    
+    
+
+enum Destination {
+    case posts
+    case postDetails(Int)
+    case safari
+    init(for url: URL) {
+        print("3-----------------------------------------------------------------------------------")
+        print(url.lastPathComponent)
+        if url.lastPathComponent == "posts" {
+            self = .posts
+        } else if let postId = Int(url.lastPathComponent) {
+            self = .postDetails(postId)
+        } else {
+            self = .safari
+        }
+    }
+}
+
+}
+//func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+//    print("iOS Native didReceiveRemoteNotification: ", userInfo.debugDescription)
+//    // This block gets called when the user reacts to a notification received
+//    let timeInterval = Int(NSDate().timeIntervalSince1970)
+//    OneSignal.sendTags(["last_push_received": timeInterval])
+//    if #available(iOS 10.0, *) {
+////        os_log("%{public}@", log: OSLog(subsystem: "com.onesignal.jonexample", category: "OneSignalNotificationServiceExtension"), type: OSLogType.debug, userInfo.debugDescription)
+//    } else {
+//        // Fallback on earlier versions
+//    }
+//}

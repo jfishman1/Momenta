@@ -85,6 +85,17 @@ class EmailLoginViewController: UIViewController {
         OneSignal.setEmail(emailTextField.text!, withEmailAuthHashToken: nil, withSuccess: {
             //The email has successfully been set.
             print("OneSignal email set: " + self.emailTextField.text!)
+            OneSignal.setExternalUserId("test", withSuccess: {results in
+                print("successful set external user id: ", results!.debugDescription)
+                if let pushResults = results!["push"] {
+                  print("Set external user id push status: ", pushResults)
+                }
+                if let emailResults = results!["email"] {
+                  print("Set external user id email status: ", emailResults)
+                }
+            }, withFailure: {error in
+                print("failed set external user id: ", error.debugDescription)
+            })
         }) { (error) in
             //Encountered an error while setting the email.
             print("OneSignal email error: " + error.debugDescription)
@@ -115,6 +126,7 @@ class EmailLoginViewController: UIViewController {
     }
     
     func registerUser() {
+        print("registering user with registerUser()")
         guard let email = emailTextField.text, let password = passwordTextField.text, let firstName = firstNameTextField.text, let lastName = lastNameTextField.text else {
             Utility.sharedInstance.hideActivityIndicator(view: self.view)
             return
@@ -199,7 +211,8 @@ class EmailLoginViewController: UIViewController {
     
     
     func setFirebaseUserIdToOneSignal(firebaseUserId: String, completion: @escaping() ->()) {
-        OneSignal.setExternalUserId(firebaseUserId, withCompletion: { results in
+        print("calling setFirebaseUserIdToOneSignal")
+        OneSignal.setExternalUserId(firebaseUserId, withSuccess: { results in
           // The results will contain push and email success statuses
           print("External user id update complete with results: ", results!.description)
           // Push can be expected in almost every situation with a success status, but
@@ -215,10 +228,14 @@ class EmailLoginViewController: UIViewController {
     }
     
     func getOneSignalPlayerId(completion: @escaping(String?) ->()) {
-        let status: OSPermissionSubscriptionState = OneSignal.getPermissionSubscriptionState()
-        if let osPlayerId = status.subscriptionStatus.userId {
-            completion(osPlayerId)
+        if let deviceState = OneSignal.getDeviceState() {
+           let userId = deviceState.userId
+           completion(userId)
         }
+//        let status: OSPermissionSubscriptionState = OneSignal.getPermissionSubscriptionState()
+//        if let osPlayerId = status.subscriptionStatus.userId {
+//            completion(osPlayerId)
+//        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

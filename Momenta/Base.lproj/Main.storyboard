@@ -128,8 +128,8 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rVU-KN-7BB">
-                                <rect key="frame" x="262" y="20" width="30" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rVU-KN-7BB">
+                                <rect key="frame" x="274" y="20" width="18" height="22"/>
                                 <state key="normal" image="CancelButtonWhite"/>
                                 <connections>
                                     <action selector="onCancelButton:" destination="2zc-1A-4Oo" eventType="touchUpInside" id="OJA-Sa-iDJ"/>
@@ -762,7 +762,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ijG-bO-28Y">
-                                <rect key="frame" x="15" y="159" width="290" height="34"/>
+                                <rect key="frame" x="15" y="159" width="289" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -791,15 +791,17 @@
                             <constraint firstItem="Vxc-7y-rmi" firstAttribute="top" secondItem="bPQ-JJ-RET" secondAttribute="bottom" id="3AB-ov-ivi"/>
                             <constraint firstAttribute="trailing" secondItem="3uz-ka-1cA" secondAttribute="trailing" constant="15" id="3sy-K3-gH1"/>
                             <constraint firstItem="3uz-ka-1cA" firstAttribute="top" secondItem="26X-b4-6sO" secondAttribute="bottom" constant="10" id="6QI-3V-mjo"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ijG-bO-28Y" secondAttribute="trailing" constant="16" id="CMo-Dy-ayJ"/>
                             <constraint firstItem="26X-b4-6sO" firstAttribute="top" secondItem="Vxc-7y-rmi" secondAttribute="bottom" constant="15" id="CQV-Rk-FqQ"/>
                             <constraint firstItem="26X-b4-6sO" firstAttribute="leading" secondItem="3uz-ka-1cA" secondAttribute="leading" id="EYg-9e-FiF"/>
+                            <constraint firstItem="ijG-bO-28Y" firstAttribute="width" secondItem="3uz-ka-1cA" secondAttribute="width" multiplier="0.996552" id="GuN-rM-M9c"/>
                             <constraint firstItem="Vxc-7y-rmi" firstAttribute="leading" secondItem="zB5-GX-tUx" secondAttribute="leading" id="Lod-8o-JK3"/>
-                            <constraint firstItem="3uz-ka-1cA" firstAttribute="leading" secondItem="ijG-bO-28Y" secondAttribute="leading" id="O0p-92-zTi"/>
+                            <constraint firstItem="3uz-ka-1cA" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ijG-bO-28Y" secondAttribute="leading" id="O0p-92-zTi"/>
                             <constraint firstAttribute="trailing" secondItem="Vxc-7y-rmi" secondAttribute="trailing" id="aJv-Sy-1Qw"/>
                             <constraint firstItem="ijG-bO-28Y" firstAttribute="top" secondItem="3uz-ka-1cA" secondAttribute="bottom" constant="10" id="cEi-Xb-dFD"/>
+                            <constraint firstItem="ijG-bO-28Y" firstAttribute="leading" secondItem="3uz-ka-1cA" secondAttribute="leading" id="hKW-eG-mK8"/>
                             <constraint firstAttribute="trailing" secondItem="26X-b4-6sO" secondAttribute="trailing" constant="15" id="n5P-Cv-POE"/>
                             <constraint firstItem="26X-b4-6sO" firstAttribute="leading" secondItem="zB5-GX-tUx" secondAttribute="leading" constant="15" id="yyG-FM-WpD"/>
-                            <constraint firstAttribute="trailing" secondItem="ijG-bO-28Y" secondAttribute="trailing" constant="15" id="z6i-Pe-G4B"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="My Info" id="a1Y-9a-2LP">
@@ -819,7 +821,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dMI-wR-aec" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1414" y="-1844"/>
+            <point key="canvasLocation" x="1413.75" y="-1844.3661971830986"/>
         </scene>
         <!--Edit Profile View Controller-->
         <scene sceneID="Rjm-ft-faC">
@@ -2765,7 +2767,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="hT8-u4-1cZ"/>
-        <segue reference="1ND-aQ-wMX"/>
+        <segue reference="1hm-aW-csb"/>
         <segue reference="hZy-2o-ca2"/>
     </inferredMetricsTieBreakers>
     <resources>
